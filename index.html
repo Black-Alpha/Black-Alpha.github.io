@@ -51,7 +51,7 @@
     }
     </pre>
 
-        Finally, to actually run the highlighter, you need to include this JS on your page
+        <!--Finally, to actually run the highlighter, you need to include this JS on your page-->
         <script type="text/javascript">
         SyntaxHighlighter.all()
     </script>
@@ -72,145 +72,145 @@
         </center>
         <h1 class="uk-article-title"><center data-uk-tooltip title="Alpha">STARLITE<sup class="uk-icon-spinner uk-icon-spin"></sup></center></h1>
         <<div class="uk-progress uk-progress-striped uk-active">
-    <div class="uk-progress-bar" style="width: 85%;"></div>
-</div>
-    <a href="" class="uk-icon-button uk-icon-github">test</a>
-    <!--Three.js-->
-    <script src="tjs/three.min.js"></script>
-    <script src="tjs/OBJLoader.js"></script>
-    <script src="tjs/Detector.js"></script>
-    <script src="tjs/stats.min.js"></script>
+             <div class="uk-progress-bar" style="width: 85%;"></div>
+         </div>
+        <a href="" class="uk-icon-button uk-icon-github">test</a>
+        <!--Three.js-->
+        <script src="tjs/three.min.js"></script>
+        <script src="tjs/OBJLoader.js"></script>
+        <script src="tjs/Detector.js"></script>
+        <script src="tjs/stats.min.js"></script>
+
+        <div><div class="uk-overlay-caption">Caption</div>
+        <script>
+
+            var container, stats;
+
+            var camera, scene, renderer;
+
+            var mouseX = 0, mouseY = 0;
+
+            var windowHalfX = window.innerWidth / 2;
+            var windowHalfY = window.innerHeight / 2;
 
 
-    <script>
-
-        var container, stats;
-
-        var camera, scene, renderer;
-
-        var mouseX = 0, mouseY = 0;
-
-        var windowHalfX = window.innerWidth / 2;
-        var windowHalfY = window.innerHeight / 2;
+            init();
+            animate();
 
 
-        init();
-        animate();
+            function init() {
 
+                container = document.createElement('div');
+                document.body.appendChild(container);
 
-        function init() {
+                camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+                camera.position.z = 100;
 
-            container = document.createElement('div');
-            document.body.appendChild(container);
+                // scene
 
-            camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-            camera.position.z = 100;
+                scene = new THREE.Scene();
 
-            // scene
+                var ambient = new THREE.AmbientLight(0x101030);
+                scene.add(ambient);
 
-            scene = new THREE.Scene();
+                var directionalLight = new THREE.DirectionalLight(0xffeedd);
+                directionalLight.position.set(0, 0, 1);
+                scene.add(directionalLight);
 
-            var ambient = new THREE.AmbientLight(0x101030);
-            scene.add(ambient);
+                // texture
 
-            var directionalLight = new THREE.DirectionalLight(0xffeedd);
-            directionalLight.position.set(0, 0, 1);
-            scene.add(directionalLight);
+                var manager = new THREE.LoadingManager();
+                manager.onProgress = function (item, loaded, total) {
 
-            // texture
+                    console.log(item, loaded, total);
 
-            var manager = new THREE.LoadingManager();
-            manager.onProgress = function (item, loaded, total) {
+                };
 
-                console.log(item, loaded, total);
+                var texture = new THREE.Texture();
 
-            };
+                var loader = new THREE.ImageLoader(manager);
+                loader.load('textures/UV_Grid_Sm.jpg', function (image) {
 
-            var texture = new THREE.Texture();
-
-            var loader = new THREE.ImageLoader(manager);
-            loader.load('textures/UV_Grid_Sm.jpg', function (image) {
-
-                texture.image = image;
-                texture.needsUpdate = true;
-
-            });
-
-            // model
-
-            var loader = new THREE.OBJLoader(manager);
-            loader.load('obj/geoForm.obj', function (object) {
-
-                object.traverse(function (child) {
-
-                    if (child instanceof THREE.Mesh) {
-
-                        child.material.map = texture;
-
-                    }
+                    texture.image = image;
+                    texture.needsUpdate = true;
 
                 });
 
-                object.position.y = -80;
-                scene.add(object);
+                // model
 
-            });
+                var loader = new THREE.OBJLoader(manager);
+                loader.load('obj/geoForm.obj', function (object) {
+
+                    object.traverse(function (child) {
+
+                        if (child instanceof THREE.Mesh) {
+
+                            child.material.map = texture;
+
+                        }
+
+                    });
+
+                    object.position.y = -80;
+                    scene.add(object);
+
+                });
+
+                //
+
+                renderer = new THREE.WebGLRenderer();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                container.appendChild(renderer.domElement);
+
+                document.addEventListener('mousemove', onDocumentMouseMove, false);
+
+                //
+
+                window.addEventListener('resize', onWindowResize, false);
+
+            }
+
+            function onWindowResize() {
+
+                windowHalfX = window.innerWidth / 2;
+                windowHalfY = window.innerHeight / 2;
+
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+
+                renderer.setSize(window.innerWidth, window.innerHeight);
+
+            }
+
+            function onDocumentMouseMove(event) {
+
+                mouseX = (event.clientX - windowHalfX) / 2;
+                mouseY = (event.clientY - windowHalfY) / 2;
+
+            }
 
             //
 
-            renderer = new THREE.WebGLRenderer();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            container.appendChild(renderer.domElement);
+            function animate() {
 
-            document.addEventListener('mousemove', onDocumentMouseMove, false);
+                requestAnimationFrame(animate);
+                render();
 
-            //
+            }
 
-            window.addEventListener('resize', onWindowResize, false);
+            function render() {
 
-        }
+                camera.position.x += (mouseX - camera.position.x) * .05;
+                camera.position.y += (-mouseY - camera.position.y) * .05;
 
-        function onWindowResize() {
+                camera.lookAt(scene.position);
 
-            windowHalfX = window.innerWidth / 2;
-            windowHalfY = window.innerHeight / 2;
+                renderer.render(scene, camera);
 
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
+            }
 
-            renderer.setSize(window.innerWidth, window.innerHeight);
-
-        }
-
-        function onDocumentMouseMove(event) {
-
-            mouseX = (event.clientX - windowHalfX) / 2;
-            mouseY = (event.clientY - windowHalfY) / 2;
-
-        }
-
-        //
-
-        function animate() {
-
-            requestAnimationFrame(animate);
-            render();
-
-        }
-
-        function render() {
-
-            camera.position.x += (mouseX - camera.position.x) * .05;
-            camera.position.y += (-mouseY - camera.position.y) * .05;
-
-            camera.lookAt(scene.position);
-
-            renderer.render(scene, camera);
-
-        }
-
-    </script>
-
+        </script>
+    </div>
     <!--Three.js-->
 </body>
 
