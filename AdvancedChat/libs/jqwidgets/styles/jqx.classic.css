@@ -17,11 +17,6 @@
 .icon-arrow-down-selected-classic{background-image:url('images/icon-down-white.png'); background-repeat:no-repeat; background-position:center}
 .icon-arrow-left-selected-classic{background-image:url('images/icon-left-white.png'); background-repeat:no-repeat; background-position:center}
 .icon-arrow-right-selected-classic{background-image:url('images/icon-right-white.png');background-repeat:no-repeat; background-position:center}
-.jqx-scrollbar-classic .icon-arrow-up-selected-classic{background-image:url('images/icon-up.png'); background-repeat:no-repeat; background-position:center}
-.jqx-scrollbar-classic .icon-arrow-down-selected-classic{background-image:url('images/icon-down.png'); background-repeat:no-repeat; background-position:center}
-.jqx-scrollbar-classic .icon-arrow-left-selected-classic{background-image:url('images/icon-left.png'); background-repeat:no-repeat; background-position:center}
-.jqx-scrollbar-classic .icon-arrow-right-selected-classic{background-image:url('images/icon-right.png');background-repeat:no-repeat; background-position:center}
-
 .jqx-slider-track-horizontal-classic, .jqx-slider-track-vertical-classic{border-color: #e8e8e8; background: #e8e8e8;}
 .jqx-slider-rangebar-classic{background:#7A7A7A;}
 .jqx-grid-column-sortdescbutton-classic, jqx-grid-column-filterbutton-classic, .jqx-grid-column-sortascbutton-classic{ background-color:transparent;  border-style:solid;  border-width:0px 0px 0px 0px;  border-color:#aaa}
@@ -38,7 +33,10 @@
 .jqx-radiobutton-classic{border:none; background: none;}
 .jqx-radiobutton-default-classic{filter: none; background:transparent url(images/roundbg_classic_normal.png) left center scroll repeat-x;  border:0px solid #c9c9c9; -moz-border-radius:0px; -webkit-border-radius:0px; border-radius:0px}
 .jqx-radiobutton-hover-classic{filter: none;  -moz-border-radius:0px;-webkit-border-radius:0px;border-radius:0px;background:transparent url(images/roundbg_classic_hover.png) left center scroll repeat-x;     border:0px solid #000}
+.jqx-radiobutton-disabled-classic{filter: none; background:transparent;border:none}
+.jqx-radiobutton-disabled-box-classic{filter: none;  background:transparent url(images/roundbg_disabled.png) left top scroll no-repeat; border:0px solid #aaa}
 .jqx-radiobutton-check-checked-classic{filter: none; margin:0px; width:12px;height:12px;background:transparent url(images/roundbg_check_black.png) left top no-repeat; border:none}
+.jqx-radiobutton-check-disabled-classic{filter: none; background:transparent url(images/roundbg_check_disabled.png) left top no-repeat; border:none}
 .jqx-radiobutton-check-indeterminate-classic{filter: none; background:transparent url(images/roundbg_check_indeterminate.png) left top no-repeat; border:none}
 .jqx-radiobutton-check-indeterminate-disabled-classic{filter: none; background:transparent url(images/roundbg_check_disabled.png) left top no-repeat;border:none}
 

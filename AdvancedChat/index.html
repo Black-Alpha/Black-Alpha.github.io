@@ -4,7 +4,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<meta name="author" content="Bax">
-	<title>SmartFoxServer 2X | Game Lobby</title>
+	<title>SmartFoxServer 2X | Advanced Chat</title>
 	
 	<!-- Reset styles -->
 	<link href="css/reset.css" rel="stylesheet" type="text/css" />
@@ -21,15 +21,14 @@
 	<!-- Load jQWidgets' required widgets -->
 	<script type="text/javascript" src="libs/jqwidgets/jqxbuttons.js"></script>
 	<script type="text/javascript" src="libs/jqwidgets/jqxscrollbar.js"></script>
-	<script type="text/javascript" src="libs/jqwidgets/jqxpanel.js"></script>
-	<script type="text/javascript" src="libs/jqwidgets/jqxnumberinput.js"></script>
 	<script type="text/javascript" src="libs/jqwidgets/jqxlistbox.js"></script>
-	<script type="text/javascript" src="libs/jqwidgets/jqxdropdownlist.js"></script>
 	<script type="text/javascript" src="libs/jqwidgets/jqxexpander.js"></script>
 	<script type="text/javascript" src="libs/jqwidgets/jqxnavigationbar.js"></script>
-	<script type="text/javascript" src="libs/jqwidgets/jqxcheckbox.js"></script>
-	<script type="text/javascript" src="libs/jqwidgets/jqxtabs.js"></script>
 	<script type="text/javascript" src="libs/jqwidgets/jqxwindow.js"></script>
+	<script type="text/javascript" src="libs/jqwidgets/jqxcheckbox.js"></script>
+	<script type="text/javascript" src="libs/jqwidgets/jqxnumberinput.js"></script>
+	<script type="text/javascript" src="libs/jqwidgets/jqxtabs.js"></script>
+	<script type="text/javascript" src="libs/jqwidgets/jqxpanel.js"></script>
 	
 	<!-- Load SFS2X JS API -->
 	<script type="text/javascript" src="libs/SFS2X_API_JS.js"></script>
@@ -45,201 +44,198 @@
 			
 			// Init main widgets
 			$("#connectBt").jqxButton({width:100, theme:theme});
-			$("#disconnectBt").jqxButton({width:100, theme:theme, disabled:true});
 			$("#loginBt").jqxButton({width:100, theme:theme, disabled:true});
-			$("#logoutBt").jqxButton({width:100, theme:theme});
-			$("#publicChatAreaPn").jqxPanel({width:578, height:350, theme:theme, disabled:true, autoUpdate:true});
-			$("#sendPublicMsgBt").jqxButton({width:100, theme:theme, disabled:true});
-			$("#countryDd").jqxDropDownList({source:["Italy", "Spain", "United Kingdom", "United States"], width:150, height:22, dropDownHeight:100, selectedIndex:0});
-			$("#rankingIn").jqxNumberInput({width:60, height:22, decimalDigits:0, spinButtons:true, decimal:3, min:0, max:5, inputMode:"simple", theme:theme});
-			$("#sideBar").jqxNavigationBar({width:240, height:535, sizeMode:"fitAvailableHeight", theme:theme});
-			$("#quickJoinBt").jqxButton({width:220, theme:theme});
-			$("#roomList").jqxListBox({source:[], width:238, height:348, theme:theme});
-			$("#createGameBt").jqxButton({width:220, theme:theme});
-			$("#userList").jqxListBox({source:[], width:238, height:435, theme:theme});
-			$("#inviteUserBt").jqxButton({width:220, theme:theme, disabled:true});
-			$("#gameLogPn").jqxPanel({width:620, height:425, theme:theme, autoUpdate:true});
-			$("#leaveGameBt").jqxButton({width:100, theme:theme});
+			$("#logoutBt").jqxButton({width:100, theme:theme, disabled:true});
+			$("#disconnectBt").jqxButton({width:100, theme:theme, disabled:true});
+			$("#sideBar").jqxNavigationBar({width:240, height:510, sizeMode:"fitAvailableHeight", theme:theme});
+			$("#roomList").jqxListBox({source:[], width:238, height:265, theme:theme});
+			$("#createRoomBt").jqxButton({width:112, theme:theme, disabled:true});
+			$("#leaveRoomBt").jqxButton({width:111, theme:theme, disabled:true});
+			$("#switchUserRoleBt").jqxButton({width:111, theme:theme, disabled:true});
+			$("#setRoomNameBt").jqxButton({width:76, theme:theme, disabled:true});
+			$("#setRoomPwdBt").jqxButton({width:76, theme:theme, disabled:true});
+			$("#newRoomSizeIn").jqxNumberInput({width:75, height:20, decimalDigits:0, spinButtons:true, decimal:10, min:2, disabled:true, inputMode:"simple", theme:theme});
+			$("#setRoomSizeBt").jqxButton({width:76, theme:theme, disabled:true});
+			$("#userList").jqxListBox({source:[], width:238, height:178, theme:theme});
+			$("#chatAreaPn").jqxPanel({width:578, height:400, theme:theme, disabled:true, autoUpdate:true});
+			$("#sendMsgBt").jqxButton({width:100, theme:theme, disabled:true});
+			$("#setTopicBt").jqxButton({width:100, theme:theme, disabled:true});
+			$("#setUserNickBt").jqxButton({width:76, theme:theme, disabled:true});
+			$("#kickBt").jqxButton({width:112, theme:theme, disabled:true});
+			$("#banBt").jqxButton({width:111, theme:theme, disabled:true});
+			$("#privChatAreaPn").jqxPanel({width:226, height:135, theme:theme, disabled:true, autoUpdate:true});
+			$("#sendPrivMsgBt").jqxButton({width:76, theme:theme, disabled:true});
+			$("#deselectUserBt").jqxButton({width:24, theme:theme, disabled:true});
 			
-			// Init game room creation window widgets
-			$("#createGameWin").jqxWindow({width:500, height:320, isModal:true, autoOpen:false, resizable:false, draggable:false, cancelButton:$("#cancelBt"), showAnimationDuration: 200, closeAnimationDuration: 100, theme:theme});
-			$("#createGameWinTabs").jqxTabs({width:"100%", height:250, theme:"classic"});
-			$("#doCreateGameBt").jqxButton({width:100, theme:theme});
+			// Init Room creation window widgets
+			$("#createRoomWin").jqxWindow({width:500, height:320, isModal:true, autoOpen:false, resizable:false, draggable:false, cancelButton:$("#cancelBt"), theme:theme});
+			$("#createRoomWinTabs").jqxTabs({width:"100%", height:250, theme:"classic"});
+			$("#doCreateRoomBt").jqxButton({width:100, theme:theme});
+			$("#autoJoinCb").jqxCheckBox({width:100, height:24, checked:true, theme:theme});
 			$("#cancelBt").jqxButton({width:100, theme:theme});
-			$("#gameTypeDd").jqxDropDownList({source:["Texas Hold'em", "Blackjack", "Gin Rummy", "Poker"], width:150, height:22, dropDownHeight:100, selectedIndex:0});
-			$("#maxPlayersIn").jqxNumberInput({width:80, height:20, decimalDigits:0, spinButtons:true, decimal:4, min:2, inputMode:"simple", theme:theme});
-			$("#minPlayersIn").jqxNumberInput({width:80, height:20, decimalDigits:0, spinButtons:true, decimal:2, min:2, inputMode:"simple", theme:theme});
-			$("#isPublicCb").jqxCheckBox({width:24, height:24, checked:true, theme:theme});
-			$("#userSelector").jqxListBox({source:[], width:150, height:90, disabled:true, multiple:true, theme:theme});
-			
-			// Invitation window widgets
-			$("#invitationWin").jqxWindow({width:500, isModal:true, autoOpen:false, resizable:false, draggable:false, showCloseButton:false, showAnimationDuration: 200, closeAnimationDuration: 100, theme:theme});
-			$("#acceptBt").jqxButton({width:100, theme:theme});
-			$("#refuseBt").jqxButton({width:100, theme:theme});
-			$("#xxxx").jqxButton(); // One more widget is needed in the invitation panel to avoid the Refuse button to be grayed out -- no idea why!
+			$("#isGameCb").jqxCheckBox({width:24, height:24, theme:theme});
+			$("#maxUsersIn").jqxNumberInput({width:80, height:20, decimalDigits:0, spinButtons:true, decimal:10, min:2, inputMode:"simple", theme:theme});
+			$("#maxSpectatorsIn").jqxNumberInput({width:80, height:20, decimalDigits:0, spinButtons:true, decimal:0, inputMode:"simple", theme:theme});
+			$("#maxVariablesIn").jqxNumberInput({width:80, height:20, decimalDigits:0, spinButtons:true, decimal:5, inputMode:"simple", theme:theme});
+			$("#isNameChangeAllowedCb").jqxCheckBox({width:24, height:24, checked:true, theme:theme});
+			$("#isPwdStateChangeAllowedCb").jqxCheckBox({width:24, height:24, checked:true, theme:theme});
+			$("#isPublicMessageAllowedCb").jqxCheckBox({width:24, height:24, checked:true, theme:theme});
+			$("#isResizeAllowedCb").jqxCheckBox({width:25, height:24, checked:true, theme:theme});
 			
 			// Add event listeners
 			$("#connectBt").click(onConnectBtClick);
 			$("#loginBt").click(onLoginBtClick);
-			$("#disconnectBt").click(onDisconnectBtClick);
 			$("#logoutBt").click(onLogoutBtClick);
-			$("#sendPublicMsgBt").click(onSendPublicMessageBtClick);
-			$("#countryDd").change(onPlayerProfileChange);
-			$("#rankingIn").bind("valuechanged", onPlayerProfileChange);
-			$("#userList").bind("select", onUserSelected);
+			$("#disconnectBt").click(onDisconnectBtClick);
 			$("#roomList").bind("select", onRoomSelected);
-			$("#inviteUserBt").click(onInviteUserBtClick);
-			$("#leaveGameBt").click(onLeaveGameBtClick);
-			$("#quickJoinBt").click(onQuickJoinBtClick);
-			$("#createGameBt").click(onCreateGameBtClick);
-			$("#isPublicCb").bind("change", onPublicGameChange);
-			$("#maxPlayersIn").bind("valuechanged", onMaxPlayersChange);
-			$("#minPlayersIn").bind("valuechanged", onMinPlayersChange);
-			$("#createGameWin").bind("closed", onCreateGameWinClose);
-			$("#doCreateGameBt").click(onDoCreateGameBtClick);
-			$("#acceptBt").click(onAcceptInvBtClick);
-			$("#refuseBt").click(onRefuseInvBtClick);
+			$("#userList").bind("select", onUserSelected);
+			$("#createRoomBt").click(onCreateRoomBtClick);
+			$("#leaveRoomBt").click(onLeaveRoomBtClick);
+			$("#switchUserRoleBt").click(onSwitchRoleBtClick);
+			$("#setRoomNameBt").click(onSetRoomNameBtClick);
+			$("#setRoomPwdBt").click(onSetRoomPwdBtClick);
+			$("#setRoomSizeBt").click(onSetRoomSizeBtClick);
+			$("#doCreateRoomBt").click(onDoCreateRoomBtClick);
+			$("#sendMsgBt").click(onSendPublicMessageBtClick);
+			$("#setTopicBt").click(onSetTopicBtClick);
+			$("#setUserNickBt").click(onSetUserNickBtClick);
+			$("#kickBt").click(onKickBtClick);
+			$("#banBt").click(onBanBtClick);
+			$("#sendPrivMsgBt").click(onSendPrivateMessageBtClick);
+			$("#deselectUserBt").click(onDeselectUserBtClick);
 	    });
 	</script>
+	
 </head>
 
 <body onLoad="init()">
 	<div id="header">
 		<img src="images/logo.png"/>
-		<p id="title">SmartFoxServer 2X Examples: <strong>Game Lobby</strong><br/>&copy; 2012 gotoAndPlay()</p>
+		<p id="title">SmartFoxServer 2X Examples: <strong>Advanced Chat</strong><br/>&copy; 2012 gotoAndPlay()</p>
 	</div>
-	
+	<div id="controls" class="group">
+		<input type="button" id="connectBt" value="Connect"/>
+		<input type="text" id="usernameIn" class="textInput" disabled="true" placeholder="Your username"/>
+		<input type="button" id="loginBt" value="Login"/>
+		<input type="button" id="logoutBt" value="Logout"/>
+		<input type="button" id="disconnectBt" value="Disconnect"/>
+		<label id="lagLb">&nbsp;</label>
+	</div>
 	<div id="main" class="group">
-		<div id="login" class="hidden viewStack">
-			<h2>Connect</h2>
-			<div class="group vSep20">
-				<input type="button" id="connectBt" value="Connect"/>
-				<input type="button" id="disconnectBt" value="Disconnect"/>
-			</div>
-			<h2>Login</h2>
-			<div class="group vSep10">
-				<input type="text" id="usernameIn" class="textInput" disabled="true" placeholder="Your username"/>
-				<input type="button" id="loginBt" value="Login"/>
-			</div>
-			<div id="errorLb" class="error invisible vSep10">&nbsp;</div>
-		</div>
-		<div id="lobby" class="hidden viewStack">
-			<h1>Welcome to <b id="roomLb">&nbsp;</b></h1>
-			<div id="sideBar">
-				<!-- RoomList -->
-				<div>Public games</div>
+		<div id="chatbox">
+			<p id="chatTopicLb" class="chatTopic"></p>
+			<p class="sectionTitle">Chat</p>
+			<div id="chatAreaPn"></div>
+			<div class="chatControls">
 				<div>
-					<div class="listControls">
-						<input type="button" id="quickJoinBt" value="Quick game join"/>
-					</div>
-					<div id="roomList"></div>
-					<div class="listControls">
-						<p class="smallNote">Private games are not displayed; they can be joined upon invitation only</p>
-						<input type="button" id="createGameBt" value="Start new game"/>
-					</div>
+					<input type="text" id="publicMsgIn" class="textInput" disabled="true" placeholder="Type your message &amp; hit send" style="width: 463px;"/>
+					<input type="button" id="sendMsgBt" value="Send"/>
 				</div>
-
-				<!-- UserList-->
-				<div>Available players</div>
-				<div>
-					<div id="userList"></div>
-					<div class="listControls">
-						<input type="button" id="inviteUserBt" value="Challenge selected user"/>
-					</div>
+				<div class="vSeparateTop">
+					<label>Chat topic:</label>
+					<input type="text" id="roomTopicIn" class="textInput" disabled="true"/>
+					<input type="button" id="setTopicBt" value="Set"/>
 				</div>
-			</div>
-			<div id="chatbox" class="leftBox">
-				<h2>Public chat</h2>
-				<div id="publicChatAreaPn"></div>
-				<div class="chatControls">
-					<input type="text" id="publicMsgIn" class="textInput" disabled="true" placeholder="Type your message &amp; hit send" style="width: 363px;"/>
-					<input type="button" id="sendPublicMsgBt" value="Send"/>
-					<input type="button" id="logoutBt" value="Logout"/>
-				</div>
-			</div>
-			<div class="leftBox">
-				<h2>Your player profile</h2>
-				<div class="group vSep10 floatItems">
-					<label>Name:</label>
-					<p id="usernameLb">&nbsp;</p>
-					<span>&nbsp;&nbsp;</span>
-					<label>Country:</label>
-					<div id="countryDd"></div>
-					<span>&nbsp;&nbsp;&nbsp;</span>
-					<label>Ranking:</label>
-					<div id="rankingIn"></div>
-				</div>
-				<p class="smallNote">The <em>Country</em> and <em>Ranking</em> custom details are used to filter players when sending an invitation to play</p>
 			</div>
 		</div>
-		<div id="game" class="hidden viewStack">
-			<h1>Play your <b>game</b></h1>
-			<div id="gameLogPn"></div>
-			<input type="button" id="leaveGameBt" value="Leave game"/>
+		<div id="sideBar">
+			<!--Header-->
+			<div>Rooms</div>
+			<!--Content-->
+			<div>
+				<div id="roomList"></div>
+				<div class="sideBarControls">
+					<div>
+						<input type="button" id="createRoomBt" value="Create Room"/>
+						<input type="button" id="leaveRoomBt" value="Leave Room"/>
+					</div>
+					<div class="vSeparate vSeparateTop">
+						<p id="roleLb" class="floating">&nbsp;</p>
+						<input class="floating" type="button" id="switchUserRoleBt" value="Switch role"/>
+					</div>
+					<p id="roomControlsTitle">Room controls</p>
+					<div>
+						<input type="text" id="newRoomNameIn" class="textInput small" disabled="true" placeholder="New name"/>
+						<input type="button" id="setRoomNameBt" value="Change"/>
+					</div>
+					<div class="vSeparateTop">
+						<input type="text" id="newPasswordIn" class="textInput small" disabled="true" placeholder="New password"/>
+						<input type="button" id="setRoomPwdBt" value="Change"/>
+					</div>
+					<div class="vSeparateTop">
+						<span id="newRoomSizeLabel" class="floating">New size:</span>
+						<div class="floatingSep" id="newRoomSizeIn" class="numInput "></div>
+						<input class="floating" type="button" id="setRoomSizeBt" value="Change"/>
+					</div>
+				</div>
+			</div>
+			
+			<!--Header-->
+			<div>Users</div>
+			<!--Content-->
+			<div>
+				<div class="sideBarControls">
+					<input type="text" id="userNickIn" class="textInput small" disabled="true" placeholder="My nickname"/>
+					<input type="button" id="setUserNickBt" value="Set"/>
+				</div>
+				<div id="userList"></div>
+				<div class="sideBarControls">
+					<p class="smallNote">Moderation controls</p>
+					<input type="button" id="kickBt" value="Kick"/>
+					<input type="button" id="banBt" value="Ban"/>
+				</div>
+				<div class="sideBarControls">
+					<p class="smallNote">Private chat <span id="privChatUserLb"></span></p>
+					<div id="privChatAreaPn"></div>
+					<div class="vSeparateTop">
+						<input type="text" id="privateMsgIn" class="textInput smaller" disabled="true" placeholder="Type your PM"/>
+						<input type="button" id="sendPrivMsgBt" value="Send"/>
+						<input type="button" id="deselectUserBt" value="X"/>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-	
 	<div id="footer">
 		<p>This example application makes use of <a href="http://www.jqwidgets.com/" target="_blank">jQWidgets UI Toolkit</a>.
 			The widgets are distributed for learning purposes only and you are not entitled to use them in a commercial product.
 			If needed, please visit the <b>jQWidgets</b> website to acquire a proper license.</p>
 	</div>
 	
-	
-	<!-- Game Room creation popup window -->
-	<div id="createGameWin">
-		<div id="createGameWinHeader">
-			<strong>Create new game</strong>
+	<!-- Room creation popup window -->
+	<div id="createRoomWin">
+		<div id="createRoomWinHeader">
+			<span><img src="images/edit.png" class="icon"/><strong>Create Room</strong></span>
 		</div>
-		<div id="createGameWinContent">
-			<div id="createGameWinTabs">
+		<div style="overflow: hidden;" id="createRoomWinContent">
+			<div id="createRoomWinTabs">
 				<ul>
 					<li>Basic</li>
-					<li>Invitations</li>
+					<li>Permissions</li>
 				</ul>
 				<div>
-					<div class="item"><label>Name:</label><input type="text" id="gameNameIn" class="textInput"/></div>
-					<div class="item"><label>Type:</label><div id="gameTypeDd"></div></div>
-					<div class="item"><label>Maximum players:</label><div id="maxPlayersIn" class="numInput"></div></div>
-					<div class="item"><label>Min players to start:</label><div id="minPlayersIn" class="numInput"></div></div>
-					<hr/>
-					<p class="smallNote">Player matching criteria</p>
-					<div class="item"><label>Only from country:</label><label id="countryLb">&nbsp;</label></div>
-					<div class="item"><label>Minimum ranking:</label><label id="rankingLb">&nbsp;</label></div>
+					<div class="item"><label>Name:</label><input type="text" id="roomNameIn" class="textInput"/></div>
+					<div class="item"><label>Password:</label><input type="text" id="passwordIn" class="textInput"/></div>
+					<div class="item"><label>Group:</label><input type="text" id="groupIn" class="textInput" value="default"/></div>
+					<div class="item"><label>Is game:</label><div id="isGameCb" class="checkBox"></div></div>
+					<div class="item"><label>Max users:</label><div id="maxUsersIn" class="numInput"></div></div>
+					<div class="item"><label>Max spectators:</label><div id="maxSpectatorsIn" class="numInput"></div></div>
+					<div class="item"><label>Max variables:</label><div id="maxVariablesIn" class="numInput"></div></div>
 				</div>
 				<div>
-					<p class="smallNote">If game is <em>private</em>, SFS2X will send automatic invitations based on the matching criteria to fill the available player slots. You can force invitations to be sent to specific users (overriding the matching criteria) by selecting their names below.</p>
-					<div class="item"><label>Is public:</label><div id="isPublicCb" class="checkBox"></div></div>
-					<div class="item"><label>Invite players:</label><div id="userSelector"></div></div>
-					<div class="item"><label>Invitation message:</label><input type="text" id="invitationMsgIn" class="textInput" value="Do you want to join my game?" disabled="true"/></div>
+					<p class="smallNote">Room settings that can be changed at runtime:</p>
+					<div class="item"><label>Name:</label><div id="isNameChangeAllowedCb" class="checkBox"></div></div>
+					<div class="item"><label>Password state:</label><div id="isPwdStateChangeAllowedCb" class="checkBox"></div></div>
+					<div class="item"><label>Chat enabled:</label><div id="isPublicMessageAllowedCb" class="checkBox"></div></div>
+					<div class="item"><label>Capacity:</label><div id="isResizeAllowedCb" class="checkBox"></div></div>
 				</div>
 			</div>
-			
-			<div id="createGameWinControls" class="popupWinControls">
-				<input type="button" id="doCreateGameBt" class="leftButton" value="Create"/>
-				<input type="button" id="cancelBt" class="rightButton" value="Cancel"/>
+			<div id="createRoomWinControls">
+				<input type="button" id="doCreateRoomBt" value="Create"/>
+				<div id="autoJoinCb" class="checkBox"><span>Auto-join</span></div>
+				<input type="button" id="cancelBt" value="Cancel"/>
 			</div>
 		</div>
 	</div>
-	
-	<!-- Invitation popup window -->
-	<div id="invitationWin">
-		<div id="invitationWinHeader">
-			<strong>Invitation</strong>
-		</div>
-		<div id="invitationWinContent">
-			<div>
-				<span id="invitationMsgLb">&nbsp;<br/>&nbsp;</span>
-			</div>
-			
-			<div id="invitationWinControls" class="popupWinControls">
-				<input type="button" id="acceptBt" class="leftButton" value="Accept"/>
-				<span class="invitationExpLb">Invitation expires in <span id="expTimeLb">nn</span> seconds</span>
-				<input type="button" id="refuseBt" class="rightButton" value="Refuse"/>
-				<input type="button" id="xxxx" style="display:none;"/>
-			</div>
-		</div>
-	</div>
-	
 </body>
 </html>

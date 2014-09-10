@@ -1,11 +1,4 @@
-var LOBBY_ROOM_NAME = "The Lobby";
-var USERVAR_COUNTRY = "country";
-var USERVAR_RANKING = "rank";
-
 var sfs = null;
-var currentGameStarted = false;
-var invitationsQueue = [];
-var currentInvitation = null;
 
 function init()
 {
@@ -14,12 +7,17 @@ function init()
 	// Create configuration object
 	var config = {};
 	config.host = "108.28.43.55";
-	config.port = 888;
+	config.port = 8888;
 	config.zone = "BasicExamples";
-	config.debug = true;
+	config.debug = false;
 	
 	// Create SmartFox client instance
 	sfs = new SmartFox(config);
+	
+	// Set client details
+	var platform = navigator.appName;
+	var version = navigator.appVersion;
+	sfs.setClientDetails(platform, version);
 	
 	// Add event listeners
 	sfs.addEventListener(SFS2X.SFSEvent.CONNECTION, onConnection, this);
@@ -29,90 +27,67 @@ function init()
 	sfs.addEventListener(SFS2X.SFSEvent.LOGOUT, onLogout, this);
 	sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN_ERROR, onRoomJoinError, this);
 	sfs.addEventListener(SFS2X.SFSEvent.ROOM_JOIN, onRoomJoin, this);
-	sfs.addEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, onPublicMessage, this);
+	sfs.addEventListener(SFS2X.SFSEvent.USER_COUNT_CHANGE, onUserCountChange, this);
 	sfs.addEventListener(SFS2X.SFSEvent.USER_ENTER_ROOM, onUserEnterRoom, this);
 	sfs.addEventListener(SFS2X.SFSEvent.USER_EXIT_ROOM, onUserExitRoom, this);
-	sfs.addEventListener(SFS2X.SFSEvent.USER_VARIABLES_UPDATE, onUserVariablesUpdate, this);
-	sfs.addEventListener(SFS2X.SFSEvent.USER_COUNT_CHANGE, onUserCountChange, this);
 	sfs.addEventListener(SFS2X.SFSEvent.ROOM_REMOVE, onRoomRemove, this);
+	sfs.addEventListener(SFS2X.SFSEvent.ROOM_CREATION_ERROR, onRoomCreationError, this);
 	sfs.addEventListener(SFS2X.SFSEvent.ROOM_ADD, onRoomAdd, this);
-	sfs.addEventListener(SFS2X.SFSEvent.INVITATION, onInvitation, this);
-	sfs.addEventListener(SFS2X.SFSEvent.INVITATION_REPLY, onInvitationReply, this);
+	sfs.addEventListener(SFS2X.SFSEvent.PUBLIC_MESSAGE, onPublicMessage, this);
+	sfs.addEventListener(SFS2X.SFSEvent.PRIVATE_MESSAGE, onPrivateMessage, this);
+	sfs.addEventListener(SFS2X.SFSEvent.MODERATOR_MESSAGE, onModeratorMessage, this);
+	sfs.addEventListener(SFS2X.SFSEvent.ADMIN_MESSAGE, onAdminMessage, this);
+	sfs.addEventListener(SFS2X.SFSEvent.OBJECT_MESSAGE, onObjectMessage, this);
+	sfs.addEventListener(SFS2X.SFSEvent.ROOM_VARIABLES_UPDATE, onRoomVariablesUpdate, this);
+	sfs.addEventListener(SFS2X.SFSEvent.USER_VARIABLES_UPDATE, onUserVariablesUpdate, this);
+	sfs.addEventListener(SFS2X.SFSEvent.ROOM_NAME_CHANGE, onRoomNameChange, this);
+	sfs.addEventListener(SFS2X.SFSEvent.ROOM_NAME_CHANGE_ERROR, onRoomNameChangeError, this);
+	sfs.addEventListener(SFS2X.SFSEvent.ROOM_PASSWORD_STATE_CHANGE, onRoomPasswordStateChange, this);
+	sfs.addEventListener(SFS2X.SFSEvent.ROOM_PASSWORD_STATE_CHANGE_ERROR, onRoomPasswordStateChangeError, this);
+	sfs.addEventListener(SFS2X.SFSEvent.ROOM_CAPACITY_CHANGE, onRoomCapacityChange, this);
+	sfs.addEventListener(SFS2X.SFSEvent.ROOM_CAPACITY_CHANGE_ERROR, onRoomCapacityChangeError, this);
+	sfs.addEventListener(SFS2X.SFSEvent.SPECTATOR_TO_PLAYER_ERROR, onSpectatorToPlayerError, this);
+	sfs.addEventListener(SFS2X.SFSEvent.SPECTATOR_TO_PLAYER, onSpectatorToPlayer, this);
+	sfs.addEventListener(SFS2X.SFSEvent.PLAYER_TO_SPECTATOR_ERROR, onPlayerToSpectatorError, this);
+	sfs.addEventListener(SFS2X.SFSEvent.PLAYER_TO_SPECTATOR, onPlayerToSpectator, this);
+	sfs.addEventListener(SFS2X.SFSEvent.ROOM_GROUP_SUBSCRIBE, onRoomGroupSubscribe, this);
+	sfs.addEventListener(SFS2X.SFSEvent.ROOM_GROUP_SUBSCRIBE_ERROR, onRoomGroupSubscribeError, this);
+	sfs.addEventListener(SFS2X.SFSEvent.ROOM_GROUP_UNSUBSCRIBE, onRoomGroupUnsubscribe, this);
+	sfs.addEventListener(SFS2X.SFSEvent.ROOM_GROUP_UNSUBSCRIBE_ERROR, onRoomGroupUnsubscribeError, this);
+	sfs.addEventListener(SFS2X.SFSEvent.PING_PONG, onPingPong, this);
 	
 	trace("SmartFox API version: " + sfs.version);
-	
-	// Show LOGIN view
-	setView("login", true);
-}
-
-function onInvitationReply(event)
-{
-	console.log("INVITATION REPLY RECEIVED");
-	console.log(event)
 }
 
 //------------------------------------
 // USER INTERFACE HANDLERS
 //------------------------------------
 
-/**
- * Connect button click handler.
- * Connects to a SFS2X instance.
- */
 function onConnectBtClick()
 {
 	// Connect to SFS
 	// As no parameters are passed, the config object is used
 	sfs.connect();
 	
-	// Hide any previous error
-	$("#errorLb").hide();
-	
 	// Disable button
 	enableButton("#connectBt", false);
 }
 
-/**
- * Login button click handler.
- * Performs the login, which in turn (see onLogin event) makes the view switch to the lobby.
- */
 function onLoginBtClick()
 {
-	// Hide any previous error
-	$("#errorLb").hide();
-	
 	// Perform login
 	var uName = $("#usernameIn").val();
 	var isSent = sfs.send(new SFS2X.Requests.System.LoginRequest(uName));
+	// Test additional parameters -> var isSent = sfs.send(new SFS2X.Requests.System.LoginRequest(uName, "mypassword", {age:38, country:"Italy"}, "Test"));
 	
+	// Disable interface
 	if (isSent)
 	{
-		// Disable interface
 		enableTextField("#usernameIn", false);
 		enableButton("#loginBt", false);
 	}
 }
 
-/**
- * Disconnect button click handler.
- * Disconnects the client from the SFS2X instance.
- */
-function onDisconnectBtClick()
-{
-	// Disconnect from SFS
-	sfs.disconnect();
-	
-	// Hide any previous error
-	$("#errorLb").hide();
-	
-	// Disable button
-	enableButton("#disconnectBt", false);
-}
-
-/**
- * Logout button click handler.
- * Performs the logout, which in turn (see onLogout event) makes the view switch to the login box.
- */
 function onLogoutBtClick()
 {
 	var isSent = sfs.send(new SFS2X.Requests.System.LogoutRequest());
@@ -121,47 +96,15 @@ function onLogoutBtClick()
 		enableButton("#logoutBt", false);
 }
 
-/**
- * Update corresponding user variables when country or ranking are changed.
- */
-function onPlayerProfileChange()
+function onDisconnectBtClick()
 {
-	var country = $("#countryDd").jqxDropDownList("getSelectedItem").value;
-	var countryVar = new SFS2X.Entities.Variables.SFSUserVariable(USERVAR_COUNTRY, country);
+	// Disconnect from SFS
+	sfs.disconnect();
 	
-	var ranking = Number($("#rankingIn").jqxNumberInput("getDecimal"));
-	var rankingVar = new SFS2X.Entities.Variables.SFSUserVariable(USERVAR_RANKING, ranking);
-	
-	var isSent = sfs.send(new SFS2X.Requests.System.SetUserVariablesRequest([countryVar, rankingVar]));
+	// Disable button
+	enableButton("#disconnectBt", false);
 }
 
-/**
- * Public message send button click handler.
- * Send a public message, which will be displayed in the chat area (see onPublicMessage event).
- */
-function onSendPublicMessageBtClick(event)
-{
-	if ($("#publicMsgIn").val() != "")
-	{
-		var isSent = sfs.send(new SFS2X.Requests.System.PublicMessageRequest($("#publicMsgIn").val()));
-	
-		if (isSent)
-			$("#publicMsgIn").val("");
-	}
-}
-
-/**
- * When a user is selected in the user list, enable the button to challenge him in a new game.
- * In the game creation window the game is automatically set to private and the user is selected in the invitees list.
- */
-function onUserSelected(event)
-{
-	enableButton("#inviteUserBt", true);
-}
-
-/**
- * When a room is selected in the room list, the user joins the room to play.
- */
 function onRoomSelected(event)
 {
 	var args = event.args;
@@ -169,235 +112,264 @@ function onRoomSelected(event)
 	var room = item.originalItem.roomObj;
 	
 	// Join selected room
-	sfs.send(new SFS2X.Requests.System.JoinRoomRequest(room));
+	if (sfs.lastJoinedRoom == null || room.id != sfs.lastJoinedRoom.id)
+		sfs.send(new SFS2X.Requests.System.JoinRoomRequest(room));
 }
 
-/**
- * Leave game button click handler.
- * In order to leave the current game room, the lobby room is joined.
- */
-function onLeaveGameBtClick(event)
+function onLeaveRoomBtClick(event)
 {
-	// Join the lobby
-	joinLobbyRoom();
-}
-
-/**
- * Challenge user button click handler.
- * Shows the game room creation panel with the game automatically set to private and the user selected in the invitees list.
- */
-function onInviteUserBtClick(event)
-{
-	var selectedUserItem = $("#userList").jqxListBox("getSelectedItem");
+	var isSent = sfs.send(new SFS2X.Requests.System.LeaveRoomRequest(sfs.lastJoinedRoom));
 	
-	// Set game as private
-	$("#isPublicCb").jqxCheckBox("uncheck");
-	
-	// Select user to be invited to play
-	var users = $("#userSelector").jqxListBox("source");
-	for (var i = 0; i < users.length; i++)
+	if (isSent)
 	{
-		if (users[i] == selectedUserItem.title)
+		enableChatArea(false, true);
+		enableRoomControls(false);
+		$("#roomList").jqxListBox("clearSelection"); 
+	}
+}
+
+function onCreateRoomBtClick(event)
+{
+	// Show create Room window
+	$("#createRoomWin").jqxWindow("open");
+}
+
+function onCreateRoomWinClose(event)
+{
+	if (event.type === "hide")
+	{
+		if (event.args.dialogResult.OK)
 		{
-			$("#userSelector").jqxListBox("selectIndex", i);
-			break;
-		}
-	}
-	
-	// Show create game window
-	onCreateGameBtClick();
-}
-
-/**
- * Enter a random game among those available.
- */
-function onQuickJoinBtClick(event)
-{
-	sfs.send(new SFS2X.Requests.Game.QuickJoinGameRequest(null, ["games"], sfs.lastJoinedRoom));
-}
-
-/**
- * Create game button click handler.
- * Shows the game room creation panel.
- */
-function onCreateGameBtClick(event)
-{
-	// Set matching criteria
-	var country = $("#countryDd").jqxDropDownList("getSelectedItem").value;
-	$("#countryLb").html(country);
-	
-	var ranking = Number($("#rankingIn").jqxNumberInput("getDecimal"));
-	$("#rankingLb").html(ranking);
-	
-	// Show create game window
-	$("#createGameWin").jqxWindow("open");
-}
-
-/**
- * When the game creation panel is closed, all the form items it contains are reset to default values.
- */
-function onCreateGameWinClose(event)
-{
-	$("#createGameWinTabs").jqxTabs("select", 0);
-	$("#gameNameIn").val("");
-	$("#gameTypeDd").jqxDropDownList("selectIndex", 0);
-	$("#maxPlayersIn").jqxNumberInput("inputValue", 4);
-	$("#minPlayersIn").jqxNumberInput("inputValue", 2);
-	$("#countryLb").html("&nbsp;");
-	$("#rankingLb").html("&nbsp;");
-	$("#isPublicCb").jqxCheckBox("check");
-}
-
-/**
- * Makes sure the "max players in room" and "min players to start the game" parameters are not contradictory (min < max).
- */
-function onMaxPlayersChange(event)
-{
-	var maxPlayers = Number($("#maxPlayersIn").jqxNumberInput("val"));
-	var minPlayers = Number($("#minPlayersIn").jqxNumberInput("val"));
-	
-	if (minPlayers > maxPlayers)
-	{
-		minPlayers = maxPlayers;
-		$("#minPlayersIn").jqxNumberInput("inputValue", minPlayers);
-	}
-}
-
-/**
- * Makes sure the "max players in room" and "min players to start the game" parameters are not contradictory (min < max).
- */
-function onMinPlayersChange(event)
-{
-	var maxPlayers = Number($("#maxPlayersIn").jqxNumberInput("val"));
-	var minPlayers = Number($("#minPlayersIn").jqxNumberInput("val"));
-	
-	if (minPlayers > maxPlayers)
-	{
-		maxPlayers = minPlayers;
-		$("#maxPlayersIn").jqxNumberInput("inputValue", maxPlayers);
-	}
-}
-
-/**
- * Enable invitees selection for private games.
- */
-function onPublicGameChange(event)
-{
-	var isPublic = event.args.checked;
-	
-	enableTextField("#invitationMsgIn", !isPublic);
-	$("#userSelector").jqxListBox({disabled:isPublic});
-	$("#userSelector").jqxListBox("clearSelection");
-}
-
-/**
- * Create game button click event listener (create game panel).
- * Create a new game using the parameters entered in the game creation popup window. 
- */
-function onDoCreateGameBtClick(event)
-{
-	if ($("#gameNameIn").val() != "")
-	{
-		// Basic game settings
-		var settings = new SFS2X.Requests.Game.SFSGameSettings($("#gameNameIn").val());
-		settings.groupId = "games";
-		settings.maxUsers = Number($("#maxPlayersIn").jqxNumberInput("val"));
-		settings.minPlayersToStartGame = Number($("#minPlayersIn").jqxNumberInput("val"));
-		settings.isPublic = $("#isPublicCb").jqxCheckBox("checked");
-		settings.leaveLastJoinedRoom = true;
-		settings.notifyGameStarted = true;
-		
-		// Additional settings specific to private games
-		if (!settings.isPublic) // This check is superfluous: if the game is public the invitation-related settings are ignored
-		{
-			// Retrieve users to be invited (if any)
-			var users = $("#userSelector").jqxListBox("getSelectedItems");
-			if (users.length > 0)
-			{
-				settings.invitedPlayers = [];
-				
-				for (var i = 0; i < users.length; i++)
-					settings.invitedPlayers.push(sfs.lastJoinedRoom.getUserByName(users[i].value));
-			}
+			var autoJoin = $("#autoJoinCb").jqxCheckBox("checked");
+			var roomSettings = new SFS2X.Requests.RoomSettings($("#roomNameIn").val());
 			
-			// Search the "default" group, which in this example contains The Lobby room only
-			settings.searchableRooms = ["default"];
-			
-			// Additional invitation parameters
-			var invParams = {};
-			invParams.gameType = $("#gameTypeDd").jqxDropDownList("getSelectedItem").value;
-			invParams.room = $("#gameNameIn").val();
-			invParams.message = $("#invitationMsgIn").val();
-			settings.invitationParams = invParams;
+			// Send CreateRoom request
+			sfs.send(new SFS2X.Requests.System.CreateRoomRequest(roomSettings, autoJoin));
 		}
 		
-		// Players match expression
-		var matchExp = new SFS2X.Entities.Match.MatchExpression(USERVAR_COUNTRY, SFS2X.Entities.Match.StringMatch.EQUALS, $("#countryDd").jqxDropDownList("getSelectedItem").value);
-		matchExp.and(USERVAR_RANKING, SFS2X.Entities.Match.NumberMatch.GREATER_THAN_OR_EQUAL_TO, Number($("#rankingIn").jqxNumberInput("getDecimal")));
-		settings.playerMatchExpression = matchExp;
-		
-		// Send CreateSFSGame request
-		var isSent = sfs.send(new SFS2X.Requests.Game.CreateSFSGameRequest(settings));
-		
-		// Close panel
-		if (isSent)
-			$("#createGameWin").jqxWindow("closeWindow");
+		// Clear fields
+		$("#roomNameIn").val("");
 	}
 }
 
-function onAcceptInvBtClick(event)
+function onDoCreateRoomBtClick(event)
 {
-	replyToInvitation(true);
+	var autoJoin = $("#autoJoinCb").jqxCheckBox("checked");
+	
+	var roomSettings = new SFS2X.Requests.RoomSettings($("#roomNameIn").val());
+	roomSettings.password = $("#passwordIn").val();
+	roomSettings.groupId = $("#groupIn").val();
+	roomSettings.isGame = $("#isGameCb").jqxCheckBox("checked");
+	roomSettings.maxUsers = Number($("#maxUsersIn").jqxNumberInput("decimal"));
+	roomSettings.maxSpectators = Number($("#maxSpectatorsIn").jqxNumberInput("decimal"));
+	roomSettings.maxVariables = Number($("#maxVariablesIn").jqxNumberInput("decimal"));
+	
+	var permissions = new SFS2X.Requests.RoomPermissions();
+	permissions.allowNameChange = $("#isNameChangeAllowedCb").jqxCheckBox("checked");
+	permissions.allowPasswordStateChange = $("#isPwdStateChangeAllowedCb").jqxCheckBox("checked");
+	permissions.allowPublicMessages = $("#isPublicMessageAllowedCb").jqxCheckBox("checked");
+	permissions.allowResizing = $("#isResizeAllowedCb").jqxCheckBox("checked");
+	roomSettings.permissions = permissions;
+	
+	// Send CreateRoom request
+	var isSent = sfs.send(new SFS2X.Requests.System.CreateRoomRequest(roomSettings, autoJoin, sfs.lastJoinedRoom));
+	
+	if (isSent)
+	{
+		// Hide window
+		$("#createRoomWin").jqxWindow("hide");
+		$("#createRoomWinTabs").jqxTabs("select", 0);
+		
+		// Clear fields
+		$("#roomNameIn").val("");
+		$("#passwordIn").val("");
+		$("#groupIn").val("default");
+		$("#isGameCb").jqxCheckBox({checked:false});
+		$("#maxUsersIn").jqxNumberInput({decimal:10});
+		$("#maxSpectatorsIn").jqxNumberInput({decimal:0});
+		$("#maxVariablesIn").jqxNumberInput({decimal:5});
+		
+		$("#isNameChangeAllowedCb").jqxCheckBox({checked:true});
+		$("#isPwdStateChangeAllowedCb").jqxCheckBox({checked:true});
+		$("#isPublicMessageAllowedCb").jqxCheckBox({checked:true});
+		$("#isResizeAllowedCb").jqxCheckBox({checked:true});
+	}
 }
 
-function onRefuseInvBtClick(event)
+function onSendPublicMessageBtClick(event)
 {
-	replyToInvitation(false);
+	var isSent = sfs.send(new SFS2X.Requests.System.PublicMessageRequest($("#publicMsgIn").val()));
+	
+	if (isSent)
+		$("#publicMsgIn").val("");
+}
+
+function onSetTopicBtClick(event)
+{
+	// Set a Room Variable containing the chat topic
+	// Null is used to delete the Room Variable
+	var topic = $("#roomTopicIn").val() != "" ? $("#roomTopicIn").val() : null;
+	var roomVar = new SFS2X.Entities.Variables.SFSRoomVariable("topic", topic);
+	
+	sfs.send(new SFS2X.Requests.System.SetRoomVariablesRequest([roomVar]));
+}
+
+function onSetRoomNameBtClick(event)
+{
+	var isSent = sfs.send(new SFS2X.Requests.System.ChangeRoomNameRequest(sfs.lastJoinedRoom, $("#newRoomNameIn").val()));
+	
+	if (isSent)
+		$("#newRoomNameIn").val("");
+}
+
+function onSetRoomPwdBtClick(event)
+{
+	var isSent = sfs.send(new SFS2X.Requests.System.ChangeRoomPasswordStateRequest(sfs.lastJoinedRoom, $("#newPasswordIn").val()));
+	
+	if (isSent)
+		$("#newPasswordIn").val("");
+}
+
+function onSetRoomSizeBtClick(event)
+{
+	var newMaxUsers = Number($("#newRoomSizeIn").jqxNumberInput("decimal"));
+	var newMaxSpectators = sfs.lastJoinedRoom.maxSpectators; // Leave this unaltered
+	var isSent = sfs.send(new SFS2X.Requests.System.ChangeRoomCapacityRequest(sfs.lastJoinedRoom, newMaxUsers, newMaxSpectators));
+	
+	if (isSent)
+		$("#newRoomSizeIn").jqxNumberInput({decimal:10});
+}
+
+function onSetUserNickBtClick(event)
+{
+	// Set a User Variable containing the user nickname
+	// Null is used to delete the User Variable
+	var nick = $("#userNickIn").val() != "" ? $("#userNickIn").val() : null;
+	var userVar = new SFS2X.Entities.Variables.SFSUserVariable("nick", nick);
+	
+	var isSent = sfs.send(new SFS2X.Requests.System.SetUserVariablesRequest([userVar]));
+	
+	if (isSent)
+		$("#userNickIn").val("");
+}
+
+function onUserSelected(event)
+{
+	var args = event.args;
+	var selectionType = args.type;
+	
+	// Only consider user selection made using mouse or keyboard (API call is excluded)
+	if (selectionType != "none")
+	{
+    	var item = $("#userList").jqxListBox("getItem", args.index);
+		var user = item.originalItem.userObj;
+
+		// Enable private chat
+		if (currentPrivateChat != user.id)
+			enablePrivateChatAndMod(user.id);
+	
+		// For example code simplicity we rebuild the full userlist instead of just editing the specific item
+		// This causes # of PM to read being updated
+		populateUsersList();
+	}
+}
+
+function onSendPrivateMessageBtClick(event)
+{
+	var isSent = sfs.send(new SFS2X.Requests.System.PrivateMessageRequest($("#privateMsgIn").val(), currentPrivateChat, {recipient:currentPrivateChat}));
+	
+	if (isSent)
+		$("#privateMsgIn").val("");
+}
+
+function onDeselectUserBtClick(event)
+{
+	enablePrivateChatAndMod(-1);
+}
+
+function onSwitchRoleBtClick(event)
+{
+	if (sfs.lastJoinedRoom != null && sfs.lastJoinedRoom.isGame)
+	{
+		if (sfs.mySelf.isPlayer())
+			sfs.send(new SFS2X.Requests.System.PlayerToSpectatorRequest());
+		else
+			sfs.send(new SFS2X.Requests.System.SpectatorToPlayerRequest());
+	}
+}
+
+function onKickBtClick(event)
+{
+	if (currentPrivateChat > -1)
+		sfs.send(new SFS2X.Requests.System.KickUserRequest(currentPrivateChat, "Think about your behavior and come back later, you are kicked!"));
+}
+
+function onBanBtClick(event)
+{
+	if (currentPrivateChat > -1)
+		sfs.send(new SFS2X.Requests.System.BanUserRequest(currentPrivateChat, "Time for some vacation... you are banned!", SFS2X.Requests.BanMode.BY_NAME));
 }
 
 //------------------------------------
 // SFS EVENT HANDLERS
 //------------------------------------
-
+		
 function onConnection(event)
 {
-	// Reset view
-	setView("login", false);
-	
 	if (event.success)
 	{
 		trace("Connected to SmartFoxServer 2X!");
+		trace("Session id: " + sfs.sessionToken);
+		
+		// Enable interface
+		enableTextField("#usernameIn", true);
+		enableButton("#loginBt", true);
+		enableButton("#disconnectBt", true);
 	}
 	else
 	{
-		var error = "Connection failed: " + (event.errorMessage ? event.errorMessage + " (code " + event.errorCode + ")" : "Is the server running at all?");
-		showError(error);
+		trace("Connection failed: " + (event.errorMessage ? event.errorMessage + " (" + event.errorCode + ")" : "Is the server running at all?"), true);
+		
+		// Enable button
+		enableButton("#connectBt", true);
 	}
 }
 
 function onConnectionLost(event)
 {
-	// Reset view
-	setView("login", true);
+	trace("I was disconnected; reason is: " + event.reason);
 	
-	// Show disconnection reason
-	if (event.reason != SFS2X.Utils.ClientDisconnectionReason.MANUAL && event.reason != SFS2X.Utils.ClientDisconnectionReason.UNKNOWN)
-	{
-		var error = "You have been disconnected; reason is: " + event.reason;
-		showError(error);
-	}
-	else
-		trace("You have been disconnected; reason is: " + event.reason);
+	// Disable interface
+	enableTextField("#usernameIn", false);
+	enableButton("#loginBt", false);
+	enableButton("#logoutBt", false);
+	enableButton("#disconnectBt", false);
+	enableButton("#createRoomBt", false);
+	enableRoomControls(false);
+	enableTextField("#userNickIn", false);
+	enableButton("#setUserNickBt", false);
+	enablePrivateChatAndMod(-1);
+	
+	enableButton("#connectBt", true);
+	
+	// Empty room & user lists
+	$("#roomList").jqxListBox("clear");
+	$("#userList").jqxListBox("clear");
+	
+	// Clear and disable chat area
+	enableChatArea(false, true);
+	
+	// Hide create Room window if open
+	$("#createRoomWin").jqxWindow("hide");
 }
 
 function onLoginError(event)
 {
-	// Reset view
-	setView("login", true);
+	trace("Login error: " + event.errorMessage + " (" + event.errorCode + ")", true);
 	
-	// Show error
-	var error = "Login error: " + event.errorMessage + " (code " + event.errorCode + ")";
-	showError(error);
+	// Enable interface
+	enableTextField("#usernameIn", true);
+	enableButton("#loginBt", true);
 }
 
 function onLogin(event)
@@ -407,120 +379,99 @@ function onLogin(event)
 		  "\n\tUser: " + event.user +
 		  "\n\tData: " + event.data);
 	
+	// Enable interface
+	enableButton("#logoutBt", true);
+	enableButton("#createRoomBt", true);
+	
 	// Set user name
-	// NOTE: this always a good practice, in case a custom login procedure on the server side modified the username
 	$("#usernameIn").val(event.user.name);
-	$("#usernameLb").html(event.user.name);
 	
-	// Set default player details
-	onPlayerProfileChange();
+	// Populate rooms list
+	populateRoomsList();
 	
-	// Join lobby room
-	joinLobbyRoom();
+	currentPrivateChat = -1;
+	privateChats = [];
+	enableTextField("#userNickIn", true);
+	enableButton("#setUserNickBt", true);
+	
+	sfs.enableLagMonitor(true, 5);
 }
 
 function onLogout(event)
 {
 	trace("Logout from zone " + event.zone + " performed!");
 	
-	// Switch to LOGIN view
-	setView("login", true);
+	// Enable login interface
+	enableTextField("#usernameIn", true);
+	enableButton("#loginBt", true);
+	
+	// Disable interface
+	enableChatArea(false, true);
+	enableButton("#createRoomBt", false);
+	enableRoomControls(false);
+	enableTextField("#userNickIn", false);
+	enableButton("#setUserNickBt", false);
+	enablePrivateChatAndMod(-1);
+	$("#lagLb").text("&nbsp;");
+	
+	// Empty room & user lists
+	$("#roomList").jqxListBox("clear");
+	$("#userList").jqxListBox("clear");
 }
 
 function onRoomJoinError(event)
 {
-	trace("Room join error: " + event.errorMessage + " (code: " + event.errorCode + ")", true);
+	trace("Room join error: " + event.errorMessage + " (" + event.errorCode + ")", true);
 	
 	// Reset roomlist selection
-	$("#roomList").jqxListBox("clearSelection");
+	if (sfs.lastJoinedRoom != null)
+	{
+		var index = searchRoomList(sfs.lastJoinedRoom.id);
+		$("#roomList").jqxListBox("selectIndex", index);
+	}
+	else
+		$("#roomList").jqxListBox("clearSelection");
 }
 
 function onRoomJoin(event)
 {
-	trace("Room joined: " + event.room);
+	// Enable interface
+	enableChatArea(true, true);
+	enableRoomControls(true);
 	
-	// Switch view
-	if (event.room.name == LOBBY_ROOM_NAME)
-	{
-		$("#roomLb").html(event.room.name);
-		setView("lobby", true);
-		
-		// Reset game state in case a game was joined previously
-		currentGameStarted = false;
-	}
-	else
-	{
-		setView("game", true);
-		
-		// Write game state to log area
-		$("#gameLogPn").jqxPanel("clearcontent");
-		
-		writeToGameLogArea("You entered the game<br/><em>This is just a placeholder to show the game-related events</em>");
-		
-		setGameState(true);
-	}
-}
-
-function onPublicMessage(event)
-{
-	var sender = (event.sender.isItMe ? "You" : event.sender.name);
+	writeToChatArea("<em>You entered room '" + event.room.name + "'</em>");
 	
-	if (event.room.name == LOBBY_ROOM_NAME)
-		writeToLobbyChatArea("<b>" + sender + " said:</b><br/>" + event.message);
-}
-
-function onUserEnterRoom(event)
-{
-	if (event.room.name == LOBBY_ROOM_NAME)
-	{
-		writeToLobbyChatArea("<em>User " + event.user.name + " (" + event.user.id + ") entered the room</em>");
-		
-		// For example code simplicity we rebuild the full userlist instead of just adding the specific item
-		populateUsersList();
-	}
-	else
-	{
-		writeToGameLogArea("User " + event.user.name + " joined the game", true);
-		
-		setGameState(true);
-	}
-}
-
-function onUserExitRoom(event)
-{
-	if (event.room.name == LOBBY_ROOM_NAME)
-	{
-		if (!event.user.isItMe)
-			writeToLobbyChatArea("<em>User " + event.user.name + " (" + event.user.id + ") left the room</em>");
+	showRoomTopic(event.room);
 	
-		// For example code simplicity we rebuild the full userlist instead of just removing the specific item
-		populateUsersList();
-	}
-	else
-	{
-		if (!event.user.isItMe)
-		{
-			writeToGameLogArea("User " + event.user.name + " left the game", true);
-			
-			setGameState(false);
-		}
-	}
-}
-
-function onUserVariablesUpdate(event)
-{
-	// Check if the 'country' or 'ranking' variables were set/updated
-	if (event.changedVars.indexOf(USERVAR_COUNTRY) > -1 || event.changedVars.indexOf(USERVAR_RANKING) > -1)
-	{
-		// For example code simplicity we rebuild the full userlist instead of just editing the specific item
-		populateUsersList();
-	}
+	// Populate users list
+	populateUsersList();
 }
 
 function onUserCountChange(event)
 {
 	// For example code simplicity we rebuild the full roomlist instead of just updating the specific item
 	populateRoomsList();
+}
+
+function onUserEnterRoom(event)
+{
+	writeToChatArea("<em>User " + event.user.name + " (" + event.user.id + ") entered the room</em>");
+	
+	// For example code simplicity we rebuild the full userlist instead of just adding the specific item
+	populateUsersList();
+}
+
+function onUserExitRoom(event)
+{
+	if (!event.user.isItMe)
+		writeToChatArea("<em>User " + event.user.name + " (" + event.user.id + ") left the room</em>");
+	
+	// For example code simplicity we rebuild the full userlist instead of just removing the specific item
+	populateUsersList();
+	
+	// Disable private chat
+	if (event.user.isItMe || event.user.id == currentPrivateChat)
+		enablePrivateChatAndMod(-1);
 }
 
 function onRoomRemove(event)
@@ -531,6 +482,11 @@ function onRoomRemove(event)
 	populateRoomsList();
 }
 
+function onRoomCreationError(event)
+{
+	trace("Room create error: " + event.errorMessage + " (" + event.errorCode + ")", true);
+}
+
 function onRoomAdd(event)
 {
 	trace("Room added: " + event.room);
@@ -539,13 +495,182 @@ function onRoomAdd(event)
 	populateRoomsList();
 }
 
-function onInvitation(event)
+function onPublicMessage(event)
 {
-	// Retrieve invitation data
-	var invitation = event.invitation;
+	var sender = (event.sender.isItMe ? "You" : event.sender.name);
+	var nick = event.sender.getVariable("nick");
+	var aka = (!event.sender.isItMe && nick != null ? " (aka '" + nick.value + "')" : "");
+	writeToChatArea("<b>" + sender + aka + " said:</b><br/>" + event.message);
+}
 
-	// Display invitation panel
-	processInvitation(invitation);
+function onPrivateMessage(event)
+{
+	var user;
+	
+	if (event.sender.isItMe)
+	{
+		var userId = event.data.recipient;
+		var user = sfs.userManager.getUserById(userId);
+	}
+	else
+		user = event.sender;
+	
+	if (privateChats[user.id] == null)
+		privateChats[user.id] = {queue:[], toRead:0};
+	 
+	var message = "<b>" + (event.sender.isItMe ? "You" : event.sender.name) + " said:</b> " + event.message;
+	privateChats[user.id].queue.push(message);
+	
+	if (currentPrivateChat == user.id)
+		writeToPrivateChatArea(message);
+	else
+	{
+		privateChats[user.id].toRead += 1;
+	
+		// For example code simplicity we rebuild the full userlist instead of just editing the specific item
+		// This causes # of PM to read being displayed
+		populateUsersList();
+	}
+}
+
+function onObjectMessage(event)
+{
+	// For testing purposes only
+	trace("Object Message received, content follows:")
+	trace(event);
+}
+
+function onModeratorMessage(event)
+{
+	writeToChatArea("<em class='mod'>Message from <b>Moderator " + event.sender.name + ":</b><br/>" + event.message + "</em>");
+}
+
+function onAdminMessage(event)
+{
+	writeToChatArea("<em class='admin'>Message from <b>Administrator " + event.sender.name + ":</b><br/>" + event.message + "</em>");
+}
+
+function onRoomVariablesUpdate(event)
+{
+	// Check if the 'topic' variable was set/updated
+	if (event.changedVars.indexOf("topic") > -1)
+	{
+		var deleted = !event.room.containsVariable("topic");
+		showRoomTopic(event.room, deleted);
+	}
+}
+
+function onUserVariablesUpdate(event)
+{
+	// Check if the 'nick' variable was set/updated
+	if (event.changedVars.indexOf("nick") > -1)
+	{
+		// For example code simplicity we rebuild the full userlist instead of just editing the specific item
+		populateUsersList();
+	}
+}
+
+function onRoomNameChangeError(event)
+{
+	trace("Room name change error: " + event.errorMessage + " (" + event.errorCode + ")", true);
+}
+
+function onRoomNameChange(event)
+{
+	// For example code simplicity we rebuild the full roomlist instead of just editing the specific item
+	populateRoomsList();
+	
+	if (event.room == sfs.lastJoinedRoom)
+		writeToChatArea("<em>Room name changed from '" + event.oldName + "' to '" + event.room.name + "'</em>");
+}
+
+function onRoomPasswordStateChangeError(event)
+{
+	trace("Room password change error: " + event.errorMessage + " (" + event.errorCode + ")", true);
+}
+
+function onRoomPasswordStateChange(event)
+{
+	// For example code simplicity we rebuild the full roomlist instead of just editing the specific item
+	// A lock icon appears or disappears
+	populateRoomsList();
+}
+
+function onRoomCapacityChangeError(event)
+{
+	trace("Room capacity change error: " + event.errorMessage + " (" + event.errorCode + ")", true);
+}
+
+function onRoomCapacityChange(event)
+{
+	// For example code simplicity we rebuild the full roomlist instead of just editing the specific item
+	populateRoomsList();
+}
+
+function onSpectatorToPlayerError(event)
+{
+	trace("Spectator-to-player switch error: " + event.errorMessage + " (" + event.errorCode + ")", true);
+}
+
+function onSpectatorToPlayer(event)
+{
+	if (event.user.isItMe)
+		enableSwitchButton();
+	
+	if (event.room.id == sfs.lastJoinedRoom.id)
+	{
+		// We rebuild the userlist to update list groups
+		populateUsersList();
+	}
+	
+	// No need to edit the rooms list, as the USER_COUNT_CHANGE event will take care of it
+}
+
+function onPlayerToSpectatorError(event)
+{
+	trace("Player-to-spectator switch error: " + event.errorMessage + " (" + event.errorCode + ")", true);
+}
+
+function onPlayerToSpectator(event)
+{
+	if (event.user.isItMe)
+		enableSwitchButton();
+	
+	if (event.room.id == sfs.lastJoinedRoom.id)
+	{
+		// We rebuild the userlist to update list groups
+		populateUsersList();
+	}
+	
+	// No need to edit the rooms list, as the USER_COUNT_CHANGE event will take care of it
+}
+
+function onRoomGroupSubscribe(event)
+{
+	// For example code simplicity we rebuild the full roomlist instead of just adding the new rooms belonging to the subscribed group
+	populateRoomsList();
+}
+
+function onRoomGroupSubscribeError(event)
+{
+	trace("Group subscribe error: " + event.errorMessage + " (" + event.errorCode + ")", true);
+}
+
+function onRoomGroupUnsubscribe(event)
+{
+	// For example code simplicity we rebuild the full roomlist instead of just removing the new belonging to the unsubscribed group
+	populateRoomsList();
+}
+
+function onRoomGroupUnsubscribeError(event)
+{
+	trace("Group unsubscribe error: " + event.errorMessage + " (" + event.errorCode + ")", true);
+}
+
+function onPingPong(event)
+{
+	var avgLag = Math.round(event.lagValue * 100) / 100;
+	$("#lagLb").text("Average lag: " + avgLag + "ms");
 }
 
 //------------------------------------
@@ -558,76 +683,6 @@ function trace(txt, showAlert)
 	
 	if (showAlert)
 		alert(txt);
-}
-
-function showError(text)
-{
-	trace(text);
-	$("#errorLb").html("<b>ATTENTION</b><br/>" + text);
-	$("#errorLb").toggle();
-}
-
-function setView(viewId, doSwitch)
-{
-	// Check connection/login status to enable interface elements properly
-	if (viewId == "login")
-	{
-		// Connect and disconnect buttons
-		enableButton("#connectBt", !sfs.isConnected());
-		enableButton("#disconnectBt", sfs.isConnected());
-		
-		// Login textinput and button
-		enableTextField("#usernameIn", (sfs.isConnected() && sfs.mySelf == null));
-		enableButton("#loginBt", (sfs.isConnected() && sfs.mySelf == null));
-		
-		// Hide create game window if open
-		$("#createGameWin").jqxWindow("closeWindow");
-	}
-	else if (viewId == "lobby")
-	{
-		// Logout button
-		enableButton("#logoutBt", (sfs.isConnected() && sfs.mySelf != null));
-		
-		// Chat area
-		enableChatArea((sfs.isConnected() && sfs.lastJoinedRoom != null), doSwitch);
-		
-		if (sfs.isConnected() && sfs.mySelf != null)
-		{
-			// Populate room & user lists
-			populateRoomsList();
-			populateUsersList();
-		}
-		else
-		{
-			// Clear room & user lists
-			$("#roomList").jqxListBox("clear");
-			$("#userList").jqxListBox("clear");
-		}
-	}
-	else if (viewId == "game")
-	{
-		// Nothing to initialize
-	}
-	
-	// Switch view
-	if (doSwitch)
-		switchView(viewId);
-}
-
-function switchView(viewId)
-{
-	if ($("#" + viewId).length <= 0)
-		return;
-	
-	$('.viewStack').each(function(index) {
-		if ($(this).attr("id") == viewId) {
-			$(this).show();
-			$(this).css({opacity:1}); // Opacity attribute is used on page load to hide the views because display:none causes issues to the NavigationBar widget
-		}
-		else {
-			$(this).hide();
-		}
-	});
 }
 
 function enableButton(id, doEnable)
@@ -647,318 +702,267 @@ function enableChatArea(doEnable, clear)
 {
 	if (clear)
 	{
-		$("#publicChatAreaPn").jqxPanel("clearcontent");
+		$("#chatAreaPn").jqxPanel("clearcontent");
 		$("#publicMsgIn").val("");
+		showRoomTopic();
 	}
 
-	$("#publicChatAreaPn").jqxPanel({disabled:!doEnable});
+	$("#chatAreaPn").jqxPanel({disabled:!doEnable});
 
 	enableTextField("#publicMsgIn", doEnable);
-	enableButton("#sendPublicMsgBt", doEnable);
+	enableButton("#sendMsgBt", doEnable);
+
+	enableTextField("#roomTopicIn", doEnable);
+	enableButton("#setTopicBt", doEnable);
 }
 
-function joinLobbyRoom()
+function enablePrivateChatAndMod(userId)
 {
-	if (sfs.lastJoinedRoom == null || sfs.lastJoinedRoom.name != LOBBY_ROOM_NAME)
-		sfs.send(new SFS2X.Requests.System.JoinRoomRequest(LOBBY_ROOM_NAME));
-}
-
-function writeToLobbyChatArea(text)
-{
-	$("#publicChatAreaPn").jqxPanel("append", "<p class='chatAreaElement'>" + text + "</p>");
+	currentPrivateChat = userId;
 	
-	// Set chat area scroll position
-	$("#publicChatAreaPn").jqxPanel("scrollTo", 0, $("#publicChatAreaPn").jqxPanel("getScrollHeight"));
+	doEnable = (userId > -1);
+	
+	// Clear current chat
+	$("#privChatAreaPn").jqxPanel("clearcontent");
+	
+	if (!doEnable)
+	{
+		$("#privateMsgIn").val("");
+		$("#userList").jqxListBox("clearSelection");
+		$("#privChatUserLb").html("");
+	}
+	else
+	{
+		$("#privChatUserLb").html("with <b>" + sfs.userManager.getUserById(userId).name + "</b>");
+		
+		// Fill chat with history
+		if (privateChats[userId] != null)
+		{
+			privateChats[userId].toRead = 0;
+			
+			for (var i = 0; i < privateChats[userId].queue.length; i++)
+				writeToPrivateChatArea(privateChats[userId].queue[i]);
+		}
+	}
+	
+	$("#privChatAreaPn").jqxPanel({disabled:!doEnable});
+	
+	enableTextField("#privateMsgIn", doEnable);
+	enableButton("#sendPrivMsgBt", doEnable);
+	enableButton("#deselectUserBt", doEnable);
+	
+	// If I'm a moderator, enable kick/ban controls
+	if (doEnable && sfs.mySelf != null)
+	{
+		if (sfs.mySelf.isModerator() || sfs.mySelf.isAdmin())
+		{
+			enableButton("#kickBt", true);
+			enableButton("#banBt", true);
+		}
+	}
+	else
+	{
+		enableButton("#kickBt", false);
+		enableButton("#banBt", false);
+	}
 }
 
-function writeToGameLogArea(text, dampen)
+function enableRoomControls(doEnable)
 {
-	$("#gameLogPn").jqxPanel("append", "<p class='gameLogElement" + (dampen ? " dampen" : "") + "'>" + text + "</p>");
+	enableButton("#leaveRoomBt", doEnable);
+	enableTextField("#newRoomNameIn", doEnable);
+	enableButton("#setRoomNameBt", doEnable);
+	enableTextField("#newPasswordIn", doEnable);
+	enableButton("#setRoomPwdBt", doEnable);
+	$("#newRoomSizeIn").jqxNumberInput({disabled:!doEnable});
+	enableButton("#setRoomSizeBt", doEnable);
 	
-	// Set panel scroll position
-	$("#gameLogPn").jqxPanel("scrollTo", 0, $("#gameLogPn").jqxPanel("getScrollHeight"));
+	if (!doEnable)
+	{
+		$("#newRoomNameIn").val("");
+		$("#newPasswordIn").val("");
+		$("#newRoomSizeIn").jqxNumberInput({decimal:10});
+		
+		enableButton("#switchUserRoleBt", false);
+		$("#roleLb").html("&nbsp;");
+	}
+	else
+	{
+		enableSwitchButton();
+	}
+}
+
+function enableSwitchButton()
+{
+	if (sfs.lastJoinedRoom != null)
+	{
+		var role;
+		
+		// When enabling, check the room type to enable the switch button
+		if (sfs.lastJoinedRoom.isGame)
+		{
+			enableButton("#switchUserRoleBt", true);
+			role = sfs.mySelf.isPlayer() ? "Player" : "Spectator";
+		}
+		else
+		{
+			enableButton("#switchUserRoleBt", false);
+			role = "User";
+		}
+		
+		$("#roleLb").html("Role: <b>" + role + "</b>");
+	}
 }
 
 function populateRoomsList()
 {
 	var rooms = sfs.roomManager.getRoomList();
+	var index = 0;
+	var selectedIndex = -1;
 	var source = [];
-	
-	if (sfs.lastJoinedRoom != null && sfs.lastJoinedRoom.name == LOBBY_ROOM_NAME)
-	{	
-		for (var r in rooms)
-		{
-			var room = rooms[r];
-			
-			if (room.isGame && !room.isPasswordProtected && !room.isHidden)
-			{
-				var players = room.getUserCount();
-				var maxPlayers = room.maxUsers;
-				var isStarted = room.getVariable(SFS2X.Entities.Variables.ReservedRoomVariables.RV_GAME_STARTED).value;
-				
-				var item = {};
-				item.html = "<div><p class='itemTitle game'><strong>" + room.name + "</strong></p>" +
-							"<p class='itemSub'>Players: " + players + "/" + maxPlayers + "</p>" +
-							"<p class='itemSub'>" + (isStarted ? "Match started" + (players < maxPlayers ? ", join anyway!" : "") : "Waiting for players, wanna join?") + "</p></div>";
-				item.title = room.name;
-				item.roomObj = room;
 		
-				source.push(item);
-			}
-		}
+	for (var r in rooms)
+	{
+		var room = rooms[r];
+		
+		var item = {};
+		item.html = "<div><p class='itemTitle'><strong>" + room.name + "</strong>" + (room.isPasswordProtected ? " <img src='images/lock.png'/>" : "") + "</p>" +
+					"<p class='itemSub'>" + (room.isGame ? "Game" : "Standard") + " room type</p>" +
+					"<p class='itemSub'>" + (room.isGame ? "Players: " + room.getUserCount() + "/" + room.maxUsers + " | Spectators: " + room.getSpectatorCount() + "/" + room.maxSpectators : "Users: " + room.getUserCount() + "/" + room.maxUsers) + "</p></div>";
+		item.title = room.name;
+		item.group = room.groupId + " group";
+		item.roomObj = room;
+		
+		source.push(item);
+		
+		if (sfs.lastJoinedRoom != null && room.id == sfs.lastJoinedRoom.id)
+			selectedIndex = index;
+		
+		index++;
 	}
 	
-	$("#roomList").jqxListBox({source: source});
+	$("#roomList").jqxListBox({source: source, selectedIndex: selectedIndex});
 }
 
 function populateUsersList()
 {
+	var source = [];
 	var index = 0;
-	enableButton("#inviteUserBt", false);
+	var selectedIndex = -1;
+	var meIndex = -1;
 	
-	// "main" indicates the main user list contained in the right accordion of the lobby view
-	// "sec" indicates the secondary user list contained in the invitation tab of the game creation panel
-	
-	var mainSource = [];
-	var mainSelectedIndex = -1;
-	var mainSelectedUser = ($("#userList").jqxListBox("selectedIndex") > -1 ? $("#userList").jqxListBox("getSelectedItem").title : null);
-	
-	var secSource = [];
-	var secSelectedIndexes = [];
-	var secSelectedItems = $("#userSelector").jqxListBox("getSelectedItems");
-	var secSelectedUsers = [];
-	
-	for (var o in secSelectedItems)
-		secSelectedUsers.push(secSelectedItems[o].value);
-	
-	if (sfs.lastJoinedRoom != null && sfs.lastJoinedRoom.name == LOBBY_ROOM_NAME)
+	if (sfs.lastJoinedRoom != null)
 	{
 		var users = sfs.lastJoinedRoom.getUserList();
-		
+			
 		for (var u in users)
 		{
 			var user = users[u];
 			
-			if (!user.isItMe)
-			{
-				// MAIN USER LIST
-				var mainItem = {};
-				mainItem.html = "<div><p class='itemTitle'><strong>" + user.name + "</strong></p>";
-			
-				if (user.containsVariable(USERVAR_COUNTRY))
-					mainItem.html += "<p class='itemSub'>Country: <strong>" + user.getVariable(USERVAR_COUNTRY).value + "</strong></p>";
-			
-				if (user.containsVariable(USERVAR_RANKING))
-					mainItem.html += "<p class='itemSub'>Ranking: <strong>" + user.getVariable(USERVAR_RANKING).value + "</strong></p>";
-			
-				mainItem.html += "</div>";
-			
-				mainItem.title = user.name;
-				mainItem.userObj = user;
+			if (user.isItMe)
+				meIndex = index;
 		
-				mainSource.push(mainItem);
-				
-				if (user.name == mainSelectedUser)
-					mainSelectedIndex = index;
-				
-				// SECONDARY USER LIST
-				secSource.push(user.name);
-				
-				if (secSelectedUsers.indexOf(user.name) > -1)
-					secSelectedIndexes.push(index);
-				
-				index++;
-			}
+			var item = {};
+			item.html = "<div><p class='itemTitle'><strong>" + user.name + "</strong>" + (user.isItMe ? " (you)" : "") + "</p>";
+			
+			if (user.containsVariable("nick"))
+				item.html += "<p class='itemSub'>Nickname: <strong>" + user.getVariable("nick").value + "</strong></p>";
+			
+			if (!user.isItMe && privateChats[user.id] != null && privateChats[user.id].toRead > 0)
+				item.html += "<p class='itemSub toRead'>" + privateChats[user.id].toRead + " PM to read</p>";
+			
+			item.html += "</div>";
+			
+			item.title = user.name;
+			item.userObj = user;
+			
+			if (user.isPlayer())
+				item.group = "Players";
+			else if (user.isSpectator())
+				item.group = "Spectators";
+		
+			source.push(item);
+			
+			if (currentPrivateChat > -1 && user.id == currentPrivateChat)
+				selectedIndex = index;
+
+			index++;
 		}
 	}
 	
-	// MAIN USER LIST
-	
 	// Populate list
-	$("#userList").jqxListBox({source: mainSource});
+	$("#userList").jqxListBox({source: source});
+	
+	// Disable item corresponding to myself
+	if (meIndex > -1)
+		$("#userList").jqxListBox("disableAt", meIndex);
 	
 	// Set selected index
-	$("#userList").jqxListBox("selectedIndex", mainSelectedIndex);
+	$("#userList").jqxListBox("selectedIndex", selectedIndex);
 	
 	// Make sure selected index is visible
-	if (mainSelectedIndex > -1)
-		$("#userList").jqxListBox("ensureVisible", mainSelectedIndex + 1);
-	
-	// SECONDARY USER LIST
-	
-	// Populate list
-	$("#userSelector").jqxListBox({source: secSource});
-	
-	// Set selected indexes
-	for (var i = 0; i < secSelectedIndexes.length; i++)
-		$("#userSelector").jqxListBox("selectIndex", secSelectedIndexes[i]);
+	if (selectedIndex > -1)
+		$("#userList").jqxListBox("ensureVisible", selectedIndex + 1);
 }
 
-function setGameState(isJoin)
+function searchRoomList(roomId)
 {
-	if (sfs.lastJoinedRoom != null)
-	{
-		var room = sfs.lastJoinedRoom;
-		
-		if (room.containsVariable(SFS2X.Entities.Variables.ReservedRoomVariables.RV_GAME_STARTED))
-		{
-			var isStarted = room.getVariable(SFS2X.Entities.Variables.ReservedRoomVariables.RV_GAME_STARTED).value;
-			
-			if (!isStarted)
-			{
-				if (!currentGameStarted)
-				{
-					// Game wasn't started and still isn't started
-					if (isJoin)
-					{
-						var players = room.getPlayerList().length;
-						writeToGameLogArea("Waiting for more players to start the game (" + players + " player" + (players > 1 ? "s" : "") + " currently in the room)");
-					}
-				}
-				else
-				{
-					// Game was running but now it is stopped
-					writeToGameLogArea("<b>GAME STOPPED</b> (not enough players)");
-				}
-			}
-			else
-			{
-				if (!currentGameStarted)
-				{
-					// Game wasn't started and now it is
-					writeToGameLogArea("<b>GAME STARTED</b> (minimum number of players was reached)");
-				}
-				else
-				{
-					// Game was running and it is still running
-					// Probably another player joined the game; nothing to log
-				}
-			}
-			
-			currentGameStarted = isStarted;
-		}
-	}
-}
-
-/**
- * Process an invitation, displaying the invitation accept/refuse panel.
- * If multiple invitations are received, a queue is used.
- */
-function processInvitation(invitation)
-{
-	// Remove game creation panel (if open)
-	$("#createGameWin").jqxWindow("closeWindow");
+	var items = $("#roomList").jqxListBox("source");
 	
-	// Check if a previous invitation was received (the panel is already displayed)
-	// If yes, put the new invitation in a queue
-	if (!$("#invitationWin").jqxWindow("isOpen"))
+	for (var i = 0; i < items.length; i++)
 	{
-		// Show invitation panel
-		$("#invitationWin").jqxWindow("open");
+		var room = items[i].roomObj;
 		
-		// Get invitation custom parameters
-		var invCustomParams = invitation.params;
-		
-		var message = "";
-		
-		if (invCustomParams.message != "")
-			message += '<em>"' + invCustomParams.message + '"</em><br/>';
-		
-		message += "You have been invited by <strong>" + invitation.inviter.name + "</strong> to play <strong>" + invCustomParams.gameType + "</strong> in room <strong>" + invCustomParams.room + "</strong>";
-		
-		// Display message in the invitation panel
-		$("#invitationMsgLb").html(message);
-		
-		// Display remaining time for replying
-		$("#expTimeLb").html(invitation.secondsForAnswer);
-		
-		// Save current invitations details
-		currentInvitation = {};
-		currentInvitation.inv = invitation;
-		currentInvitation.timer = invitation.secondsForAnswer;
-		
-		// Launch timer to detect invitation
-		currentInvitation.timeout = setTimeout(onInvitationTick, 1000, this);
+		if (room.id == roomId)
+			return i;
 	}
-	else
-	{
-		var obj = {};
-		obj.invitation = invitation;
-		obj.time = (new Date()).getTime();
-		
-		invitationsQueue.push(obj);
-	}
+	
+	return -1;
 }
 
-function onInvitationTick(scope)
+function writeToChatArea(text)
 {
-	if (scope.currentInvitation != null)
+	$("#chatAreaPn").jqxPanel("append", "<p class='chatAreaElement'>" + text + "</p>");
+	
+	// Set chat area scroll position
+	$("#chatAreaPn").jqxPanel("scrollTo", 0, $("#chatAreaPn").jqxPanel("getScrollHeight"));
+}
+
+function writeToPrivateChatArea(text)
+{
+	$("#privChatAreaPn").jqxPanel("append", "<p class='chatAreaElement'>" + text + "</p>");
+	
+	// Set chat area scroll position
+	$("#privChatAreaPn").jqxPanel("scrollTo", 0, $("#privChatAreaPn").jqxPanel("getScrollHeight"));
+}
+
+function showRoomTopic(room, deleted)
+{
+	// Show topic if corresponding room variable is set
+	if (room != null)
 	{
-		scope.currentInvitation.timer -= 1;
-		
-		// Display remaining time for replying
-		$("#expTimeLb").html(scope.currentInvitation.timer);
-		
-		if (scope.currentInvitation.timer <= 0)
-		{
-			// Auto-refuse invitation, just like if the user clicked the button
-			scope.replyToInvitation(false);
-		}
+		if (deleted)
+			writeToChatArea("<em>Room topic removed</em>");
 		else
 		{
-			// Keep running the timer
-			scope.currentInvitation.timeout = setTimeout(onInvitationTick, 1000, scope);
-		}
-	}
-}
-
-function replyToInvitation(accept)
-{
-	// Clear timer
-	clearTimeout(currentInvitation.timeout);
-	
-	var invitation = currentInvitation.inv;
-	currentInvitation = null;
-	
-	// Remove invitation panel
-	$("#invitationWin").jqxWindow("closeWindow");
-	
-	// Accept/refuse invitation
-	var request = new SFS2X.Requests.Game.InvitationReplyRequest(invitation, (accept ? SFS2X.Entities.Invitation.InvitationReply.ACCEPT : SFS2X.Entities.Invitation.InvitationReply.REFUSE));
-	sfs.send(request);
-
-	// If invitation was accepted, refuse all remaining invitations in the queue
-	if (accept)
-	{
-		// Refuse other invitations
-		for (var o in invitationsQueue)
-		{
-			var otherInv = invitationsQueue[o];
-			sfs.send(new SFS2X.Requests.Game.InvitationReplyRequest(otherInv.invitation, SFS2X.Entities.Invitation.InvitationReply.REFUSE));
-		}
-		
-		invitationsQueue = [];
-	}
-
-	// If invitation was refused, process next invitation in the queue (if any)
-	else
-	{
-		while (invitationsQueue.length > 0)
-		{
-			var obj = invitationsQueue.splice(0, 1)[0];
-			var invitation = obj.invitation;
-			
-			// Evaluate remaining time for replying (invitation.secondsForAnswer value is updated on the invitation object directly)
-			var now = (new Date()).getTime();
-			var elapsed = Math.ceil((now - obj.time) / 1000);
-			invitation.secondsForAnswer -= elapsed;
-			
-			// Display invitation only if expiration will occur in 3 seconds or more
-			if (invitation.secondsForAnswer >= 3)
+			if (room.containsVariable("topic"))
 			{
-				processInvitation(invitation);
-				break;
+				var roomVar = room.getVariable("topic");
+		
+				if (!roomVar.isNull())
+				{
+					$("#chatTopicLb").html("Topic is '" + roomVar.value + "'");
+					$("#roomTopicIn").val(roomVar.value);
+			
+					writeToChatArea("<em>Room topic set to '" + roomVar.value + "'</em>");
+			
+					return;
+				}
 			}
-		}
+		}	
 	}
+	
+	// Hide topic if null room is passed or no room variable is set or variable is null
+	$("#chatTopicLb").html("");
+	$("#roomTopicIn").val("");
 }
