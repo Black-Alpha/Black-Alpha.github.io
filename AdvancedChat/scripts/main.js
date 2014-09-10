@@ -8,7 +8,7 @@ function init()
 	var config = {};
 	config.host = "108.28.43.55";
 	config.port = 8888;
-	config.zone = "Starlite";
+	config.zone = "BasicExamples";
 	config.debug = false;
 	
 	// Create SmartFox client instance
