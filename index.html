@@ -11,43 +11,41 @@
         <!--uikit-->
     <!--font-->
         <link href='http://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet' type='text/css'>
-    <style>
+        <style>
             h1 {
                 font-family: 'Electrolize', serif;
                 font-size: 48px;
             }
         </style>
+        <!--SyntaxHighlighter-->
         <!--font-->
-    
-
         <!-- Include required JS files -->
-        <!--<script type="text/javascript" src="js/shCore.js"></script>-->
+        <script type="text/javascript" src="js/shCore.js"></script>
         <!--
         At least one brush, here we choose JS. You need to include a brush for every
         language you want to highlight
     -->
-        <!--<script type="text/javascript" src="css/shBrushJScript.js"></script>-->
+        <script type="text/javascript" src="css/shBrushJScript.js"></script>
 
         <!-- Include *at least* the core style and default theme -->
-        <!--<link href="css/shCore.css" rel="stylesheet" type="text/css" />
-        <link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />-->
+        <link href="css/shCore.css" rel="stylesheet" type="text/css" />
+            <link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+        <!--SyntaxHighlighter-->
+
     </head>
 
 
     <body>
-    <br>
-        <center>
-            <code>project</code>
-        </center>
-
-        <h1 class="uk-article-title"><center data-uk-tooltip title="Alpha">STARLITE<sup class="uk-icon-spinner uk-icon-spin"></sup></center></h1>
-        <<div class="uk-progress uk-progress-striped uk-active">
-    <div class="uk-progress-bar" style="width: 85%;"></div>
-</div>
-    <a href="" class="uk-icon-button uk-icon-github">test</a>
-
-    <!-- You also need to add some content to highlight, but that is covered elsewhere. -->
-    <!--<pre class="brush: js">
+        <br>
+        
+        
+        
+        <div id="menu" style="background-color:#FFD700;height:50px;width:100px;float:left;">
+            <b>Menu</b><br>
+            HTML<br>
+            CSS<br>
+            <!-- You also need to add some content to highlight, but that is covered elsewhere. -->
+            <pre class="brush: js">
     function foo()
     {
     }
@@ -56,7 +54,27 @@
         Finally, to actually run the highlighter, you need to include this JS on your page
         <script type="text/javascript">
         SyntaxHighlighter.all()
-    </script>-->
+    </script>
+
+        </div>
+
+        <div id="content" style="background-color:#EEEEEE;height:50px;width:400px;float:left;">
+            Content goes here
+        </div>
+
+        
+        
+        
+        
+
+        <center>
+            <code>project</code>
+        </center>
+        <h1 class="uk-article-title"><center data-uk-tooltip title="Alpha">STARLITE<sup class="uk-icon-spinner uk-icon-spin"></sup></center></h1>
+        <<div class="uk-progress uk-progress-striped uk-active">
+    <div class="uk-progress-bar" style="width: 85%;"></div>
+</div>
+    <a href="" class="uk-icon-button uk-icon-github">test</a>
     <!--Three.js-->
     <script src="tjs/three.min.js"></script>
     <script src="tjs/OBJLoader.js"></script>
