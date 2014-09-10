@@ -14,7 +14,7 @@ function init()
 	// Create configuration object
 	var config = {};
 	config.host = "108.28.43.55";
-	config.port = 8888;
+	config.port = 888;
 	config.zone = "BasicExamples";
 	config.debug = true;
 	
