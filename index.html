@@ -44,6 +44,7 @@
             <b>Menu</b><br>
             HTML<br>
             CSS<br>
+            <button class="uk-button" data-uk-modal="{target:'#modal-1'}">Modal</button>
             <!-- You also need to add some content to highlight, but that is covered elsewhere. -->
             <pre class="brush: js">
     function foo()
@@ -81,7 +82,6 @@
         <script src="tjs/Detector.js"></script>
         <script src="tjs/stats.min.js"></script>
 
-        <div><div class="uk-overlay-caption">Caption</div>
         <script>
 
             var container, stats;
@@ -210,9 +210,17 @@
             }
 
         </script>
-    </div>
-    <!--Three.js-->
-</body>
+        <!--Three.js-->
+        
+        
+        <div id="modal-1" class="uk-modal">
+            <div class="uk-modal-dialog">
+                <button type="button" class="uk-modal-close uk-close"></button>
+                <h1>Headline</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+    </body>
 
 </html>
 
