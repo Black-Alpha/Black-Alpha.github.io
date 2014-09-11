@@ -93,6 +93,7 @@
     font-size: 12px;
     line-height: 14px;
     overflow-wrap: break-word;
+    overflow: hidden;
 }
 .terminal-output > div {
     /*padding-top: 3px;*/
