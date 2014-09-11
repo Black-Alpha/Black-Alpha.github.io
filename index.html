@@ -19,8 +19,27 @@
     document.onmousedown = catch_click;
     if (document.captureEvents) document.captureEvents(Event.MOUSEDOWN);
         </script>-->
-   
-     <!--uikit-->
+       
+     <!--soundmanger2-->
+        <script src="soundmanager2-nodebug-jsmin.js"></script>
+        <!-- And now, customize it! -->
+        <script type="text/javascript">
+            // soundManager.debugMode = false; // disable debug output
+            //soundManager.url = 'swf/'; // path to directory containing SoundManager2 .SWF file
+            //soundManager.flashVersion = 8;
+            soundManager.onload = function () {
+                // soundManager.createSound() etc. may now be called
+
+                soundManager.createSound({
+                    id: 'sound',
+                    url: '/media/mp3/sound.mp3'
+                });
+            }
+
+        </script>
+        <!--soundmanger2-->
+
+        <!--uikit-->
 
         <link rel="stylesheet" href="/css/uikit.min.css" />
         <script src="/js/jquery.js"></script>
@@ -194,7 +213,7 @@
             <button class="uk-button" data-uk-modal="{target:'#modal-1'}"><i class="uk-icon-code"></i>Modal</button>
         </div>-->
         <center>
-            <b class="uk-icon-sign-in" data-uk-modal="{target:'#modal-1'}" style="color:white;position:relative;bottom:-5px;"></b><code style="position:relative;bottom:-5px;"> Project</code>
+            <b class="uk-icon-sign-in" data-uk-modal="{target:'#modal-1'}" style="color:white;position:relative;bottom:-5px;" onclick="soundManager.play('sound',{volume:50}) "></b><code style="position:relative;bottom:-5px;"> Project</code>
         </center>
         <custom data-uk-offcanvas="{target:'#my-id'}"><h1 class="uk-article-title"><center data-uk-tooltip title="Alpha">STARLITE<sup class="uk-icon-spinner uk-icon-spin"></sup></center></h1></custom>
         <div class="uk-progress uk-progress-striped uk-active">
