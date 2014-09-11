@@ -20,20 +20,134 @@
     if (document.captureEvents) document.captureEvents(Event.MOUSEDOWN);
         </script>
         <!--js-console-->
+        <script src="/js-console/jquery-1.7.1.min.js"></script>
         <script src="/js-console/jquery.mousewheel-min.js"></script>
         <script src="/js-console/jquery.terminal-min.js"></script>
+        <script src="/js-console/resume.js"></script>
+        <script src="/js-console/details.js"></script>
         <link rel="stylesheet" href="/css/jquery.terminal.css" />
         <script>
-    jQuery(document).ready(function ($) {
-        $('terminal').terminal("json-rpc-service-demo.php", {
-            login: true,
-            greetings: "You are authenticated",
-            onBlur: function () {
-                // the height of the body is only 2 lines initialy
-                return false;
-            }
+
+    init();
+    commandLine();
+
+    function commandLine() {
+
+
+        jQuery(document).ready(function ($) {
+            var id = 1;
+
+            $('terminal').terminal(function (command, term) {
+                var commandList = command.toLowerCase().split(" ");
+
+                if (commandList[0] == 'help') {
+                    term.echo(commandMap.getKeys());
+                } else if (commandList[0] == "man") {
+                    if (commandMap[commandList[1]][0] != undefined) {
+                        term.echo(commandList[1] + commandMap[commandList[1]][0]);
+                    } else if (commandList[1] == undefined) {
+                        term.echo("man: No command entered.");
+                    } else {
+                        term.echo("man: `" + commandList[1] + "` is an unknown command.");
+                    }
+                } else if (commandMap[commandList[0]] != undefined) {
+                    if (commandList[0] == "github") {
+
+                        var mess = "Repositories:\n";
+                        var list = [];
+
+                        jQuery.githubUser = function (username, callback) {
+                            jQuery.getJSON('https://api.github.com/users/' + username + '/repos?callback=?', callback);
+                        }
+
+
+                        $.githubUser(githubUsername, function (data) {
+                            var repos = data.data; // JSON Parsing
+
+                            $(repos).each(function () {
+                                if (this != undefined) {
+                                    var message = this.name;
+                                    if ((this.description != undefined) && (this.description.length > 0)) {
+                                        message += " - " + this.description;
+                                    }
+
+                                    message += "\n";
+
+                                    if (this.name != (githubUsername.toLowerCase() + '.github.com')) { //
+                                        if (!showForks && (this.fork == false)) {
+                                            list.push(message);
+                                            mess += message;
+                                        } else if (showForks) {
+                                            list.push(message);
+                                            mess += message;
+                                        }
+                                    }
+                                } else {
+                                    console.log(repos.meta);
+                                    if (data.meta.status == '403') {
+                                        mess += "Too many requests"
+                                    } else {
+                                        mess += "No repositories found."
+                                    }
+                                }
+                            });
+
+                            term.echo(mess);
+                        });
+
+                    } else if (commandList[0] == "education") {
+                        if (commandList[1] == "-top") {
+                            term.echo(commandFunctionMap["education -top"]);
+                        } else {
+                            term.echo(commandFunctionMap["education"]);
+                        }
+                    } else if (commandList[0] == "employment") {
+                        if (commandList[1] == "-top") {
+                            term.echo(commandFunctionMap["employment -top"]);
+                        } else {
+                            term.echo(commandFunctionMap["employment"]);
+                        }
+                    } else if (commandList[0] == "volunteering") {
+                        if (commandList[1] == "-top") {
+                            term.echo(commandFunctionMap["volunteering -top"]);
+                        } else {
+                            term.echo(commandFunctionMap["volunteering"]);
+                        }
+                    } else if (commandList[0] == "awards") {
+                        term.echo(commandFunctionMap["awards"]);
+                    } else if (commandList[0] == "memberships") {
+                        term.echo(commandFunctionMap["memberships"]);
+                    } else if (commandList[0] == "skills") {
+                        if (commandList[1] != undefined) {
+                            var fullCommand = commandList[0] + " " + commandList[1];
+                            if (fullCommand in commandFunctionMap) {
+                                term.echo(commandFunctionMap[fullCommand]);
+                            } else {
+                                term.echo("Warning: Invalid arguments");
+                            }
+                        } else {
+                            term.echo(commandFunctionMap[commandList[0]]);
+                        }
+                    } else {
+                        term.echo(commandFunctionMap[commandList[0]]);
+                    }
+                } else {
+                    if (command.length > 0) {
+                        term.echo("`" + command + "` is an unknown command.");
+                    } else {
+                        term.echo("No command entered.");
+                    }
+                }
+            }, {
+                greetings: title,
+                onBlur: function () {
+                    // prevent loosing focus
+                    return false;
+                }
+            });
         });
-    });
+    }
+
         </script>
         <!--js-console-->
     
