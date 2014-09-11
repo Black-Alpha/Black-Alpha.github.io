@@ -89,7 +89,7 @@
 .terminal, .cmd {
     font-family: FreeMono, monospace;
     color: #aaa;
-    background-color: #000;
+    background-color: #FFF;
     font-size: 12px;
     line-height: 14px;
     overflow-wrap: break-word;
