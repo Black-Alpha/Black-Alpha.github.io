@@ -1,6 +1,6 @@
 // Details
-var name = "John Doe";
-var loc = "Timbuktu";
+var name = "[Alpha.Alias]";
+var loc = "[Alpha.location]";
 var lookingfor = "Raking in the money";
 var pdfLink = "http://en.wikipedia.org/wiki/R%C3%A9sum%C3%A9";
 
