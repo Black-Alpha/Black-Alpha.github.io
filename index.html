@@ -20,14 +20,21 @@
     if (document.captureEvents) document.captureEvents(Event.MOUSEDOWN);
         </script>
         <!--js-console-->
-        <script src="/js-console/example.js"></script>
-        <script src="/js-console/history.js"></script>
-        <script src="/js-console/input.js"></script>
-        <script src="/js-console/killring.js"></script>
-        <script src="/js-console/pathhandler.js"></script>
-        <script src="/js-console/readline.js"></script>
-        <script src="/js-console/shell.js"></script>
-
+        <script src="/js-console/jquery.mousewheel-min.js"></script>
+        <script src="/js-console/jquery.terminal-min.js"></script>
+        <link rel="stylesheet" href="/css/jquery.terminal.css" />
+        <script>
+    jQuery(document).ready(function ($) {
+        $('body').terminal("json-rpc-service-demo.php", {
+            login: true,
+            greetings: "You are authenticated",
+            onBlur: function () {
+                // the height of the body is only 2 lines initialy
+                return false;
+            }
+        });
+    });
+        </script>
         <!--js-console-->
     
      <!--uikit-->
@@ -397,9 +404,9 @@
         <div id="my-id" class="uk-offcanvas">
             <div class="uk-offcanvas-bar"><sup><span class="uk-badge">Info</span></sup>
             <p>
-                <div id="shell-panel">
-                    <div>Type <code>help</code> or hit <code>TAB</code> for a list of commands.</div>
-                    <div id="shell-view"><div id="shell-cli"><span class="prompt">[1] $</span>&nbsp;<span class="input"><span class="left"></span><span class="cursor">&nbsp;</span><span class="right"></span></span></div></div>
+                <div class="terminal">
+                    <div class="terminal-output"></div>
+                    <div class="cmd" style="width: 100%;"><span class="prompt">login:&nbsp;</span><span></span><span class="cursor blink">&nbsp;</span><span></span><textarea class="clipboard"></textarea></div>
                 </div>
             </p>
             </div>
