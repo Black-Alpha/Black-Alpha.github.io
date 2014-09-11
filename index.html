@@ -19,7 +19,18 @@
     document.onmousedown = catch_click;
     if (document.captureEvents) document.captureEvents(Event.MOUSEDOWN);
         </script>
-    <!--uikit-->
+        <!--js-console-->
+        <script src="/js-console/example.js"></script>
+        <script src="/js-console/history.js"></script>
+        <script src="/js-console/input.js"></script>
+        <script src="/js-console/killring.js"></script>
+        <script src="/js-console/pathhandler.js"></script>
+        <script src="/js-console/readline.js"></script>
+        <script src="/js-console/shell.js"></script>
+
+        <!--js-console-->
+    
+     <!--uikit-->
 
         <link rel="stylesheet" href="/css/uikit.min.css" />
         <script src="/js/jquery.js"></script>
@@ -384,7 +395,17 @@
         </div>
 
         <div id="my-id" class="uk-offcanvas">
-            <div class="uk-offcanvas-bar">...</div>
+            <div class="uk-offcanvas-bar"><sup><span class="uk-badge">Info</span></sup>
+            <p>
+                <div id="shell-panel" tabindex="0" class="ui-resizable">
+                    <div>
+                        Type <code>help</code> or hit <code>TAB</code> for a list of commands.
+                    </div>
+                    <div id="shell-view"><div id="shell-cli"><span class="prompt">/ $</span>&nbsp;<span class="input"><span class="left"></span><span class="cursor">&nbsp;</span><span class="right"></span></span></div></div>
+                    <div class="ui-resizable-handle ui-resizable-s" style="z-index: 1000;"></div>
+                </div>
+            </p>
+            </div>
         </div>
 
     </body>
