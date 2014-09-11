@@ -521,8 +521,45 @@
             <div class="uk-offcanvas-bar">
                 <sup><span class="uk-badge">Info</span></sup>
                 <a class="uk-thumbnail" href="">
-                <img src="/images/placeholder_200x100.svg" alt=""><a>
-                                                                      <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>...</ul>
+                <img src="/images/placeholder_200x100.svg" alt=""></a>
+                                                                      <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="">
+                                                                          <li><a href="">Item</a></li>
+                                                                          <li class="uk-active"><a href="">Active</a></li>
+
+                                                                          <li class="uk-parent">
+                                                                              <a href="#">Parent</a>
+                                                                              <div style="overflow:hidden;height:0;position:relative;">
+                                                                                  <ul class="uk-nav-sub">
+                                                                                      <li><a href="">Sub item</a></li>
+                                                                                      <li>
+                                                                                          <a href="">Sub item</a>
+                                                                                          <ul>
+                                                                                              <li><a href="">Sub item</a></li>
+                                                                                              <li><a href="">Sub item</a></li>
+                                                                                          </ul>
+                                                                                      </li>
+                                                                                  </ul>
+                                                                              </div>
+                                                                          </li>
+
+                                                                          <li class="uk-parent">
+                                                                              <a href="#">Parent</a>
+                                                                              <div style="overflow:hidden;height:0;position:relative;">
+                                                                                  <ul class="uk-nav-sub">
+                                                                                      <li><a href="">Sub item</a></li>
+                                                                                      <li><a href="">Sub item</a></li>
+                                                                                  </ul>
+                                                                              </div>
+                                                                          </li>
+
+                                                                          <li><a href="">Item</a></li>
+
+                                                                          <li class="uk-nav-header">Header</li>
+                                                                          <li class="uk-parent"><a href=""><i class="uk-icon-star"></i> Parent</a></li>
+                                                                          <li><a href=""><i class="uk-icon-twitter"></i> Item</a></li>
+                                                                          <li class="uk-nav-divider"></li>
+                                                                          <li><a href=""><i class="uk-icon-rss"></i> Item</a></li>
+                                                                      </ul>
                         <p>
                             <div><terminal style="position:absolute;bottom:0px"></terminal></div>
 
