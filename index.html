@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="/css/jquery.terminal.css" />
         <script>
     jQuery(document).ready(function ($) {
-        $('body').terminal("json-rpc-service-demo.php", {
+        $('terminal').terminal("json-rpc-service-demo.php", {
             login: true,
             greetings: "You are authenticated",
             onBlur: function () {
@@ -404,10 +404,8 @@
         <div id="my-id" class="uk-offcanvas">
             <div class="uk-offcanvas-bar"><sup><span class="uk-badge">Info</span></sup>
             <p>
-                <div class="terminal">
-                    <div class="terminal-output"></div>
-                    <div class="cmd" style="width: 100%;"><span class="prompt">login:&nbsp;</span><span></span><span class="cursor blink">&nbsp;</span><span></span><textarea class="clipboard"></textarea></div>
-                </div>
+                <terminal>
+              </terminal>
             </p>
             </div>
         </div>
