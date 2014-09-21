@@ -416,7 +416,7 @@
                 function init() {
 
                     container = document.createElement('div');
-                    container.id = "foo";
+                    container.id = "e1";
                     document.body.appendChild(container);
 
                     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
@@ -606,23 +606,31 @@
 
                 </p>
                 <ul class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#subnav-pill-content'}">
-                    <li class="uk-active"><a href="#" onclick="removeElement('foo')">Proto</a></li>
-                    <li class=""><a href="#">Orbital</a></li>
-                    <li class=""><a href="#">Video</a></li>
+                    <li class="uk-active"><a href="#" onclick="Element1('e1')">Proto</a></li>
+                    <li class=""><a href="#" onclick="Element2('e2')">Orbital</a></li>
+                    <li class=""><a href="#" onclick="Element3('e3')">Video</a></li>
                 </ul>
 
             </div>
         </div>
         <script>
-    function removeElement() {
-        document.getElementById("foo").style.display = "none";
+    function Element1() {
+        document.getElementById('e2').style.display = "none";
+        document.getElementById('e3').style.display = "none";
+        document.getElementById(id).style.display = "block";
+        document.getElementById(id).style.visibility = "visible";
     }
-    function changeVisibility() {
-        document.getElementById("imgbox2").style.visibility = "hidden";
+    function Element2() {
+        document.getElementById('e1').style.display = "none";
+        document.getElementById('e2').style.display = "none";
+        document.getElementById(id).style.display = "block";
+        document.getElementById(id).style.visibility = "visible";
     }
-    function resetElement() {
-        document.getElementById("imgbox1").style.display = "block";
-        document.getElementById("imgbox2").style.visibility = "visible";
+    function Element3() {
+        document.getElementById('e2').style.display = "none";
+        document.getElementById('e3').style.display = "none";
+        document.getElementById(id).style.display = "block";
+        document.getElementById(id).style.visibility = "visible";
     }
         </script>
     </body>
