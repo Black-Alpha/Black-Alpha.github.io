@@ -1,4 +1,4 @@
-var LOBBY_ROOM_NAME = "The Lobby";
+var LOBBY_ROOM_NAME = "Orbital";
 var USERVAR_COUNTRY = "country";
 var USERVAR_RANKING = "rank";
 
@@ -14,8 +14,8 @@ function init()
 	// Create configuration object
 	var config = {};
 	config.host = "108.28.43.55";
-	config.port = 8888;
-	config.zone = "BasicExamples";
+	config.port = 9933;
+	config.zone = "Starlite";
 	config.debug = true;
 	
 	// Create SmartFox client instance
