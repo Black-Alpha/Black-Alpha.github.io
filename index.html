@@ -388,7 +388,7 @@
     <script src="tjs/stats.min.js"></script>
         
         <div id="subnav-pill-content" class="uk-switcher">
-            <div id="foo" class="uk-active"><script>
+            <div class="uk-active"><script>
 
                 var container, stats;
 
@@ -595,21 +595,10 @@
 
                 </p>
                 <ul class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#subnav-pill-content'}">
-                    <li class="uk-active"><a href="#" onclick="toggle_visibility('foo');">Proto</a></li>
+                    <li class="uk-active"><a href="#">Proto</a></li>
                     <li class=""><a href="#">Orbital</a></li>
                 </ul>
 
-                <script type="text/javascript">
-<!--
-    function toggle_visibility(id) {
-       var e = document.getElementById(id);
-       if(e.style.display == 'block')
-          e.style.display = 'none';
-       else
-          e.style.display = 'block';
-    }
-//-->
-                </script>
             </div>
         </div>
 
