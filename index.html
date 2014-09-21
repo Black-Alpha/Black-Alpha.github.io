@@ -416,7 +416,7 @@
                 function init() {
 
                     container = document.createElement('div');
-                    id = "someID";
+                    container.id = "someID";
                     document.body.appendChild(container);
 
                     camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
