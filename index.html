@@ -543,7 +543,7 @@
                     <li class="uk-parent">
                         <a href="#">TruePrint</a>
                         <ul class="uk-nav-sub">
-                            <li data-uk-switcher="{connect:'#my-id'}"><a href="">Sub item/</a></li>
+                            <li><a href="">Sub item/</a></li>
                             <li>
                                 <a href="">Sub item</a>
                                 <ul>
@@ -589,7 +589,12 @@
                     <div><terminal style="position:absolute;bottom:0px"></terminal></div>
 
                 </p>
-                <ul id="my-id" class="uk-switcher">
+                <ul class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#subnav-pill-content'}">
+                    <li class="uk-active"><a href="#">Item</a></li>
+                    <li class=""><a href="#">Item</a></li>
+                    <li class=""><a href="#">Item</a></li>
+                </ul>
+                <ul id="subnav-pill-content" class="uk-switcher">
                     <li class="uk-active">Hello!</li>
                     <li>Hello again!</li>
                     <li>Bazinga!</li>
