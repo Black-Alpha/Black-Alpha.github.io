@@ -625,6 +625,9 @@
 <!--
             function toggle_visibility_none(id) {
                 var e = document.getElementById(id);
+                if (e.style.display == 'none')
+                    e.style.display = 'block';
+                else
                     e.style.display = 'none';
             }
 //-->
@@ -632,8 +635,11 @@
         <script type="text/javascript">
 <!--
     function toggle_visibility_block(id) {
-       var e = document.getElementById(id);
-           e.style.display = 'block';
+        var e = document.getElementById(id);
+        if (e.style.display == 'none')
+            e.style.display = 'block';
+        else
+            e.style.display = 'none';
     }
 //-->
         </script>
