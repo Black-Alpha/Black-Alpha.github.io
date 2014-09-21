@@ -606,14 +606,25 @@
 
                 </p>
                 <ul class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#subnav-pill-content'}">
-                    <li class="uk-active"><a href="#">Proto</a></li>
+                    <li class="uk-active"><a href="#" onclick="removeElement('foo')">Proto</a></li>
                     <li class=""><a href="#">Orbital</a></li>
                     <li class=""><a href="#">Video</a></li>
                 </ul>
 
             </div>
         </div>
-
+        <script>
+    function removeElement() {
+        document.getElementById("foo").style.display = "none";
+    }
+    function changeVisibility() {
+        document.getElementById("imgbox2").style.visibility = "hidden";
+    }
+    function resetElement() {
+        document.getElementById("imgbox1").style.display = "block";
+        document.getElementById("imgbox2").style.visibility = "visible";
+    }
+        </script>
     </body>
 
 </html>
