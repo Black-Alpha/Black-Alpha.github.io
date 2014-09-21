@@ -534,7 +534,8 @@
             <div class="uk-offcanvas-bar">
                 <sup><span class="uk-badge">Info</span></sup>
                 <a class="uk-thumbnail" href="">
-                    <img src="/images/placeholder_200x100.svg" alt=""></a>
+                    <img src="/images/placeholder_200x100.svg" alt="">
+                </a>
 
                 <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="">
                     <li><a href="">Item</a></li>
@@ -556,22 +557,60 @@
 
                     <li class="uk-parent">
                         <a href="#">ECMA334</a>
-                        <div style="overflow:hidden;height:0;position:relative;">
-                            <ul class="uk-nav-sub">
-                                <li><a href="www.google.com">Sub item</a></li>
-                                <li><a href="">Sub item</a></li>
-                            </ul>
-                        </div>
+                        <ul class="uk-nav-sub">
+                            <li><a href="">Sub item</a></li>
+                            <li>
+                                <a href="">Sub item</a>
+                                <ul>
+                                    <li><a href="">Sub item</a></li>
+                                    <li><a href="">Sub item</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li><a href="">Item</a></li>
+
+                    <li class="uk-nav-header">Header</li>
+                    <li class="uk-parent"><a href=""><i class="uk-icon-star"></i> Parent</a></li>
+                    <li><a href=""><i class="uk-icon-twitter"></i> Item</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href=""><i class="uk-icon-rss"></i> Item</a></li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div id="offcanvas-4" class="uk-offcanvas">
+
+            <div class="uk-offcanvas-bar uk-offcanvas-bar-flip">
+
+                <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>
+                    <li><a href="">Item</a></li>
+                    <li class="uk-active"><a href="">Active</a></li>
+
+                    <li class="uk-parent">
+                        <a href="#">Parent</a>
+                        <ul class="uk-nav-sub">
+                            <li><a href="">Sub item</a></li>
+                            <li>
+                                <a href="">Sub item</a>
+                                <ul>
+                                    <li><a href="">Sub item</a></li>
+                                    <li><a href="">Sub item</a></li>
+                                </ul>
+                            </li>
+                        </ul>
                     </li>
 
                     <li class="uk-parent">
-                        <a href="#">ECMA334</a>
-                        <div style="overflow:hidden;height:0;position:relative;">
-                            <ul class="uk-nav-sub">
-                                <li><a href="">Sub item</a></li>
-                                <li><a href="">Sub item</a></li>
-                            </ul>
-                        </div>
+                        <a href="#">Parent</a>
+                        <ul class="uk-nav-sub">
+                            <li><a href="">Sub item</a></li>
+                            <li><a href="">Sub item</a></li>
+                        </ul>
                     </li>
 
                     <li><a href="">Item</a></li>
@@ -582,8 +621,8 @@
                     <li class="uk-nav-divider"></li>
                     <li><a href=""><i class="uk-icon-rss"></i> Item</a></li>
                 </ul>
-                
-                
+
+
                 <!-- You also need to add some content to highlight, but that is covered elsewhere. -->
                 <pre class="brush: js">
     function foo()
@@ -599,10 +638,10 @@
 
 
                 <p>
-                            <div><terminal style="position:absolute;bottom:0px"></terminal></div>
+                    <div><terminal style="position:absolute;bottom:0px"></terminal></div>
 
-                        </p>
-</div>
+                </p>
+            </div>
         </div>
 
     </body>
