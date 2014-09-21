@@ -624,22 +624,16 @@
         <script type="text/javascript">
 <!--
             function toggle_visibility_none(id) {
-                var e = document.getElementById(id);
-                if (e.style.display == 'none')
-                    e.style.display = 'block';
-                else
-                    e.style.display = 'none';
+                document.getElementById(id).style.visibility = "hidden";
+                document.getElementById(id).style.display = "NONE";
             }
 //-->
         </script>
         <script type="text/javascript">
 <!--
     function toggle_visibility_block(id) {
-        var e = document.getElementById(id);
-        if (e.style.display == 'none')
-            e.style.display = 'block';
-        else
-            e.style.display = 'none';
+        document.getElementById(id).style.visibility = "hidden";
+     document.getElementById(id).style.display = "NONE";
     }
 //-->
         </script>
