@@ -543,8 +543,14 @@
                     <li class="uk-parent">
                         <a href="#">TruePrint</a>
                         <ul class="uk-nav-sub">
-                            <li><a href="">Sub item</a></li>
+                            <li data-uk-switcher="{connect:'#my-id'}"><a href="">Sub item/</a></li>
                             <li>
+                                <ul id="my-id" class="uk-switcher">
+                                    <li class="uk-active">Hello!</li>
+                                    <li>Hello again!</li>
+                                    <li>Bazinga!</li>
+                                </ul>
+
                                 <a href="">Sub item</a>
                                 <ul>
                                     <li><a href="">Sub item</a></li>
