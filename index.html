@@ -331,148 +331,10 @@ if (Modernizr.touch) {
 
 
 
-    <!--Three.js-->
-    <script src="tjs/three.min.js"></script>
-    <script src="tjs/OBJLoader.js"></script>
-    <script src="tjs/Detector.js"></script>
-    <script src="tjs/stats.min.js"></script>
-
-    <div id="subnav-pill-content" class="uk-switcher">
-        <div class="uk-active">
-            <script>
-
-                var container, stats;
-
-                var camera, scene, renderer;
-
-                var mouseX = 0, mouseY = 0;
-
-                var windowHalfX = window.innerWidth / 2;
-                var windowHalfY = window.innerHeight / 2;
 
 
-                init();
-                animate();
-
-
-                function init() {
-
-                    container = document.createElement('div');
-                    container.id = "e1";
-                    document.body.appendChild(container);
-
-                    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-                    camera.position.z = 100;
-
-                    // scene
-
-                    scene = new THREE.Scene();
-
-                    var ambient = new THREE.AmbientLight(0x101030);
-                    scene.add(ambient);
-
-                    var directionalLight = new THREE.DirectionalLight(0xffeedd);
-                    directionalLight.position.set(0, 0, 1);
-                    scene.add(directionalLight);
-
-                    // texture
-
-                    var manager = new THREE.LoadingManager();
-                    manager.onProgress = function (item, loaded, total) {
-
-                        console.log(item, loaded, total);
-
-                    };
-
-                    var texture = new THREE.Texture();
-
-                    var loader = new THREE.ImageLoader(manager);
-                    loader.load('textures/UV_Grid_Sm.jpg', function (image) {
-
-                        texture.image = image;
-                        texture.needsUpdate = true;
-
-                    });
-
-                    // model
-
-                    var loader = new THREE.OBJLoader(manager);
-                    loader.load('obj/geoForm.obj', function (object) {
-
-                        object.traverse(function (child) {
-
-                            if (child instanceof THREE.Mesh) {
-
-                                child.material.map = texture;
-
-                            }
-
-                        });
-
-                        object.position.y = -80;
-                        scene.add(object);
-
-                    });
-
-                    //
-
-                    renderer = new THREE.WebGLRenderer();
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-                    container.appendChild(renderer.domElement);
-
-                    document.addEventListener('mousemove', onDocumentMouseMove, false);
-
-                    //
-
-                    window.addEventListener('resize', onWindowResize, false);
-
-                }
-
-                function onWindowResize() {
-
-                    windowHalfX = window.innerWidth / 2;
-                    windowHalfY = window.innerHeight / 2;
-
-                    camera.aspect = window.innerWidth / window.innerHeight;
-                    camera.updateProjectionMatrix();
-
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-
-                }
-
-                function onDocumentMouseMove(event) {
-
-                    mouseX = (event.clientX - windowHalfX) / 2;
-                    mouseY = (event.clientY - windowHalfY) / 2;
-
-                }
-
-                //
-
-                function animate() {
-
-                    requestAnimationFrame(animate);
-                    render();
-
-                }
-
-                function render() {
-
-                    camera.position.x += (mouseX - camera.position.x) * .05;
-                    camera.position.y += (-mouseY - camera.position.y) * .05;
-
-                    camera.lookAt(scene.position);
-
-                    renderer.render(scene, camera);
-
-                }
-
-            </script>
-
-        </div>
         <div id="e2"><iframe src="Lobby/index.html" width="100%" height="100%"></iframe></div>
         <div id="e3">
-            <!--Three.js-->
         </div>
 
 
@@ -577,7 +439,9 @@ if (Modernizr.touch) {
                 document.getElementById("e3").style.visibility = "visible";
             }
         </script>
-    </div><div id="e1"><canvas width="1680" height="539" style="width: 1680px; height: 539px;"></canvas></div>
+    </div>
+    
+    <div id="e1"><canvas width="1680" height="539" style="width: 1680px; height: 539px;"></canvas></div>
 
 
     <div class="uk-tooltip uk-tooltip-bottom " style="top: 75px; visibility: visible; display: none; left: 808px;"><div class="uk-tooltip-inner">Alpha</div></div>
