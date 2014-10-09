@@ -1,168 +1,46 @@
-﻿<html lang="en" class="uk-notouch" style="height: auto;">
+<!doctype html>
+<html lang="en">
 <head>
-    <!--<script type="text/javascript">
-    function catch_click(e) {
-        if (!e) var e = window.event;
-
-        var right_click = (e.which ? (e.which == 3) : (e.button == 2));
-
-        if (right_click) {
-            alert('Right clicking on this page is not allowed.');
-            return false;
-        }
-    }
-
-    document.onmousedown = catch_click;
-    if (document.captureEvents) document.captureEvents(Event.MOUSEDOWN);
-        </script>-->
-    <!--soundmanger2-->
-    <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
-    <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
-    <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
-    <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
-    <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
-    <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
-    <script id="twitter-wjs" src="//platform.twitter.com/widgets.js"></script>
-    <script src="/sm2/soundmanager2-nodebug-jsmin.js"></script>
-    <!-- And now, customize it! -->
-    <script type="text/javascript">
-        // soundManager.debugMode = false; // disable debug output
-        //soundManager.url = 'swf/'; // path to directory containing SoundManager2 .SWF file
-        //soundManager.flashVersion = 8;
-        soundManager.onload = function () {
-            // soundManager.createSound() etc. may now be called
-
-            soundManager.createSound({
-                id: 'Sign-in',
-                url: '/media/ogg/Sign-in.ogg',
-                autoLoad: true
-            });
-        }
-
-    </script>
-    <!--soundmanger2-->
-    <!--uikit-->
-
-    <link rel="stylesheet" href="/css/uikit.min.css">
-    <script src="/js/jquery.js"></script>
-    <script src="/js/uikit.min.js"></script>
-    <!--uikit-->
-    <!--smartfox-->
-    <script type="text/javascript" src="/js/SFS2X_API_JS.js"></script>
-    <!--smartfox-->
-    <!--font-->
-    <link href="http://fonts.googleapis.com/css?family=Electrolize" rel="stylesheet" type="text/css">
-    <style>
-        h1 {
-            font-family: 'Electrolize', serif;
-            font-size: 48px;
-        }
-    </style>
-    <!--SyntaxHighlighter-->
-    <!--font-->
-    <!-- Include required JS files -->
-    <script type="text/javascript" src="js/shCore.js"></script>
-    <!--
-        At least one brush, here we choose JS. You need to include a brush for every
-        language you want to highlight
-    -->
-    <script type="text/javascript" src="css/shBrushJScript.js"></script>
-
-    <!-- Include *at least* the core style and default theme -->
-    <link href="css/shCore.css" rel="stylesheet" type="text/css">
-    <link href="css/shThemeDefault.css" rel="stylesheet" type="text/css">
-    <!--SyntaxHighlighter-->
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title data-uk-offcanvas="{target:'#my-id'}">Starlite</title>
-    <!--<meta name="description" content="BigVideo.js - The jQuery Plugin for Big Background Video" />-->
-    <meta name="author" content="Black-Alpha is Owls">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
-    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:900&amp;text=ABCDEFGHIJKLMNOPQRSTUVWXYZ" rel="stylesheet" type="text/css">
+    <title>BigVideo.js - The jQuery Plugin for Big Background Video</title>
+    <meta name="description" content="BigVideo.js - The jQuery Plugin for Big Background Video" />
+    <meta name="author" content="John Polacek" />
+    <meta name="viewport" content="width=device-width">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:900&text=ABCDEFGHIJKLMNOPQRSTUVWXYZ' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="bower_components/BigVideo/css/bigvideo.css">
-    <!--<link rel="author" href="https://plus.google.com/107766061849006545830"/>-->
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="author" href="https://plus.google.com/107766061849006545830"/>
 </head>
-<body data-twttr-rendered="true" style="height: auto;" class="">
-    <div id="big-video-wrap"><div id="big-video-vid" class="video-js vjs-default-skin vjs-controls-disabled vjs-has-started vjs-user-inactive vjs-playing" style="width: 1663px; height: 692.9166666666667px; display: block; top: -127.45833333333337px; left: 0px;"><video id="big-video-vid_html5_api" class="vjs-tech" preload="auto" data-setup="{}" webkit-playsinline="" style="position: absolute; width: 1663px; height: auto;" autoplay="" src="http://vjs.zencdn.net/v/oceans.mp4"></video><div></div><div class="vjs-poster" tabindex="-1" style="display: none;"></div><div class="vjs-text-track-display"></div><div class="vjs-loading-spinner" style="display: none;"></div><div class="vjs-big-play-button" aria-live="polite" tabindex="0" aria-label="play video"><span aria-hidden="true"></span></div><div class="vjs-control-bar"><div class="vjs-play-control vjs-control  vjs-playing" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Pause</span></div></div><div class="vjs-current-time vjs-time-controls vjs-control"><div class="vjs-current-time-display" aria-live="off"><span class="vjs-control-text">Current Time </span>0:09</div></div><div class="vjs-time-divider"><div><span>/</span></div></div><div class="vjs-duration vjs-time-controls vjs-control"><div class="vjs-duration-display" aria-live="off"><span class="vjs-control-text">Duration Time </span>0:46</div></div><div class="vjs-remaining-time vjs-time-controls vjs-control"><div class="vjs-remaining-time-display" aria-live="off"><span class="vjs-control-text">Remaining Time </span>-0:37</div></div><div class="vjs-progress-control vjs-control"><div aria-valuenow="20.56" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-progress-holder vjs-slider" aria-label="video progress bar" aria-valuetext="0:09"><div class="vjs-load-progress" style="width: 100%;"><span class="vjs-control-text">Loaded: 0%</span></div><div class="vjs-play-progress" style="width: 50%;"><span class="vjs-control-text">Progress: 0%</span></div><div class="vjs-seek-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-fullscreen-control vjs-control " aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Fullscreen</span></div></div><div class="vjs-volume-control vjs-control"><div aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-volume-bar vjs-slider" aria-label="volume level" aria-valuetext="0%"><div class="vjs-volume-level" style="width: 50%;"><span class="vjs-control-text"></span></div><div class="vjs-volume-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-mute-control vjs-control vjs-vol-0" aria-live="polite" tabindex="0"><div><span class="vjs-control-text">Mute</span></div></div><div class="vjs-subtitles-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Subtitles Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Subtitles</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">subtitles off</li></ul></div></div><div class="vjs-captions-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Captions Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Captions</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">captions off</li></ul></div></div><div class="vjs-chapters-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Chapters Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Chapters</span></div><div class="vjs-menu"><ul class="vjs-menu-content"></ul><li class="vjs-menu-title">Chapters</li></div></div></div></div></div>
-    <div id="big-video-wrap"><div id="big-video-vid" class="video-js vjs-default-skin vjs-controls-disabled vjs-has-started vjs-user-inactive vjs-playing" style="width: 1680px; height: 700px; display: block; top: -131px; left: 0px;"><div id="big-video-vid_html5_api" class="vjs-tech vjs-controls-disabled vjs-has-started vjs-user-inactive vjs-paused" style="width: 300px; height: 150px;"><video id="big-video-vid_html5_api_html5_api" class="vjs-tech" preload="auto" data-setup="{}" webkit-playsinline="" style="position: absolute; width: 1680px; height: auto;" autoplay="" src="http://vjs.zencdn.net/v/oceans.mp4"></video><div></div><div class="vjs-poster" tabindex="-1" style="display: none;"></div><div class="vjs-text-track-display"></div><div class="vjs-loading-spinner" style="display: none;"></div><div class="vjs-big-play-button" aria-live="polite" tabindex="0" aria-label="play video"><span aria-hidden="true"></span></div><div class="vjs-control-bar"><div class="vjs-play-control vjs-control  vjs-paused" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Play</span></div></div><div class="vjs-current-time vjs-time-controls vjs-control"><div class="vjs-current-time-display" aria-live="off"><span class="vjs-control-text">Current Time </span>0:46</div></div><div class="vjs-time-divider"><div><span>/</span></div></div><div class="vjs-duration vjs-time-controls vjs-control"><div class="vjs-duration-display" aria-live="off"><span class="vjs-control-text">Duration Time </span>0:46</div></div><div class="vjs-remaining-time vjs-time-controls vjs-control"><div class="vjs-remaining-time-display" aria-live="off"><span class="vjs-control-text">Remaining Time </span>-0:00</div></div><div class="vjs-progress-control vjs-control"><div aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-progress-holder vjs-slider" aria-label="video progress bar" aria-valuetext="0:46"><div class="vjs-load-progress" style="width: 100%;"><span class="vjs-control-text">Loaded: 0%</span></div><div class="vjs-play-progress" style="width: 50%;"><span class="vjs-control-text">Progress: 0%</span></div><div class="vjs-seek-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-fullscreen-control vjs-control " aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Fullscreen</span></div></div><div class="vjs-volume-control vjs-control"><div aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-volume-bar vjs-slider" aria-label="volume level" aria-valuetext="100%"><div class="vjs-volume-level" style="width: 50%;"><span class="vjs-control-text"></span></div><div class="vjs-volume-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-mute-control vjs-control" aria-live="polite" tabindex="0"><div><span class="vjs-control-text">Mute</span></div></div><div class="vjs-subtitles-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Subtitles Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Subtitles</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">subtitles off</li></ul></div></div><div class="vjs-captions-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Captions Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Captions</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">captions off</li></ul></div></div><div class="vjs-chapters-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Chapters Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Chapters</span></div><div class="vjs-menu"><ul class="vjs-menu-content"></ul><li class="vjs-menu-title">Chapters</li></div></div></div></div><div></div><div class="vjs-poster" tabindex="-1" style="display: none;"></div><div class="vjs-text-track-display"></div><div class="vjs-loading-spinner" style="display: none;"></div><div class="vjs-big-play-button" aria-live="polite" tabindex="0" aria-label="play video"><span aria-hidden="true"></span></div><div class="vjs-control-bar"><div class="vjs-play-control vjs-control  vjs-playing" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Pause</span></div></div><div class="vjs-current-time vjs-time-controls vjs-control"><div class="vjs-current-time-display" aria-live="off"><span class="vjs-control-text">Current Time </span>0:06</div></div><div class="vjs-time-divider"><div><span>/</span></div></div><div class="vjs-duration vjs-time-controls vjs-control"><div class="vjs-duration-display" aria-live="off"><span class="vjs-control-text">Duration Time </span>0:46</div></div><div class="vjs-remaining-time vjs-time-controls vjs-control"><div class="vjs-remaining-time-display" aria-live="off"><span class="vjs-control-text">Remaining Time </span>-0:39</div></div><div class="vjs-progress-control vjs-control"><div aria-valuenow="14.39" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-progress-holder vjs-slider" aria-label="video progress bar" aria-valuetext="0:06"><div class="vjs-load-progress" style="width: 27.05%;"><span class="vjs-control-text">Loaded: 0%</span></div><div class="vjs-play-progress" style="width: 50%;"><span class="vjs-control-text">Progress: 0%</span></div><div class="vjs-seek-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-fullscreen-control vjs-control " aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Fullscreen</span></div></div><div class="vjs-volume-control vjs-control"><div aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-volume-bar vjs-slider" aria-label="volume level" aria-valuetext="0%"><div class="vjs-volume-level" style="width: 50%;"><span class="vjs-control-text"></span></div><div class="vjs-volume-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-mute-control vjs-control vjs-vol-0" aria-live="polite" tabindex="0"><div><span class="vjs-control-text">Mute</span></div></div><div class="vjs-subtitles-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Subtitles Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Subtitles</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">subtitles off</li></ul></div></div><div class="vjs-captions-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Captions Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Captions</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">captions off</li></ul></div></div><div class="vjs-chapters-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Chapters Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Chapters</span></div><div class="vjs-menu"><ul class="vjs-menu-content"></ul><li class="vjs-menu-title">Chapters</li></div></div></div></div></div>
-    <div id="big-video-wrap"><div id="big-video-vid" class="video-js vjs-default-skin vjs-controls-disabled vjs-has-started vjs-user-inactive vjs-playing" style="width: 6503.11111111111px; height: 3658px; display: block; top: 0px; left: -2420.055555555555px;"><div id="big-video-vid_html5_api" class="vjs-tech vjs-controls-disabled vjs-has-started vjs-user-inactive vjs-paused" style="width: 300px; height: 150px;"><div id="big-video-vid_html5_api_html5_api" class="vjs-tech vjs-controls-disabled vjs-has-started vjs-user-inactive vjs-paused" style="width: 300px; height: 150px;"><video id="big-video-vid_html5_api_html5_api_html5_api" class="vjs-tech" preload="auto" data-setup="{}" webkit-playsinline="" style="position: absolute; width: 6503.11111111111px; height: 3658px;" autoplay="" src="vids/frontier.mp4"></video><div></div><div class="vjs-poster" tabindex="-1" style="display: none;"></div><div class="vjs-text-track-display"></div><div class="vjs-loading-spinner" style="display: none;"></div><div class="vjs-big-play-button" aria-live="polite" tabindex="0" aria-label="play video"><span aria-hidden="true"></span></div><div class="vjs-control-bar"><div class="vjs-play-control vjs-control  vjs-paused" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Play</span></div></div><div class="vjs-current-time vjs-time-controls vjs-control"><div class="vjs-current-time-display" aria-live="off"><span class="vjs-control-text">Current Time </span>0:15</div></div><div class="vjs-time-divider"><div><span>/</span></div></div><div class="vjs-duration vjs-time-controls vjs-control"><div class="vjs-duration-display" aria-live="off"><span class="vjs-control-text">Duration Time </span>0:15</div></div><div class="vjs-remaining-time vjs-time-controls vjs-control"><div class="vjs-remaining-time-display" aria-live="off"><span class="vjs-control-text">Remaining Time </span>-0:00</div></div><div class="vjs-progress-control vjs-control"><div aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-progress-holder vjs-slider" aria-label="video progress bar" aria-valuetext="0:15"><div class="vjs-load-progress" style="width: 0%;"><span class="vjs-control-text">Loaded: 0%</span></div><div class="vjs-play-progress" style="width: 50%;"><span class="vjs-control-text">Progress: 0%</span></div><div class="vjs-seek-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-fullscreen-control vjs-control " aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Fullscreen</span></div></div><div class="vjs-volume-control vjs-control"><div aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-volume-bar vjs-slider" aria-label="volume level" aria-valuetext="100%"><div class="vjs-volume-level" style="width: 50%;"><span class="vjs-control-text"></span></div><div class="vjs-volume-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-mute-control vjs-control" aria-live="polite" tabindex="0"><div><span class="vjs-control-text">Mute</span></div></div><div class="vjs-subtitles-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Subtitles Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Subtitles</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">subtitles off</li></ul></div></div><div class="vjs-captions-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Captions Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Captions</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">captions off</li></ul></div></div><div class="vjs-chapters-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Chapters Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Chapters</span></div><div class="vjs-menu"><ul class="vjs-menu-content"></ul><li class="vjs-menu-title">Chapters</li></div></div></div></div><div></div><div class="vjs-poster" tabindex="-1" style="display: none;"></div><div class="vjs-text-track-display"></div><div class="vjs-loading-spinner" style="display: none;"></div><div class="vjs-big-play-button" aria-live="polite" tabindex="0" aria-label="play video"><span aria-hidden="true"></span></div><div class="vjs-control-bar"><div class="vjs-play-control vjs-control  vjs-paused" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Play</span></div></div><div class="vjs-current-time vjs-time-controls vjs-control"><div class="vjs-current-time-display" aria-live="off"><span class="vjs-control-text">Current Time </span>0:15</div></div><div class="vjs-time-divider"><div><span>/</span></div></div><div class="vjs-duration vjs-time-controls vjs-control"><div class="vjs-duration-display" aria-live="off"><span class="vjs-control-text">Duration Time </span>0:15</div></div><div class="vjs-remaining-time vjs-time-controls vjs-control"><div class="vjs-remaining-time-display" aria-live="off"><span class="vjs-control-text">Remaining Time </span>-0:00</div></div><div class="vjs-progress-control vjs-control"><div aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-progress-holder vjs-slider" aria-label="video progress bar" aria-valuetext="0:15"><div class="vjs-load-progress" style="width: 0%;"><span class="vjs-control-text">Loaded: 0%</span></div><div class="vjs-play-progress" style="width: 50%;"><span class="vjs-control-text">Progress: 0%</span></div><div class="vjs-seek-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-fullscreen-control vjs-control " aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Fullscreen</span></div></div><div class="vjs-volume-control vjs-control"><div aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-volume-bar vjs-slider" aria-label="volume level" aria-valuetext="100%"><div class="vjs-volume-level" style="width: 50%;"><span class="vjs-control-text"></span></div><div class="vjs-volume-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-mute-control vjs-control" aria-live="polite" tabindex="0"><div><span class="vjs-control-text">Mute</span></div></div><div class="vjs-subtitles-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Subtitles Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Subtitles</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">subtitles off</li></ul></div></div><div class="vjs-captions-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Captions Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Captions</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">captions off</li></ul></div></div><div class="vjs-chapters-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Chapters Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Chapters</span></div><div class="vjs-menu"><ul class="vjs-menu-content"></ul><li class="vjs-menu-title">Chapters</li></div></div></div></div><div></div><div class="vjs-poster" tabindex="-1" style="display: none;"></div><div class="vjs-text-track-display"></div><div class="vjs-loading-spinner" style="display: none;"></div><div class="vjs-big-play-button" aria-live="polite" tabindex="0" aria-label="play video"><span aria-hidden="true"></span></div><div class="vjs-control-bar"><div class="vjs-play-control vjs-control  vjs-playing" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Pause</span></div></div><div class="vjs-current-time vjs-time-controls vjs-control"><div class="vjs-current-time-display" aria-live="off"><span class="vjs-control-text">Current Time </span>0:11</div></div><div class="vjs-time-divider"><div><span>/</span></div></div><div class="vjs-duration vjs-time-controls vjs-control"><div class="vjs-duration-display" aria-live="off"><span class="vjs-control-text">Duration Time </span>0:15</div></div><div class="vjs-remaining-time vjs-time-controls vjs-control"><div class="vjs-remaining-time-display" aria-live="off"><span class="vjs-control-text">Remaining Time </span>-0:03</div></div><div class="vjs-progress-control vjs-control"><div aria-valuenow="75.44" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-progress-holder vjs-slider" aria-label="video progress bar" aria-valuetext="0:11"><div class="vjs-load-progress" style="width: 100%;"><span class="vjs-control-text">Loaded: 0%</span></div><div class="vjs-play-progress" style="width: 50%;"><span class="vjs-control-text">Progress: 0%</span></div><div class="vjs-seek-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-fullscreen-control vjs-control " aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Fullscreen</span></div></div><div class="vjs-volume-control vjs-control"><div aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-volume-bar vjs-slider" aria-label="volume level" aria-valuetext="80%"><div class="vjs-volume-level" style="width: 50%;"><span class="vjs-control-text"></span></div><div class="vjs-volume-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-mute-control vjs-control vjs-vol-3" aria-live="polite" tabindex="0"><div><span class="vjs-control-text">Mute</span></div></div><div class="vjs-subtitles-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Subtitles Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Subtitles</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">subtitles off</li></ul></div></div><div class="vjs-captions-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Captions Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Captions</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">captions off</li></ul></div></div><div class="vjs-chapters-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Chapters Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Chapters</span></div><div class="vjs-menu"><ul class="vjs-menu-content"></ul><li class="vjs-menu-title">Chapters</li></div></div></div></div></div>
-    <div id="big-video-wrap"><div id="big-video-vid" class="video-js vjs-default-skin vjs-controls-disabled vjs-has-started vjs-playing vjs-user-inactive" style="width: 8779.199999999999px; height: 3658px; display: block; top: 0px; left: -3558.0999999999995px;"><div id="big-video-vid_html5_api" class="vjs-tech vjs-controls-disabled vjs-has-started vjs-paused vjs-user-inactive" style="width: 300px; height: 150px;"><div id="big-video-vid_html5_api_html5_api" class="vjs-tech vjs-controls-disabled vjs-has-started vjs-paused vjs-user-inactive" style="width: 300px; height: 150px;"><div id="big-video-vid_html5_api_html5_api_html5_api" class="vjs-tech vjs-controls-disabled vjs-has-started vjs-paused vjs-user-inactive" style="width: 300px; height: 150px;"><video id="big-video-vid_html5_api_html5_api_html5_api_html5_api" class="vjs-tech" preload="auto" data-setup="{}" webkit-playsinline="" style="position: absolute; width: 8779.199999999999px; height: 3658px;" autoplay="" src="http://vjs.zencdn.net/v/oceans.mp4"></video><div></div><div class="vjs-poster" tabindex="-1" style="display: none;"></div><div class="vjs-text-track-display"></div><div class="vjs-loading-spinner" style="display: none;"></div><div class="vjs-big-play-button" aria-live="polite" tabindex="0" aria-label="play video"><span aria-hidden="true"></span></div><div class="vjs-control-bar"><div class="vjs-play-control vjs-control  vjs-paused" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Play</span></div></div><div class="vjs-current-time vjs-time-controls vjs-control"><div class="vjs-current-time-display" aria-live="off"><span class="vjs-control-text">Current Time </span>0:46</div></div><div class="vjs-time-divider"><div><span>/</span></div></div><div class="vjs-duration vjs-time-controls vjs-control"><div class="vjs-duration-display" aria-live="off"><span class="vjs-control-text">Duration Time </span>0:46</div></div><div class="vjs-remaining-time vjs-time-controls vjs-control"><div class="vjs-remaining-time-display" aria-live="off"><span class="vjs-control-text">Remaining Time </span>-0:00</div></div><div class="vjs-progress-control vjs-control"><div aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-progress-holder vjs-slider" aria-label="video progress bar" aria-valuetext="0:46"><div class="vjs-load-progress" style="width: 100%;"><span class="vjs-control-text">Loaded: 0%</span></div><div class="vjs-play-progress" style="width: 50%;"><span class="vjs-control-text">Progress: 0%</span></div><div class="vjs-seek-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-fullscreen-control vjs-control " aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Fullscreen</span></div></div><div class="vjs-volume-control vjs-control"><div aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-volume-bar vjs-slider" aria-label="volume level" aria-valuetext="100%"><div class="vjs-volume-level" style="width: 50%;"><span class="vjs-control-text"></span></div><div class="vjs-volume-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-mute-control vjs-control" aria-live="polite" tabindex="0"><div><span class="vjs-control-text">Mute</span></div></div><div class="vjs-subtitles-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Subtitles Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Subtitles</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">subtitles off</li></ul></div></div><div class="vjs-captions-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Captions Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Captions</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">captions off</li></ul></div></div><div class="vjs-chapters-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Chapters Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Chapters</span></div><div class="vjs-menu"><ul class="vjs-menu-content"></ul><li class="vjs-menu-title">Chapters</li></div></div></div></div><div></div><div class="vjs-poster" tabindex="-1" style="display: none;"></div><div class="vjs-text-track-display"></div><div class="vjs-loading-spinner" style="display: none;"></div><div class="vjs-big-play-button" aria-live="polite" tabindex="0" aria-label="play video"><span aria-hidden="true"></span></div><div class="vjs-control-bar"><div class="vjs-play-control vjs-control  vjs-paused" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Play</span></div></div><div class="vjs-current-time vjs-time-controls vjs-control"><div class="vjs-current-time-display" aria-live="off"><span class="vjs-control-text">Current Time </span>0:46</div></div><div class="vjs-time-divider"><div><span>/</span></div></div><div class="vjs-duration vjs-time-controls vjs-control"><div class="vjs-duration-display" aria-live="off"><span class="vjs-control-text">Duration Time </span>0:46</div></div><div class="vjs-remaining-time vjs-time-controls vjs-control"><div class="vjs-remaining-time-display" aria-live="off"><span class="vjs-control-text">Remaining Time </span>-0:00</div></div><div class="vjs-progress-control vjs-control"><div aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-progress-holder vjs-slider" aria-label="video progress bar" aria-valuetext="0:46"><div class="vjs-load-progress" style="width: 100%;"><span class="vjs-control-text">Loaded: 0%</span></div><div class="vjs-play-progress" style="width: 50%;"><span class="vjs-control-text">Progress: 0%</span></div><div class="vjs-seek-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-fullscreen-control vjs-control " aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Fullscreen</span></div></div><div class="vjs-volume-control vjs-control"><div aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-volume-bar vjs-slider" aria-label="volume level" aria-valuetext="100%"><div class="vjs-volume-level" style="width: 50%;"><span class="vjs-control-text"></span></div><div class="vjs-volume-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-mute-control vjs-control" aria-live="polite" tabindex="0"><div><span class="vjs-control-text">Mute</span></div></div><div class="vjs-subtitles-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Subtitles Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Subtitles</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">subtitles off</li></ul></div></div><div class="vjs-captions-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Captions Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Captions</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">captions off</li></ul></div></div><div class="vjs-chapters-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Chapters Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Chapters</span></div><div class="vjs-menu"><ul class="vjs-menu-content"></ul><li class="vjs-menu-title">Chapters</li></div></div></div></div><div></div><div class="vjs-poster" tabindex="-1" style="display: none;"></div><div class="vjs-text-track-display"></div><div class="vjs-loading-spinner" style="display: none;"></div><div class="vjs-big-play-button" aria-live="polite" tabindex="0" aria-label="play video"><span aria-hidden="true"></span></div><div class="vjs-control-bar"><div class="vjs-play-control vjs-control  vjs-paused" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Play</span></div></div><div class="vjs-current-time vjs-time-controls vjs-control"><div class="vjs-current-time-display" aria-live="off"><span class="vjs-control-text">Current Time </span>0:46</div></div><div class="vjs-time-divider"><div><span>/</span></div></div><div class="vjs-duration vjs-time-controls vjs-control"><div class="vjs-duration-display" aria-live="off"><span class="vjs-control-text">Duration Time </span>0:46</div></div><div class="vjs-remaining-time vjs-time-controls vjs-control"><div class="vjs-remaining-time-display" aria-live="off"><span class="vjs-control-text">Remaining Time </span>-0:00</div></div><div class="vjs-progress-control vjs-control"><div aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-progress-holder vjs-slider" aria-label="video progress bar" aria-valuetext="0:46"><div class="vjs-load-progress" style="width: 100%;"><span class="vjs-control-text">Loaded: 0%</span></div><div class="vjs-play-progress" style="width: 50%;"><span class="vjs-control-text">Progress: 0%</span></div><div class="vjs-seek-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-fullscreen-control vjs-control " aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Fullscreen</span></div></div><div class="vjs-volume-control vjs-control"><div aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-volume-bar vjs-slider" aria-label="volume level" aria-valuetext="100%"><div class="vjs-volume-level" style="width: 50%;"><span class="vjs-control-text"></span></div><div class="vjs-volume-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-mute-control vjs-control" aria-live="polite" tabindex="0"><div><span class="vjs-control-text">Mute</span></div></div><div class="vjs-subtitles-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Subtitles Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Subtitles</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">subtitles off</li></ul></div></div><div class="vjs-captions-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Captions Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Captions</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">captions off</li></ul></div></div><div class="vjs-chapters-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Chapters Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Chapters</span></div><div class="vjs-menu"><ul class="vjs-menu-content"></ul><li class="vjs-menu-title">Chapters</li></div></div></div></div><div></div><div class="vjs-poster" tabindex="-1" style="display: none;"></div><div class="vjs-text-track-display"></div><div class="vjs-loading-spinner" style="display: block;"></div><div class="vjs-big-play-button" aria-live="polite" tabindex="0" aria-label="play video"><span aria-hidden="true"></span></div><div class="vjs-control-bar"><div class="vjs-play-control vjs-control  vjs-playing" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Pause</span></div></div><div class="vjs-current-time vjs-time-controls vjs-control"><div class="vjs-current-time-display" aria-live="off"><span class="vjs-control-text">Current Time </span>0:46</div></div><div class="vjs-time-divider"><div><span>/</span></div></div><div class="vjs-duration vjs-time-controls vjs-control"><div class="vjs-duration-display" aria-live="off"><span class="vjs-control-text">Duration Time </span>0:46</div></div><div class="vjs-remaining-time vjs-time-controls vjs-control"><div class="vjs-remaining-time-display" aria-live="off"><span class="vjs-control-text">Remaining Time </span>-0:00</div></div><div class="vjs-progress-control vjs-control"><div aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-progress-holder vjs-slider" aria-label="video progress bar" aria-valuetext="0:46"><div class="vjs-load-progress" style="width: 100%;"><span class="vjs-control-text">Loaded: 0%</span></div><div class="vjs-play-progress" style="width: 50%;"><span class="vjs-control-text">Progress: 0%</span></div><div class="vjs-seek-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-fullscreen-control vjs-control " aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Fullscreen</span></div></div><div class="vjs-volume-control vjs-control"><div aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-volume-bar vjs-slider" aria-label="volume level" aria-valuetext="0%"><div class="vjs-volume-level" style="width: 50%;"><span class="vjs-control-text"></span></div><div class="vjs-volume-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-mute-control vjs-control vjs-vol-0" aria-live="polite" tabindex="0"><div><span class="vjs-control-text">Mute</span></div></div><div class="vjs-subtitles-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Subtitles Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Subtitles</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">subtitles off</li></ul></div></div><div class="vjs-captions-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Captions Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Captions</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">captions off</li></ul></div></div><div class="vjs-chapters-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Chapters Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Chapters</span></div><div class="vjs-menu"><ul class="vjs-menu-content"></ul><li class="vjs-menu-title">Chapters</li></div></div></div></div></div>
+<body>
 
-
-    <br>
-    <center>
-        <b class="uk-icon-sign-in" data-uk-modal="{target:'#modal-1'}" style="color:white;position:relative;bottom:-5px;" onclick="soundManager.play('Sign-in',{volume:100}) "></b><code style="position:relative;bottom:-5px;"> Project</code>
-    </center>
-
-
-    <h1 class="uk-article-title">
-        <center data-uk-tooltip="" title="Alpha" style="
-    position: relative;
-" data-cached-title="">STARLITE<sup class="uk-icon-spinner uk-icon-spin"></sup></center>
-    </h1>
-
-    <div class="uk-progress uk-progress-striped uk-active" style="
-    position: relative;
-">
-        <div class="uk-progress-bar" style="width: 85%;"></div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!--<a href="https://github.com/dfcb/BigVideo.js">
+    <a href="https://github.com/dfcb/BigVideo.js">
         <img style="position: fixed; top: 0; right: 0; border: 0; z-index: 11;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" alt="Fork me on GitHub" />
-    </a>-->
+    </a>
 
-    <div class="nav box" id="nav" style="
-    position: absolute;
-">
+    <div class="nav box" id="nav">
         <a href="#overview" class="nav-link">Overview</a>
         <a href="#setup" class="nav-link">Setup</a>
         <a href="#ambient" class="nav-link">Ambient Video</a>
         <a href="#playlists" class="nav-link">Playlists</a>
         <a href="#videojs" class="nav-link">Video.js</a>
         <a href="#tips" class="nav-link">Tips</a>
-
+        
         <div class="toggle-btn">
-            <label><input type="checkbox" checked="" id="video-toggle"> Video Playing</label>
+            <label><input type="checkbox" checked id="video-toggle" /> Video Playing</label>
         </div>
     </div>
 
     <div class="main">
         <div id="overview" class="box">
-            <h1>BigVideo<span class="dimmed"><small>.</small>js</span></h1>
-            <h2>The jQuery Plugin for Big Background Video (and Images)</h2>
+    		<h1>BigVideo<span class="dimmed"><small>.</small>js</span></h1>
+    		<h2>The jQuery Plugin for Big Background Video (and Images)</h2>
             <div class="credit">
                 <h3>Created by <a href="http://johnpolacek.com">Chicago Web Developer John Polacek</a></h3>
-                <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/follow_button.b44c7db4edf962ad9e7d1d791040bf60.en.html#_=1412818125820&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=johnpolacek&amp;show_count=false&amp;show_screen_name=true&amp;size=l" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 176px; height: 28px;"></iframe>
-                <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+                <a href="https://twitter.com/johnpolacek" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @johnpolacek</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
             </div>
-            <p>This plugin makes it easy to add fit-to-fill background video to websites. It can play silent ambient background video (or series of videos). Or use it as a player to show video playlist. BigVideo.js can also show big background images, which is nice to have for showing big background images for devices that don’t have autoplay for ambient video.</p>
+            <p>This plugin makes it easy to add fit-to-fill background video to websites. It can play silent ambient background video (or series of videos). Or use it as a player to show video playlist. BigVideo.js can also show big background images, which is nice to have for showing big background images for devices that don&rsquo;t have autoplay for ambient video.</p>
             <p>BigVideo.js is built on top of <a href="http://videojs.com" target="_blank">Video.js</a> from <a href="http://zencoder.com" target="_blank">zencoder</a>. So big thanks to them!</p>
             <p>You can read about how to use BigVideo.js below. Also, check out the <a href="http://tympanus.net/codrops/2012/09/19/fullscreen-video-slideshow-with-bigvideo-js/">tutorial I wrote for Codrops</a>.</p>
             <p class="download-links">
@@ -178,16 +56,15 @@
             <h2>Setup</h2>
             <p>BigVideo.js uses the Video.js api. It also requires jQuery, jQuery UI (for the slider control) and the <a href="https://github.com/desandro/imagesloaded" target="_blank">jQuery imagesloaded</a> plugin. If you installed using <a href="https://bower.io">Bower</a>, they'll have been installed automatically. Make sure you include all these libraries when using BigVideo.js.</p>
             <p>To simply play a video that takes up the entire browser window (like in <a href="example-simple.html" target="_blank">this example</a>), do this:</p>
-            <p></p><blockquote>
-                <pre>$(function() {
+            <p><blockquote><pre>
+$(function() {
     var BV = new $.BigVideo();
     BV.init();
     BV.show('http://vjs.zencdn.net/v/oceans.mp4');
-});</pre>
-            </blockquote><p></p>
+});</pre></blockquote></p>
             <p>For crossbrowser fallbacks, you can include a source order with different video formats. Refer to <a href="example-multiformats.html">this example</a>. <em><small>(Note: Safari does not fallback correctly for webm, so include mp4 first)</small></em></p>
-            <p></p><blockquote>
-                <pre>$(function() {
+<p><blockquote><pre>
+$(function() {
     var BV = new $.BigVideo({useFlashForFirefox:false});
 	BV.init();
     BV.show([
@@ -195,40 +72,36 @@
         { type: "video/webm", src: "vids/river.webm" },
         { type: "video/ogg",  src: "vids/river.ogv" }
     ]);
-});</pre>
-            </blockquote><p></p>
+});</pre></blockquote></p>
         </div>
 
         <div id="ambient" class="box">
             <h2>Ambient Video</h2>
-            <p>To play silent video in the background of a page (like in <a href="example-ambient.html" target="_blank">this example</a>), use BigVideo’s ambient setting:</p>
-            <p></p><blockquote>
-                <pre>$(function() {
+            <p>To play silent video in the background of a page (like in <a href="example-ambient.html" target="_blank">this example</a>), use BigVideo&rsquo;s ambient setting:</p>
+            <p><blockquote><pre>
+$(function() {
     var BV = new $.BigVideo();
     BV.init();
     BV.show('http://vjs.zencdn.net/v/oceans.mp4',{ambient:true});
-});</pre>
-            </blockquote><p></p>
+});</pre></blockquote></p>
             <p>Or play a series of ambient background videos (like in <a href="example-ambient-loop.html" target="_blank">this example</a>)</p>
-            <p></p><blockquote>
-                <pre>$(function() {
+            <p><blockquote><pre>
+$(function() {
     var BV = new $.BigVideo();
     BV.init();
     BV.show(['vid1.mp4','vid2.mp4','vid3.mp4'],{ambient:true});
-});</pre>
-            </blockquote><p></p>
+});</pre></blockquote></p>
             <p>Keep in mind that mobile devices do not allow video autoplay. To account for this, use <a href="http://modernizr.com" target="_blank">Modernizr</a> to detect for touchscreen devices, then send a large poster image for BigVideo to use instead (like in <a href="example-ambient-touch.html" target="_blank">this example</a>).</p>
-            <p></p><blockquote>
-                <pre>var BV = new $.BigVideo();
+            <p><blockquote><pre>
+var BV = new $.BigVideo();
 BV.init();
 if (Modernizr.touch) {
     BV.show('video-poster.jpg');
 } else {
     BV.show('video.mp4',{ambient:true});
-}</pre>
-            </blockquote><p></p>
+}</pre></blockquote></p>
         </div>
-
+        
         <div id="playlists" class="box">
             <h2>Playlists</h2>
             <p>You can create a playlist like this:</p>
@@ -237,21 +110,21 @@ if (Modernizr.touch) {
                 <a href="vids/river.mp4" class="playlist-btn">Video #2</a>
                 <a href="vids/frontier.mp4" class="playlist-btn">Video #3</a>
             </div>
-            <p>
-                For more on how to do this, including auto-hiding content and alternate fullscreen image content for touchscreen devices, take a look at <a href="example-playlist.html">this example</a> and <a href="example-multiformats-playlist.html">this example for multiple video formats</a>.
-            </p><p><small>Playlist clips courtesy of <a href="http://beachfrontprod.blogspot.com/" target="_blank">Beachfront B-Roll</a></small></p>
+            <p>For more on how to do this, including auto-hiding content and alternate fullscreen image content for touchscreen devices, take a look at <a href="example-playlist.html">this example</a> and <a href="example-multiformats-playlist.html">this example for multiple video formats</a>.
+            <p><small>Playlist clips courtesy of <a href="http://beachfrontprod.blogspot.com/" target="_blank">Beachfront B-Roll</a></small></p>
         </div>
 
         <div id="videojs" class="box">
             <h2>Video.js</h2>
             <p>Because BigVideo.js is built on top of <a href="http://videojs.com" target="_blank">Video.js</a>, you can use the <a href="http://videojs.com/docs/api/" target="_blank">Video.js api</a>. Access the Video.js player with the getPlayer() method.</p>
-            <p></p><blockquote><pre>BV.getPlayer().pause();</pre></blockquote><p></p>
+            <p><blockquote><pre>
+BV.getPlayer().pause();</pre></blockquote></p>            
         </div>
 
         <div id="tips" class="box">
             <h2>Tips</h2>
             <p>For best results, I recommend using Vimeo. Sign up for <a href="https://vimeo.com/pro" target="_blank">Vimeo Pro</a>, then use their direct mp4 link to serve the video. Vimeo not only has solid bandwidth for delivering video, they do great compression. If you start with a high def source at a bitrate of 10mbps or more, it does such a nice job that you can probably get away with using the standard def source as your background video. Refer to the <a href="http://vimeo.com/help/compression">Vimeo Compression Guidelines</a> for best practices in preparing video files.</p>
-
+            
             <p>To find some great background video footage, try the links posted <a href="http://thecliparchive.com" target="_blank">here</a>, which is where I found out about all the excellent clips over at <a href="http://beachfrontprod.blogspot.com/" target="_blank">Beachfront B-Roll</a>.</p>
         </div>
 
@@ -260,106 +133,64 @@ if (Modernizr.touch) {
 
     </div>
 
-    <!-- BigVideo Dependencies -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="bower_components/jquery/jquery.min.js"><\/script>')</script>
+	<!-- BigVideo Dependencies -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  	<script>window.jQuery || document.write('<script src="bower_components/jquery/jquery.min.js"><\/script>')</script>
     <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
     <script src="bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
     <script src="//vjs.zencdn.net/4.3/video.js"></script>
 
     <!-- BigVideo -->
     <script src="bower_components/BigVideo/lib/bigvideo.js"></script>
-
+    
     <!-- Demo -->
     <script>
         var BV;
-        $(function () {
-
+	    $(function() {
+            
             // initialize BigVideo
             BV = new $.BigVideo();
-            BV.init();
-            BV.show('http://vjs.zencdn.net/v/oceans.mp4', { ambient: true });
+			BV.init();
+			BV.show('http://vjs.zencdn.net/v/oceans.mp4',{ambient:true});
 
             // Playlist button click starts video
-            $('.playlist-btn').on('click', function (e) {
+            $('.playlist-btn').on('click', function(e) {
                 e.preventDefault();
                 BV.show($(this).attr('href'));
             })
 
             // Video Play/Pause toggle
-            $('#video-toggle').on('click', function (e) {
-                if (this.checked) BV.getPlayer().play();
-                else BV.getPlayer().pause();
+            $('#video-toggle').on('click', function(e) {
+                if (this.checked)   BV.getPlayer().play();
+                else                BV.getPlayer().pause();
             })
 
             // set up navigation
-            $('.nav-link').on('click', function (e) {
+            $('.nav-link').on('click',function(e){
                 e.preventDefault();
                 scrollToSection($(this).attr('href'));
             })
 
             function scrollToSection(id) {
-                $('body,html').animate({ scrollTop: $(id).offset().top - 50 }, 400);
+                $('body,html').animate({scrollTop: $(id).offset().top - 50}, 400);
             }
-        });
+	    });
     </script>
 
-    <!--
+    <!-- 
         BigVideo.js Analytics to see how many people are visiting our project page.
         Do not use this code on your site unless you want to show up on our Google Analytics account :)
-        -->
+     -->
     <script type="text/javascript">
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount', 'UA-2821890-9']);
-        _gaq.push(['_trackPageview']);
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-2821890-9']);
+      _gaq.push(['_trackPageview']);
 
-        (function () {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
