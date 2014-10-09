@@ -87,8 +87,8 @@
         <center>
             <b class="uk-icon-sign-in" data-uk-modal="{target:'#modal-1'}" style="color:white;position:relative;bottom:-5px;" onclick="soundManager.play('Sign-in',{volume:100}) "></b><code style="position:relative;bottom:-5px;"> Project</code>
         </center>
-        <h1 class="uk-article-title"><center data-uk-tooltip title="Alpha">STARLITE<sup class="uk-icon-spinner uk-icon-spin"></sup></center></h1>
-        <div class="uk-progress uk-progress-striped uk-active">
+        <custom data-uk-offcanvas="{target:'#my-id'}"><h1 class="uk-article-title"><center data-uk-tooltip title="Alpha">STARLITE<sup class="uk-icon-spinner uk-icon-spin"></sup></center></h1></custom>
+                <div class="uk-progress uk-progress-striped uk-active">
             <div class="uk-progress-bar" style="width: 85%;"></div>
         </div>     
     
@@ -328,131 +328,131 @@ BV.getPlayer().pause();</pre></blockquote></p>
             <div class="uk-active">
                 <script>
 
-                var container, stats;
+                    var container, stats;
 
-                var camera, scene, renderer;
+                    var camera, scene, renderer;
 
-                var mouseX = 0, mouseY = 0;
+                    var mouseX = 0, mouseY = 0;
 
-                var windowHalfX = window.innerWidth / 2;
-                var windowHalfY = window.innerHeight / 2;
-
-
-                init();
-                animate();
+                    var windowHalfX = window.innerWidth / 2;
+                    var windowHalfY = window.innerHeight / 2;
 
 
-                function init() {
+                    init();
+                    animate();
 
-                    container = document.createElement('div');
-                    container.id = "e1";
-                    document.body.appendChild(container);
 
-                    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-                    camera.position.z = 100;
+                    function init() {
 
-                    // scene
+                        container = document.createElement('div');
+                        container.id = "e1";
+                        document.body.appendChild(container);
 
-                    scene = new THREE.Scene();
+                        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+                        camera.position.z = 100;
 
-                    var ambient = new THREE.AmbientLight(0x101030);
-                    scene.add(ambient);
+                        // scene
 
-                    var directionalLight = new THREE.DirectionalLight(0xffeedd);
-                    directionalLight.position.set(0, 0, 1);
-                    scene.add(directionalLight);
+                        scene = new THREE.Scene();
 
-                    // texture
+                        var ambient = new THREE.AmbientLight(0x101030);
+                        scene.add(ambient);
 
-                    var manager = new THREE.LoadingManager();
-                    manager.onProgress = function (item, loaded, total) {
+                        var directionalLight = new THREE.DirectionalLight(0xffeedd);
+                        directionalLight.position.set(0, 0, 1);
+                        scene.add(directionalLight);
 
-                        console.log(item, loaded, total);
+                        // texture
 
-                    };
+                        var manager = new THREE.LoadingManager();
+                        manager.onProgress = function (item, loaded, total) {
 
-                    var texture = new THREE.Texture();
+                            console.log(item, loaded, total);
 
-                    var loader = new THREE.ImageLoader(manager);
-                    loader.load('textures/UV_Grid_Sm.jpg', function (image) {
+                        };
 
-                        texture.image = image;
-                        texture.needsUpdate = true;
+                        var texture = new THREE.Texture();
 
-                    });
+                        var loader = new THREE.ImageLoader(manager);
+                        loader.load('textures/UV_Grid_Sm.jpg', function (image) {
 
-                    // model
-
-                    var loader = new THREE.OBJLoader(manager);
-                    loader.load('obj/geoForm.obj', function (object) {
-
-                        object.traverse(function (child) {
-
-                            if (child instanceof THREE.Mesh) {
-
-                                child.material.map = texture;
-
-                            }
+                            texture.image = image;
+                            texture.needsUpdate = true;
 
                         });
 
-                        object.position.y = -80;
-                        scene.add(object);
+                        // model
 
-                    });
+                        var loader = new THREE.OBJLoader(manager);
+                        loader.load('obj/geoForm.obj', function (object) {
+
+                            object.traverse(function (child) {
+
+                                if (child instanceof THREE.Mesh) {
+
+                                    child.material.map = texture;
+
+                                }
+
+                            });
+
+                            object.position.y = -80;
+                            scene.add(object);
+
+                        });
+
+                        //
+
+                        renderer = new THREE.WebGLRenderer();
+                        renderer.setSize(window.innerWidth, window.innerHeight);
+                        container.appendChild(renderer.domElement);
+
+                        document.addEventListener('mousemove', onDocumentMouseMove, false);
+
+                        //
+
+                        window.addEventListener('resize', onWindowResize, false);
+
+                    }
+
+                    function onWindowResize() {
+
+                        windowHalfX = window.innerWidth / 2;
+                        windowHalfY = window.innerHeight / 2;
+
+                        camera.aspect = window.innerWidth / window.innerHeight;
+                        camera.updateProjectionMatrix();
+
+                        renderer.setSize(window.innerWidth, window.innerHeight);
+
+                    }
+
+                    function onDocumentMouseMove(event) {
+
+                        mouseX = (event.clientX - windowHalfX) / 2;
+                        mouseY = (event.clientY - windowHalfY) / 2;
+
+                    }
 
                     //
 
-                    renderer = new THREE.WebGLRenderer();
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-                    container.appendChild(renderer.domElement);
+                    function animate() {
 
-                    document.addEventListener('mousemove', onDocumentMouseMove, false);
+                        requestAnimationFrame(animate);
+                        render();
 
-                    //
+                    }
 
-                    window.addEventListener('resize', onWindowResize, false);
+                    function render() {
 
-                }
+                        camera.position.x += (mouseX - camera.position.x) * .05;
+                        camera.position.y += (-mouseY - camera.position.y) * .05;
 
-                function onWindowResize() {
+                        camera.lookAt(scene.position);
 
-                    windowHalfX = window.innerWidth / 2;
-                    windowHalfY = window.innerHeight / 2;
+                        renderer.render(scene, camera);
 
-                    camera.aspect = window.innerWidth / window.innerHeight;
-                    camera.updateProjectionMatrix();
-
-                    renderer.setSize(window.innerWidth, window.innerHeight);
-
-                }
-
-                function onDocumentMouseMove(event) {
-
-                    mouseX = (event.clientX - windowHalfX) / 2;
-                    mouseY = (event.clientY - windowHalfY) / 2;
-
-                }
-
-                //
-
-                function animate() {
-
-                    requestAnimationFrame(animate);
-                    render();
-
-                }
-
-                function render() {
-
-                    camera.position.x += (mouseX - camera.position.x) * .05;
-                    camera.position.y += (-mouseY - camera.position.y) * .05;
-
-                    camera.lookAt(scene.position);
-
-                    renderer.render(scene, camera);
-
-                }
+                    }
 
                 </script>
 
