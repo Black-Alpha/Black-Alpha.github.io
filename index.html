@@ -1,7 +1,6 @@
-﻿<!doctype html>
-<html lang="en">
-    <head>
-        <!--<script type="text/javascript">
+﻿<html lang="en" class="uk-notouch" style="height: auto;">
+<head>
+    <!--<script type="text/javascript">
     function catch_click(e) {
         if (!e) var e = window.event;
 
@@ -16,156 +15,166 @@
     document.onmousedown = catch_click;
     if (document.captureEvents) document.captureEvents(Event.MOUSEDOWN);
         </script>-->
-        
-        <!--soundmanger2-->
-        <script src="/sm2/soundmanager2-nodebug-jsmin.js"></script>
-        <!-- And now, customize it! -->
-        <script type="text/javascript">
-            // soundManager.debugMode = false; // disable debug output
-            //soundManager.url = 'swf/'; // path to directory containing SoundManager2 .SWF file
-            //soundManager.flashVersion = 8;
-            soundManager.onload = function () {
-                // soundManager.createSound() etc. may now be called
+    <!--soundmanger2-->
+    <script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script>
+    <script id="twitter-wjs" src="//platform.twitter.com/widgets.js"></script>
+    <script src="/sm2/soundmanager2-nodebug-jsmin.js"></script>
+    <!-- And now, customize it! -->
+    <script type="text/javascript">
+        // soundManager.debugMode = false; // disable debug output
+        //soundManager.url = 'swf/'; // path to directory containing SoundManager2 .SWF file
+        //soundManager.flashVersion = 8;
+        soundManager.onload = function () {
+            // soundManager.createSound() etc. may now be called
 
-                soundManager.createSound({
-                    id: 'Sign-in',
-                    url: '/media/ogg/Sign-in.ogg',
-                    autoLoad: true
-                });
-            }
+            soundManager.createSound({
+                id: 'Sign-in',
+                url: '/media/ogg/Sign-in.ogg',
+                autoLoad: true
+            });
+        }
 
-        </script>
-        <!--soundmanger2-->
-        <!--uikit-->
+    </script>
+    <!--soundmanger2-->
+    <!--uikit-->
 
-        <link rel="stylesheet" href="/css/uikit.min.css" />
-        <script src="/js/jquery.js"></script>
-        <script src="/js/uikit.min.js"></script>
-        <!--uikit-->
-        <!--smartfox-->
-        <script type="text/javascript" src="/js/SFS2X_API_JS.js"></script>
-        <!--smartfox-->
-        
-        <!--font-->
-        <link href='http://fonts.googleapis.com/css?family=Electrolize' rel='stylesheet' type='text/css'>
-        <style>
-            h1 {
-                font-family: 'Electrolize', serif;
-                font-size: 48px;
-            }
-        </style>
-        <!--SyntaxHighlighter-->
-        <!--font-->
-        <!-- Include required JS files -->
-        <script type="text/javascript" src="js/shCore.js"></script>
-        <!--
+    <link rel="stylesheet" href="/css/uikit.min.css">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/uikit.min.js"></script>
+    <!--uikit-->
+    <!--smartfox-->
+    <script type="text/javascript" src="/js/SFS2X_API_JS.js"></script>
+    <!--smartfox-->
+    <!--font-->
+    <link href="http://fonts.googleapis.com/css?family=Electrolize" rel="stylesheet" type="text/css">
+    <style>
+        h1 {
+            font-family: 'Electrolize', serif;
+            font-size: 48px;
+        }
+    </style>
+    <!--SyntaxHighlighter-->
+    <!--font-->
+    <!-- Include required JS files -->
+    <script type="text/javascript" src="js/shCore.js"></script>
+    <!--
         At least one brush, here we choose JS. You need to include a brush for every
         language you want to highlight
     -->
-        <script type="text/javascript" src="css/shBrushJScript.js"></script>
+    <script type="text/javascript" src="css/shBrushJScript.js"></script>
 
-        <!-- Include *at least* the core style and default theme -->
-        <link href="css/shCore.css" rel="stylesheet" type="text/css" />
-        <link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
-        <!--SyntaxHighlighter-->
+    <!-- Include *at least* the core style and default theme -->
+    <link href="css/shCore.css" rel="stylesheet" type="text/css">
+    <link href="css/shThemeDefault.css" rel="stylesheet" type="text/css">
+    <!--SyntaxHighlighter-->
 
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title data-uk-offcanvas="{target:'#my-id'}">Starlite</title>
-        <!--<meta name="description" content="BigVideo.js - The jQuery Plugin for Big Background Video" />-->
-        <meta name="author" content="Black-Alpha is Owls" />
-        <meta name="viewport" content="width=device-width, user-scalable=no" />
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:900&text=ABCDEFGHIJKLMNOPQRSTUVWXYZ' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="bower_components/BigVideo/css/bigvideo.css">
-        <!--<link rel="author" href="https://plus.google.com/107766061849006545830"/>-->
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-        <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </head>
-    <body>
-        <br>
-        <center>
-            <b class="uk-icon-sign-in" data-uk-modal="{target:'#modal-1'}" style="color:white;position:relative;bottom:-5px;" onclick="soundManager.play('Sign-in',{volume:100}) "></b><code style="position:relative;bottom:-5px;"> Project</code>
-        </center>
-        <custom data-uk-offcanvas="{target:'#my-id'}"><h1 class="uk-article-title"><center data-uk-tooltip title="Alpha">STARLITE<sup class="uk-icon-spinner uk-icon-spin"></sup></center></h1></custom>
-                <div class="uk-progress uk-progress-striped uk-active">
-            <div class="uk-progress-bar" style="width: 85%;"></div>
-        </div>     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title data-uk-offcanvas="{target:'#my-id'}">Starlite</title>
+    <!--<meta name="description" content="BigVideo.js - The jQuery Plugin for Big Background Video" />-->
+    <meta name="author" content="Black-Alpha is Owls">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:900&amp;text=ABCDEFGHIJKLMNOPQRSTUVWXYZ" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="bower_components/BigVideo/css/bigvideo.css">
+    <!--<link rel="author" href="https://plus.google.com/107766061849006545830"/>-->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body data-twttr-rendered="true" style="" class="">
+    <div id="big-video-wrap"><div id="big-video-vid" class="video-js vjs-default-skin vjs-controls-disabled vjs-has-started vjs-playing vjs-user-inactive" style="width: 1663px; height: 692.9166666666667px; display: block; top: -85.45833333333337px; left: 0px;"><video id="big-video-vid_html5_api" class="vjs-tech" preload="auto" data-setup="{}" webkit-playsinline="" style="position: absolute; width: 1663px; height: auto;" autoplay="" src="http://vjs.zencdn.net/v/oceans.mp4"></video><div></div><div class="vjs-poster" tabindex="-1" style="display: none;"></div><div class="vjs-text-track-display"></div><div class="vjs-loading-spinner" style="display: none;"></div><div class="vjs-big-play-button" aria-live="polite" tabindex="0" aria-label="play video"><span aria-hidden="true"></span></div><div class="vjs-control-bar"><div class="vjs-play-control vjs-control  vjs-playing" aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Pause</span></div></div><div class="vjs-current-time vjs-time-controls vjs-control"><div class="vjs-current-time-display" aria-live="off"><span class="vjs-control-text">Current Time </span>0:18</div></div><div class="vjs-time-divider"><div><span>/</span></div></div><div class="vjs-duration vjs-time-controls vjs-control"><div class="vjs-duration-display" aria-live="off"><span class="vjs-control-text">Duration Time </span>0:46</div></div><div class="vjs-remaining-time vjs-time-controls vjs-control"><div class="vjs-remaining-time-display" aria-live="off"><span class="vjs-control-text">Remaining Time </span>-0:28</div></div><div class="vjs-progress-control vjs-control"><div aria-valuenow="38.91" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-progress-holder vjs-slider" aria-label="video progress bar" aria-valuetext="0:18"><div class="vjs-load-progress" style="width: 100%;"><span class="vjs-control-text">Loaded: 0%</span></div><div class="vjs-play-progress" style="width: 50%;"><span class="vjs-control-text">Progress: 0%</span></div><div class="vjs-seek-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-fullscreen-control vjs-control " aria-live="polite" tabindex="0"><div class="vjs-control-content"><span class="vjs-control-text">Fullscreen</span></div></div><div class="vjs-volume-control vjs-control"><div aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" tabindex="0" class="vjs-volume-bar vjs-slider" aria-label="volume level" aria-valuetext="0%"><div class="vjs-volume-level" style="width: 50%;"><span class="vjs-control-text"></span></div><div class="vjs-volume-handle vjs-slider-handle" style="left: 0%;"><span class="vjs-control-text">00:00</span></div></div></div><div class="vjs-mute-control vjs-control vjs-vol-0" aria-live="polite" tabindex="0"><div><span class="vjs-control-text">Mute</span></div></div><div class="vjs-subtitles-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Subtitles Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Subtitles</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">subtitles off</li></ul></div></div><div class="vjs-captions-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Captions Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Captions</span></div><div class="vjs-menu"><ul class="vjs-menu-content"><li class="vjs-menu-item vjs-selected" aria-live="polite" tabindex="0" aria-selected="true">captions off</li></ul></div></div><div class="vjs-chapters-button vjs-menu-button vjs-control " aria-live="polite" tabindex="0" aria-haspopup="true" role="button" aria-label="Chapters Menu" style="display: none;"><div class="vjs-control-content"><span class="vjs-control-text">Chapters</span></div><div class="vjs-menu"><ul class="vjs-menu-content"></ul><li class="vjs-menu-title">Chapters</li></div></div></div></div></div>
+    <br>
+    <center>
+        <b class="uk-icon-sign-in" data-uk-modal="{target:'#modal-1'}" style="color:white;position:relative;bottom:-5px;" onclick="soundManager.play('Sign-in',{volume:100}) "></b><code style="position:relative;bottom:-5px;"> Project</code>
+    </center>
+    <custom data-uk-offcanvas="{target:'#my-id'}">
+        <h1 class="uk-article-title">
+            <center data-uk-tooltip="" title="" style="
+    position: relative;
+" data-cached-title="Alpha">STARLITE<sup class="uk-icon-spinner uk-icon-spin"></sup></center>
+        </h1>
+    </custom>
+    <div class="uk-progress uk-progress-striped uk-active">
+        <div class="uk-progress-bar" style="width: 85%;"></div>
+    </div>
 
-        <!--<a href="https://github.com/dfcb/BigVideo.js">
-            <img style="position: fixed; top: 0; right: 0; border: 0; z-index: 11;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" alt="Fork me on GitHub" />
-        </a>-->
 
-        <div class="nav box" id="nav">
-            <a href="#overview" class="nav-link">Overview</a>
-            <a href="#setup" class="nav-link">Setup</a>
-            <a href="#ambient" class="nav-link">Ambient Video</a>
-            <a href="#playlists" class="nav-link">Playlists</a>
-            <a href="#videojs" class="nav-link">Video.js</a>
-            <a href="#tips" class="nav-link">Tips</a>
-        
-            <div class="toggle-btn">
-                <label><input type="checkbox" checked id="video-toggle" /> Video Playing</label>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--<a href="https://github.com/dfcb/BigVideo.js">
+        <img style="position: fixed; top: 0; right: 0; border: 0; z-index: 11;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub" alt="Fork me on GitHub" />
+    </a>-->
+
+    <div class="nav box" id="nav" style="
+    position: absolute;
+">
+        <a href="#overview" class="nav-link">Overview</a>
+        <a href="#setup" class="nav-link">Setup</a>
+        <a href="#ambient" class="nav-link">Ambient Video</a>
+        <a href="#playlists" class="nav-link">Playlists</a>
+        <a href="#videojs" class="nav-link">Video.js</a>
+        <a href="#tips" class="nav-link">Tips</a>
+
+        <div class="toggle-btn">
+            <label><input type="checkbox" checked="" id="video-toggle"> Video Playing</label>
+        </div>
+    </div>
+
+    <div class="main">
+        <div id="overview" class="box">
+            <h1>BigVideo<span class="dimmed"><small>.</small>js</span></h1>
+            <h2>The jQuery Plugin for Big Background Video (and Images)</h2>
+            <div class="credit">
+                <h3>Created by <a href="http://johnpolacek.com">Chicago Web Developer John Polacek</a></h3>
+                <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/follow_button.b44c7db4edf962ad9e7d1d791040bf60.en.html#_=1412818125820&amp;id=twitter-widget-0&amp;lang=en&amp;screen_name=johnpolacek&amp;show_count=false&amp;show_screen_name=true&amp;size=l" class="twitter-follow-button twitter-follow-button" title="Twitter Follow Button" data-twttr-rendered="true" style="width: 176px; height: 28px;"></iframe>
+                <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
             </div>
+            <p>This plugin makes it easy to add fit-to-fill background video to websites. It can play silent ambient background video (or series of videos). Or use it as a player to show video playlist. BigVideo.js can also show big background images, which is nice to have for showing big background images for devices that don’t have autoplay for ambient video.</p>
+            <p>BigVideo.js is built on top of <a href="http://videojs.com" target="_blank">Video.js</a> from <a href="http://zencoder.com" target="_blank">zencoder</a>. So big thanks to them!</p>
+            <p>You can read about how to use BigVideo.js below. Also, check out the <a href="http://tympanus.net/codrops/2012/09/19/fullscreen-video-slideshow-with-bigvideo-js/">tutorial I wrote for Codrops</a>.</p>
+            <p class="download-links">
+                <strong>DOWNLOAD:</strong>
+                <a class="download" href="https://github.com/dfcb/BigVideo.js/zipball/master">zip</a>
+                <a class="download" href="https://github.com/dfcb/BigVideo.js/tarball/master">tar</a>
+                <a class="download" href="https://github.com/dfcb/BigVideo.js/archive/gh-pages.zip">examples</a>
+                <code class="download">bower install BigVideo.js</code>
+            </p>
         </div>
 
-        <div class="main">
-            <div id="overview" class="box">
-                <h1>BigVideo<span class="dimmed"><small>.</small>js</span></h1>
-                <h2>The jQuery Plugin for Big Background Video (and Images)</h2>
-                <div class="credit">
-                    <h3>Created by <a href="http://johnpolacek.com">Chicago Web Developer John Polacek</a></h3>
-                    <a href="https://twitter.com/johnpolacek" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @johnpolacek</a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-                </div>
-                <p>This plugin makes it easy to add fit-to-fill background video to websites. It can play silent ambient background video (or series of videos). Or use it as a player to show video playlist. BigVideo.js can also show big background images, which is nice to have for showing big background images for devices that don&rsquo;t have autoplay for ambient video.</p>
-                <p>BigVideo.js is built on top of <a href="http://videojs.com" target="_blank">Video.js</a> from <a href="http://zencoder.com" target="_blank">zencoder</a>. So big thanks to them!</p>
-                <p>You can read about how to use BigVideo.js below. Also, check out the <a href="http://tympanus.net/codrops/2012/09/19/fullscreen-video-slideshow-with-bigvideo-js/">tutorial I wrote for Codrops</a>.</p>
-                <p class="download-links">
-                    <strong>DOWNLOAD:</strong>
-                    <a class="download" href="https://github.com/dfcb/BigVideo.js/zipball/master">zip</a>
-                    <a class="download" href="https://github.com/dfcb/BigVideo.js/tarball/master">tar</a>
-                    <a class="download" href="https://github.com/dfcb/BigVideo.js/archive/gh-pages.zip">examples</a>
-                    <code class="download">bower install BigVideo.js</code>
-                </p>
-            </div>
-
-            <div id="setup" class="box">
-                <h2>Setup</h2>
-                <p>BigVideo.js uses the Video.js api. It also requires jQuery, jQuery UI (for the slider control) and the <a href="https://github.com/desandro/imagesloaded" target="_blank">jQuery imagesloaded</a> plugin. If you installed using <a href="https://bower.io">Bower</a>, they'll have been installed automatically. Make sure you include all these libraries when using BigVideo.js.</p>
-                <p>To simply play a video that takes up the entire browser window (like in <a href="example-simple.html" target="_blank">this example</a>), do this:</p>
-                <p><blockquote><pre>
-$(function() {
+        <div id="setup" class="box">
+            <h2>Setup</h2>
+            <p>BigVideo.js uses the Video.js api. It also requires jQuery, jQuery UI (for the slider control) and the <a href="https://github.com/desandro/imagesloaded" target="_blank">jQuery imagesloaded</a> plugin. If you installed using <a href="https://bower.io">Bower</a>, they'll have been installed automatically. Make sure you include all these libraries when using BigVideo.js.</p>
+            <p>To simply play a video that takes up the entire browser window (like in <a href="example-simple.html" target="_blank">this example</a>), do this:</p>
+            <p></p><blockquote>
+                <pre>$(function() {
     var BV = new $.BigVideo();
     BV.init();
     BV.show('http://vjs.zencdn.net/v/oceans.mp4');
-});</pre></blockquote></p>
-                <p>For crossbrowser fallbacks, you can include a source order with different video formats. Refer to <a href="example-multiformats.html">this example</a>. <em><small>(Note: Safari does not fallback correctly for webm, so include mp4 first)</small></em></p>
-                <p><blockquote><pre>
-$(function() {
+});</pre>
+            </blockquote><p></p>
+            <p>For crossbrowser fallbacks, you can include a source order with different video formats. Refer to <a href="example-multiformats.html">this example</a>. <em><small>(Note: Safari does not fallback correctly for webm, so include mp4 first)</small></em></p>
+            <p></p><blockquote>
+                <pre>$(function() {
     var BV = new $.BigVideo({useFlashForFirefox:false});
 	BV.init();
     BV.show([
@@ -173,322 +182,327 @@ $(function() {
         { type: "video/webm", src: "vids/river.webm" },
         { type: "video/ogg",  src: "vids/river.ogv" }
     ]);
-});</pre></blockquote></p>
-            </div>
+});</pre>
+            </blockquote><p></p>
+        </div>
 
-            <div id="ambient" class="box">
-                <h2>Ambient Video</h2>
-                <p>To play silent video in the background of a page (like in <a href="example-ambient.html" target="_blank">this example</a>), use BigVideo&rsquo;s ambient setting:</p>
-                <p><blockquote><pre>
-$(function() {
+        <div id="ambient" class="box">
+            <h2>Ambient Video</h2>
+            <p>To play silent video in the background of a page (like in <a href="example-ambient.html" target="_blank">this example</a>), use BigVideo’s ambient setting:</p>
+            <p></p><blockquote>
+                <pre>$(function() {
     var BV = new $.BigVideo();
     BV.init();
     BV.show('http://vjs.zencdn.net/v/oceans.mp4',{ambient:true});
-});</pre></blockquote></p>
-                <p>Or play a series of ambient background videos (like in <a href="example-ambient-loop.html" target="_blank">this example</a>)</p>
-                <p><blockquote><pre>
-$(function() {
+});</pre>
+            </blockquote><p></p>
+            <p>Or play a series of ambient background videos (like in <a href="example-ambient-loop.html" target="_blank">this example</a>)</p>
+            <p></p><blockquote>
+                <pre>$(function() {
     var BV = new $.BigVideo();
     BV.init();
     BV.show(['vid1.mp4','vid2.mp4','vid3.mp4'],{ambient:true});
-});</pre></blockquote></p>
-                <p>Keep in mind that mobile devices do not allow video autoplay. To account for this, use <a href="http://modernizr.com" target="_blank">Modernizr</a> to detect for touchscreen devices, then send a large poster image for BigVideo to use instead (like in <a href="example-ambient-touch.html" target="_blank">this example</a>).</p>
-                <p><blockquote><pre>
-var BV = new $.BigVideo();
+});</pre>
+            </blockquote><p></p>
+            <p>Keep in mind that mobile devices do not allow video autoplay. To account for this, use <a href="http://modernizr.com" target="_blank">Modernizr</a> to detect for touchscreen devices, then send a large poster image for BigVideo to use instead (like in <a href="example-ambient-touch.html" target="_blank">this example</a>).</p>
+            <p></p><blockquote>
+                <pre>var BV = new $.BigVideo();
 BV.init();
 if (Modernizr.touch) {
     BV.show('video-poster.jpg');
 } else {
     BV.show('video.mp4',{ambient:true});
-}</pre></blockquote></p>
-            </div>
-        
-            <div id="playlists" class="box">
-                <h2>Playlists</h2>
-                <p>You can create a playlist like this:</p>
-                <div class="playlist">
-                    <a href="vids/dock.mp4" class="playlist-btn">Video #1</a>
-                    <a href="vids/river.mp4" class="playlist-btn">Video #2</a>
-                    <a href="vids/frontier.mp4" class="playlist-btn">Video #3</a>
-                </div>
-                <p>For more on how to do this, including auto-hiding content and alternate fullscreen image content for touchscreen devices, take a look at <a href="example-playlist.html">this example</a> and <a href="example-multiformats-playlist.html">this example for multiple video formats</a>.
-                <p><small>Playlist clips courtesy of <a href="http://beachfrontprod.blogspot.com/" target="_blank">Beachfront B-Roll</a></small></p>
-            </div>
-
-            <div id="videojs" class="box">
-                <h2>Video.js</h2>
-                <p>Because BigVideo.js is built on top of <a href="http://videojs.com" target="_blank">Video.js</a>, you can use the <a href="http://videojs.com/docs/api/" target="_blank">Video.js api</a>. Access the Video.js player with the getPlayer() method.</p>
-                <p><blockquote><pre>
-BV.getPlayer().pause();</pre></blockquote></p>            
-            </div>
-
-            <div id="tips" class="box">
-                <h2>Tips</h2>
-                <p>For best results, I recommend using Vimeo. Sign up for <a href="https://vimeo.com/pro" target="_blank">Vimeo Pro</a>, then use their direct mp4 link to serve the video. Vimeo not only has solid bandwidth for delivering video, they do great compression. If you start with a high def source at a bitrate of 10mbps or more, it does such a nice job that you can probably get away with using the standard def source as your background video. Refer to the <a href="http://vimeo.com/help/compression">Vimeo Compression Guidelines</a> for best practices in preparing video files.</p>
-            
-                <p>To find some great background video footage, try the links posted <a href="http://thecliparchive.com" target="_blank">here</a>, which is where I found out about all the excellent clips over at <a href="http://beachfrontprod.blogspot.com/" target="_blank">Beachfront B-Roll</a>.</p>
-            </div>
-
-            <p class="footer-text">We are the <a href="http://opensource.draftfcb.net">dev group at Draftfcb Chicago</a>. If you want to work on big digital ideas for big brands, get in touch with us at <a href="mailto:devrecruiting@draftfcb.com">devrecruiting@draftfcb.com</a>.</p>
-            <p class="footer-text">Check out <a href="http://opensource.draftfcb.net">more open source projects</a> from Draftfcb Chicago</p>
-
+}</pre>
+            </blockquote><p></p>
         </div>
 
-        <!-- BigVideo Dependencies -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="bower_components/jquery/jquery.min.js"><\/script>')</script>
-        <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
-        <script src="bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
-        <script src="//vjs.zencdn.net/4.3/video.js"></script>
+        <div id="playlists" class="box">
+            <h2>Playlists</h2>
+            <p>You can create a playlist like this:</p>
+            <div class="playlist">
+                <a href="vids/dock.mp4" class="playlist-btn">Video #1</a>
+                <a href="vids/river.mp4" class="playlist-btn">Video #2</a>
+                <a href="vids/frontier.mp4" class="playlist-btn">Video #3</a>
+            </div>
+            <p>
+                For more on how to do this, including auto-hiding content and alternate fullscreen image content for touchscreen devices, take a look at <a href="example-playlist.html">this example</a> and <a href="example-multiformats-playlist.html">this example for multiple video formats</a>.
+            </p><p><small>Playlist clips courtesy of <a href="http://beachfrontprod.blogspot.com/" target="_blank">Beachfront B-Roll</a></small></p>
+        </div>
 
-        <!-- BigVideo -->
-        <script src="bower_components/BigVideo/lib/bigvideo.js"></script>
-    
-        <!-- Demo -->
-        <script>
-            var BV;
-            $(function() {
-            
-                // initialize BigVideo
-                BV = new $.BigVideo();
-                BV.init();
-                BV.show('http://vjs.zencdn.net/v/oceans.mp4',{ambient:true});
+        <div id="videojs" class="box">
+            <h2>Video.js</h2>
+            <p>Because BigVideo.js is built on top of <a href="http://videojs.com" target="_blank">Video.js</a>, you can use the <a href="http://videojs.com/docs/api/" target="_blank">Video.js api</a>. Access the Video.js player with the getPlayer() method.</p>
+            <p></p><blockquote><pre>BV.getPlayer().pause();</pre></blockquote><p></p>
+        </div>
 
-                // Playlist button click starts video
-                $('.playlist-btn').on('click', function(e) {
-                    e.preventDefault();
-                    BV.show($(this).attr('href'));
-                })
+        <div id="tips" class="box">
+            <h2>Tips</h2>
+            <p>For best results, I recommend using Vimeo. Sign up for <a href="https://vimeo.com/pro" target="_blank">Vimeo Pro</a>, then use their direct mp4 link to serve the video. Vimeo not only has solid bandwidth for delivering video, they do great compression. If you start with a high def source at a bitrate of 10mbps or more, it does such a nice job that you can probably get away with using the standard def source as your background video. Refer to the <a href="http://vimeo.com/help/compression">Vimeo Compression Guidelines</a> for best practices in preparing video files.</p>
 
-                // Video Play/Pause toggle
-                $('#video-toggle').on('click', function(e) {
-                    if (this.checked)   BV.getPlayer().play();
-                    else                BV.getPlayer().pause();
-                })
+            <p>To find some great background video footage, try the links posted <a href="http://thecliparchive.com" target="_blank">here</a>, which is where I found out about all the excellent clips over at <a href="http://beachfrontprod.blogspot.com/" target="_blank">Beachfront B-Roll</a>.</p>
+        </div>
 
-                // set up navigation
-                $('.nav-link').on('click',function(e){
-                    e.preventDefault();
-                    scrollToSection($(this).attr('href'));
-                })
+        <p class="footer-text">We are the <a href="http://opensource.draftfcb.net">dev group at Draftfcb Chicago</a>. If you want to work on big digital ideas for big brands, get in touch with us at <a href="mailto:devrecruiting@draftfcb.com">devrecruiting@draftfcb.com</a>.</p>
+        <p class="footer-text">Check out <a href="http://opensource.draftfcb.net">more open source projects</a> from Draftfcb Chicago</p>
 
-                function scrollToSection(id) {
-                    $('body,html').animate({scrollTop: $(id).offset().top - 50}, 400);
-                }
-            });
-        </script>
+    </div>
 
-        <!-- 
-            BigVideo.js Analytics to see how many people are visiting our project page.
-            Do not use this code on your site unless you want to show up on our Google Analytics account :)
-            -->
-        <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-2821890-9']);
-            _gaq.push(['_trackPageview']);
+    <!-- BigVideo Dependencies -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="bower_components/jquery/jquery.min.js"><\/script>')</script>
+    <script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+    <script src="bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+    <script src="//vjs.zencdn.net/4.3/video.js"></script>
 
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        <!--Three.js-->
-        <script src="tjs/three.min.js"></script>
-        <script src="tjs/OBJLoader.js"></script>
-        <script src="tjs/Detector.js"></script>
-        <script src="tjs/stats.min.js"></script>
+    <!-- BigVideo -->
+    <script src="bower_components/BigVideo/lib/bigvideo.js"></script>
 
-        <div id="subnav-pill-content" class="uk-switcher">
-            <div class="uk-active">
-                <script>
+    <!-- Demo -->
+    <script>
+        var BV;
+        $(function () {
 
-                    var container, stats;
+            // initialize BigVideo
+            BV = new $.BigVideo();
+            BV.init();
+            BV.show('http://vjs.zencdn.net/v/oceans.mp4', { ambient: true });
 
-                    var camera, scene, renderer;
+            // Playlist button click starts video
+            $('.playlist-btn').on('click', function (e) {
+                e.preventDefault();
+                BV.show($(this).attr('href'));
+            })
 
-                    var mouseX = 0, mouseY = 0;
+            // Video Play/Pause toggle
+            $('#video-toggle').on('click', function (e) {
+                if (this.checked) BV.getPlayer().play();
+                else BV.getPlayer().pause();
+            })
 
-                    var windowHalfX = window.innerWidth / 2;
-                    var windowHalfY = window.innerHeight / 2;
+            // set up navigation
+            $('.nav-link').on('click', function (e) {
+                e.preventDefault();
+                scrollToSection($(this).attr('href'));
+            })
+
+            function scrollToSection(id) {
+                $('body,html').animate({ scrollTop: $(id).offset().top - 50 }, 400);
+            }
+        });
+    </script>
+
+    <!--
+        BigVideo.js Analytics to see how many people are visiting our project page.
+        Do not use this code on your site unless you want to show up on our Google Analytics account :)
+        -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-2821890-9']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
 
 
-                    init();
-                    animate();
 
 
-                    function init() {
 
-                        container = document.createElement('div');
-                        container.id = "e1";
-                        document.body.appendChild(container);
 
-                        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
-                        camera.position.z = 100;
 
-                        // scene
 
-                        scene = new THREE.Scene();
 
-                        var ambient = new THREE.AmbientLight(0x101030);
-                        scene.add(ambient);
 
-                        var directionalLight = new THREE.DirectionalLight(0xffeedd);
-                        directionalLight.position.set(0, 0, 1);
-                        scene.add(directionalLight);
 
-                        // texture
 
-                        var manager = new THREE.LoadingManager();
-                        manager.onProgress = function (item, loaded, total) {
 
-                            console.log(item, loaded, total);
 
-                        };
 
-                        var texture = new THREE.Texture();
 
-                        var loader = new THREE.ImageLoader(manager);
-                        loader.load('textures/UV_Grid_Sm.jpg', function (image) {
 
-                            texture.image = image;
-                            texture.needsUpdate = true;
+
+
+
+
+
+
+
+
+    <!--Three.js-->
+    <script src="tjs/three.min.js"></script>
+    <script src="tjs/OBJLoader.js"></script>
+    <script src="tjs/Detector.js"></script>
+    <script src="tjs/stats.min.js"></script>
+
+    <div id="subnav-pill-content" class="uk-switcher">
+        <div class="uk-active">
+            <script>
+
+                var container, stats;
+
+                var camera, scene, renderer;
+
+                var mouseX = 0, mouseY = 0;
+
+                var windowHalfX = window.innerWidth / 2;
+                var windowHalfY = window.innerHeight / 2;
+
+
+                init();
+                animate();
+
+
+                function init() {
+
+                    container = document.createElement('div');
+                    container.id = "e1";
+                    document.body.appendChild(container);
+
+                    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 2000);
+                    camera.position.z = 100;
+
+                    // scene
+
+                    scene = new THREE.Scene();
+
+                    var ambient = new THREE.AmbientLight(0x101030);
+                    scene.add(ambient);
+
+                    var directionalLight = new THREE.DirectionalLight(0xffeedd);
+                    directionalLight.position.set(0, 0, 1);
+                    scene.add(directionalLight);
+
+                    // texture
+
+                    var manager = new THREE.LoadingManager();
+                    manager.onProgress = function (item, loaded, total) {
+
+                        console.log(item, loaded, total);
+
+                    };
+
+                    var texture = new THREE.Texture();
+
+                    var loader = new THREE.ImageLoader(manager);
+                    loader.load('textures/UV_Grid_Sm.jpg', function (image) {
+
+                        texture.image = image;
+                        texture.needsUpdate = true;
+
+                    });
+
+                    // model
+
+                    var loader = new THREE.OBJLoader(manager);
+                    loader.load('obj/geoForm.obj', function (object) {
+
+                        object.traverse(function (child) {
+
+                            if (child instanceof THREE.Mesh) {
+
+                                child.material.map = texture;
+
+                            }
 
                         });
 
-                        // model
+                        object.position.y = -80;
+                        scene.add(object);
 
-                        var loader = new THREE.OBJLoader(manager);
-                        loader.load('obj/geoForm.obj', function (object) {
-
-                            object.traverse(function (child) {
-
-                                if (child instanceof THREE.Mesh) {
-
-                                    child.material.map = texture;
-
-                                }
-
-                            });
-
-                            object.position.y = -80;
-                            scene.add(object);
-
-                        });
-
-                        //
-
-                        renderer = new THREE.WebGLRenderer();
-                        renderer.setSize(window.innerWidth, window.innerHeight);
-                        container.appendChild(renderer.domElement);
-
-                        document.addEventListener('mousemove', onDocumentMouseMove, false);
-
-                        //
-
-                        window.addEventListener('resize', onWindowResize, false);
-
-                    }
-
-                    function onWindowResize() {
-
-                        windowHalfX = window.innerWidth / 2;
-                        windowHalfY = window.innerHeight / 2;
-
-                        camera.aspect = window.innerWidth / window.innerHeight;
-                        camera.updateProjectionMatrix();
-
-                        renderer.setSize(window.innerWidth, window.innerHeight);
-
-                    }
-
-                    function onDocumentMouseMove(event) {
-
-                        mouseX = (event.clientX - windowHalfX) / 2;
-                        mouseY = (event.clientY - windowHalfY) / 2;
-
-                    }
+                    });
 
                     //
 
-                    function animate() {
+                    renderer = new THREE.WebGLRenderer();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                    container.appendChild(renderer.domElement);
 
-                        requestAnimationFrame(animate);
-                        render();
+                    document.addEventListener('mousemove', onDocumentMouseMove, false);
 
-                    }
+                    //
 
-                    function render() {
+                    window.addEventListener('resize', onWindowResize, false);
 
-                        camera.position.x += (mouseX - camera.position.x) * .05;
-                        camera.position.y += (-mouseY - camera.position.y) * .05;
+                }
 
-                        camera.lookAt(scene.position);
+                function onWindowResize() {
 
-                        renderer.render(scene, camera);
+                    windowHalfX = window.innerWidth / 2;
+                    windowHalfY = window.innerHeight / 2;
 
-                    }
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
 
-                </script>
+                    renderer.setSize(window.innerWidth, window.innerHeight);
 
+                }
+
+                function onDocumentMouseMove(event) {
+
+                    mouseX = (event.clientX - windowHalfX) / 2;
+                    mouseY = (event.clientY - windowHalfY) / 2;
+
+                }
+
+                //
+
+                function animate() {
+
+                    requestAnimationFrame(animate);
+                    render();
+
+                }
+
+                function render() {
+
+                    camera.position.x += (mouseX - camera.position.x) * .05;
+                    camera.position.y += (-mouseY - camera.position.y) * .05;
+
+                    camera.lookAt(scene.position);
+
+                    renderer.render(scene, camera);
+
+                }
+
+            </script>
+
+        </div>
+        <div id="e2"><iframe src="Lobby/index.html" width="100%" height="100%"></iframe></div>
+        <div id="e3">
+            <!--Three.js-->
+        </div>
+
+
+        <div id="modal-1" class="uk-modal" style="display: none; padding-left: 17px;">
+            <div class="uk-modal-dialog">
+                <button type="button" class="uk-modal-close uk-close"></button>
+                <h1>Connoisseur</h1>
+                <a class="uk-thumbnail" href="">
+                    <img src="/images/placeholder_200x100.svg" alt="">
+                </a>
+                <p>
+                    <!--<iframe src="Lobby/index.html"></iframe>-->
+                </p>
             </div>
-            <div id="e2"><iframe src="Lobby/index.html" width="100%" height="100%"></iframe></div>
-            <div id="e3">
-                <!--Three.js-->
-            </div>
+        </div>
 
+        <div id="my-id" class="uk-offcanvas">
+            <div class="uk-offcanvas-bar">
+                <sup><span class="uk-badge">Info</span></sup>
+                <a class="uk-thumbnail" href="">
+                    <img src="/images/placeholder_200x100.svg" alt="">
+                </a>
 
-            <div id="modal-1" class="uk-modal">
-                <div class="uk-modal-dialog">
-                    <button type="button" class="uk-modal-close uk-close"></button>
-                    <h1>Connoisseur</h1>
-                    <a class="uk-thumbnail" href="">
-                        <img src="/images/placeholder_200x100.svg" alt="">
-                    </a>
-                    <p>
-                        <!--<iframe src="Lobby/index.html"></iframe>-->
-                    </p>
-                </div>
-            </div>
+                <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="">
+                    <li><a href="">Item</a></li>
+                    <li class="uk-active"><a href="">Active</a></li>
 
-            <div id="my-id" class="uk-offcanvas">
-                <div class="uk-offcanvas-bar">
-                    <sup><span class="uk-badge">Info</span></sup>
-                    <a class="uk-thumbnail" href="">
-                        <img src="/images/placeholder_200x100.svg" alt="">
-                    </a>
-
-                    <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav>
-                        <li><a href="">Item</a></li>
-                        <li class="uk-active"><a href="">Active</a></li>
-
-                        <li class="uk-parent">
-                            <a href="#">TruePrint</a>
+                    <li class="uk-parent">
+                        <a href="#">TruePrint</a>
+                        <div style="overflow:hidden;height:0;position:relative;">
                             <ul class="uk-nav-sub">
                                 <li><a href="">Sub item</a></li>
                                 <li>
@@ -499,72 +513,73 @@ BV.getPlayer().pause();</pre></blockquote></p>
                                     </ul>
                                 </li>
                             </ul>
-                        </li>
+                        </div>
+                    </li>
 
-                        <li class="uk-parent">
-                            <a href="#">Parent</a>
+                    <li class="uk-parent">
+                        <a href="#">Parent</a>
+                        <div style="overflow:hidden;height:0;position:relative;">
                             <ul class="uk-nav-sub">
                                 <li><a href="">Sub item</a></li>
                                 <li><a href="">Sub item</a></li>
                             </ul>
-                        </li>
+                        </div>
+                    </li>
 
-                        <li><a href="">Item</a></li>
+                    <li><a href="">Item</a></li>
 
-                        <li class="uk-nav-header">Header</li>
-                        <li class="uk-parent"><a href=""><i class="uk-icon-star"></i> Parent</a></li>
-                        <li><a href=""><i class="uk-icon-twitter"></i> Item</a></li>
-                        <li class="uk-nav-divider"></li>
-                        <li><a href=""><i class="uk-icon-rss"></i> Item</a></li>
-                    </ul>
+                    <li class="uk-nav-header">Header</li>
+                    <li class="uk-parent"><a href=""><i class="uk-icon-star"></i> Parent</a></li>
+                    <li><a href=""><i class="uk-icon-twitter"></i> Item</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href=""><i class="uk-icon-rss"></i> Item</a></li>
+                </ul>
 
-                    <!-- You also need to add some content to highlight, but that is covered elsewhere. -->
-                    <pre class="brush: js">
-    function foo()
-    {
-    }
-    </pre>
+                <!-- You also need to add some content to highlight, but that is covered elsewhere. -->
+                <div><div id="highlighter_581274" class="syntaxhighlighter  js"><div class="toolbar"><span><a href="#" class="toolbar_item command_help help">?</a></span></div><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="js keyword">function</code> <code class="js plain">foo()</code></div><div class="line number2 index1 alt1"><code class="js plain">{</code></div><div class="line number3 index2 alt2"><code class="js plain">}</code></div></div></td></tr></tbody></table></div></div>
 
-                    <!--Finally, to actually run the highlighter, you need to include this JS on your page-->
-                    <script type="text/javascript">
-                        SyntaxHighlighter.all()
-                    </script>
+                <!--Finally, to actually run the highlighter, you need to include this JS on your page-->
+                <script type="text/javascript">
+                    SyntaxHighlighter.all()
+                </script>
 
 
 
-                    <p>
-                        <div><terminal style="position:absolute;bottom:0px"></terminal></div>
+                <p>
+                </p><div><terminal style="position:absolute;bottom:0px"></terminal></div>
 
-                    </p>
-                    <!--<ul class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#subnav-pill-content'}">-->
-                    <!--<li class="uk-active"><a href="#">Proto</a></li>-->
-                    <!--<li class=""><a href="#" onclick="Element2('e2')">Orbital</a></li>-->
-                    <!--<li class=""><a href="#" onclick="Element3('e3')">Video</a></li>-->
-                    <!--</ul>-->
+                <p></p>
+                <!--<ul class="uk-subnav uk-subnav-pill" data-uk-switcher="{connect:'#subnav-pill-content'}">-->
+                <!--<li class="uk-active"><a href="#">Proto</a></li>-->
+                <!--<li class=""><a href="#" onclick="Element2('e2')">Orbital</a></li>-->
+                <!--<li class=""><a href="#" onclick="Element3('e3')">Video</a></li>-->
+                <!--</ul>-->
 
-                </div>
             </div>
-            <script>
-                function Element1() {
-                    document.getElementById("e2").style.display = "none";
-                    document.getElementById("e3").style.display = "none";
-                    document.getElementById("e1").style.display = "block";
-                    document.getElementById("e1").style.visibility = "visible";
-                }
-                function Element2() {
-                    document.getElementById('e1').style.display = "none";
-                    document.getElementById('e2').style.display = "none";
-                    document.getElementById("e2").style.display = "block";
-                    document.getElementById("e2").style.visibility = "visible";
-                }
-                function Element3() {
-                    document.getElementById('e2').style.display = "none";
-                    document.getElementById('e3').style.display = "none";
-                    document.getElementById("e3").style.display = "block";
-                    document.getElementById("e3").style.visibility = "visible";
-                }
-            </script>
         </div>
+        <script>
+            function Element1() {
+                document.getElementById("e2").style.display = "none";
+                document.getElementById("e3").style.display = "none";
+                document.getElementById("e1").style.display = "block";
+                document.getElementById("e1").style.visibility = "visible";
+            }
+            function Element2() {
+                document.getElementById('e1').style.display = "none";
+                document.getElementById('e2').style.display = "none";
+                document.getElementById("e2").style.display = "block";
+                document.getElementById("e2").style.visibility = "visible";
+            }
+            function Element3() {
+                document.getElementById('e2').style.display = "none";
+                document.getElementById('e3').style.display = "none";
+                document.getElementById("e3").style.display = "block";
+                document.getElementById("e3").style.visibility = "visible";
+            }
+        </script>
+    </div><div id="e1"><canvas width="1680" height="539" style="width: 1680px; height: 539px;"></canvas></div>
 
-    </body>
+
+    <div class="uk-tooltip uk-tooltip-bottom " style="top: 75px; visibility: visible; display: none; left: 808px;"><div class="uk-tooltip-inner">Alpha</div></div>
+</body>
 </html>
